@@ -1,5 +1,6 @@
 
 build:
+	cd mi101/notebooks; make
 	jb build mi101
 
 open:
