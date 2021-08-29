@@ -1,7 +1,7 @@
 format: jb-article
 root: intro
 sections:
-- file: content
+- file: setup
+- file: exercises
   sections:
-  - file: markdown
-  - file: notebooks
+  - file: notebooks/01_python_assignment
