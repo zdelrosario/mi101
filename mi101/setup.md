@@ -5,7 +5,7 @@ In short, you'll need:
 
 - Exercise files (Download)
 - Python and Jupyter (Recommended: Anaconda)
-- Tabula (Free software)
+- Tabula and WebPlotDigitizer (Free software)
 
 **If you have any issues with these steps**: Please ask a TA! We will gladly
 help you set up your environment.
@@ -88,15 +88,14 @@ modules to complete all the workshop exercises. Anaconda provides a package
 installer called `pip`; from the command line, you can simply execute the
 following commands.
 
-> ## Install Modules
-> In your terminal, change directory to where you unzipped the exercises,
-> and execute the command:
-> ~~~
-> pip install -r requirements.txt
-> ~~~
-> {: .language-bash}
-> This will install the requirements for the workshop.
-{: .callout}
+In your terminal, change directory to where you unzipped the exercises,
+and execute the command:
+
+```
+pip install -r requirements.txt
+```
+
+This will install the requirements for the workshop.
 
 ![terminal pip](./images/terminal_pip.png)
 
