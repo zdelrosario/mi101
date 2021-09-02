@@ -237,13 +237,84 @@
      : Inspecting a DataFrame
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grama">
+   Grama
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pivoting">
-     Pivoting
+    <a class="reference internal nav-link" href="#selecting">
+     Selecting
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#qx">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#renaming">
+     Renaming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interlude-pipelines-and-the-data-pronoun">
+   Interlude: Pipelines and the “Data Pronoun
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#back-to-verbs">
+   Back to Verbs
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     Filtering
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutating">
+     Mutating
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-data">
+   Pivoting Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
      <strong>
       QX
      </strong>
@@ -321,6 +392,10 @@
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+
+<span class="c1"># For downloading data</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
@@ -329,23 +404,62 @@
 </div>
 <div class="section" id="dataframes">
 <h1>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a data structure provided by Pandas. In contrast with <code class="docutils literal notranslate"><span class="pre">lists</span></code> (which we saw in the previous exercise), DataFrames are explicitly designed to facilitate data analysis. Accordingly, they provide a number of helpful features that aid in data analysis and operations.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <em>rectangular</em> representation of data – it consists of rows and columns. Each <em>row</em> represents an <em>observation</em> – a single instance of data. Each <em>column</em> represents a <em>variable</em> – a particular attribute of the observation.</p>
-<p><strong>TODO</strong> (Update) For instance, we have loaded some alloy data into the DataFrame <code class="docutils literal notranslate"><span class="pre">df_data</span></code> – here each row is an alloy, and each column is some physical property of that alloy.</p>
+<p>For instance, the following code chunk downloads a alloy dataset into the DataFrame <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code> – here each row is an alloy, and each column is some physical property of that alloy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
+<span class="n">filename_data</span> <span class="o">=</span> <span class="s2">&quot;./data/mpea.csv&quot;</span>
+
+<span class="c1"># The following code downloads the data, or (after downloaded)</span>
+<span class="c1"># loads the data from a cached CSV on your machine</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename_data</span><span class="p">):</span>
+    <span class="c1"># Make request for data</span>
+    <span class="n">url_data</span> <span class="o">=</span> <span class="s2">&quot;https://docs.google.com/spreadsheets/u/1/d/1MsF4_jhWtEuZSvWfXLDHWEqLMScGCVXYWtqHW9Y7Yt0/export?format=csv&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_data</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">filename_data</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   MPEA data downloaded from public Google sheet&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Note data already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    MPEA data loaded locally&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Read the data into memory</span>
+<span class="n">df_mpea</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_data</span><span class="p">)</span>
+
+<span class="c1"># Check basic facts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df_mpea</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="q1-inspecting-a-dataframe">
 <h2><strong>Q1</strong>: Inspecting a DataFrame<a class="headerlink" href="#q1-inspecting-a-dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Consult the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">pandas documentation</a> (it might be useful to use a page search) and use some basic calls on <code class="docutils literal notranslate"><span class="pre">df_data</span></code> to answer the following questions:</p>
 <ul class="simple">
 <li><p>What are the <em>last</em> five observations in the DataFrame?</p></li>
 <li><p>How many rows are in <code class="docutils literal notranslate"><span class="pre">df_data</span></code>? How many columns?</p></li>
-<li><p>How can you select the column “Normalizing Temperature”?</p></li>
-<li><p>How can you select the columns “Normalizing Temperature” and “Fatigue Strength”?</p></li>
+<li><p>How would we access the column <code class="docutils literal notranslate"><span class="pre">PROPERTY:</span> <span class="pre">Microstructure</span></code>?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
 <span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Show the last five observations of df_data</span>
+<span class="c1"># TODO: Show the last five observations of df_mpea</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Inspect df_mpea</span>
+<span class="c1"># TODO: Determine the number of rows and columns in df_mpea</span>
 <span class="c1">###</span>
 
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
@@ -357,31 +471,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
 <span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Determine the number of rows and columns in df_data</span>
-<span class="c1">###</span>
-
-<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
-<span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Select the column &quot;Normalizing Temperature&quot;</span>
-<span class="c1">###</span>
-
-<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
-<span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Select the columns &quot;Normalizing Temperature&quot; and &quot;Fatigue Strength&quot;</span>
+<span class="c1"># TODO: Grab the column `PROPERTY: Microstructure` alone</span>
 <span class="c1">###</span>
 
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
@@ -391,8 +481,193 @@
 </div>
 <p>These manipulations are simple, but they are bread-and-butter for studying new datasets.</p>
 </div>
-<div class="section" id="pivoting">
-<h2>Pivoting<a class="headerlink" href="#pivoting" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="grama">
+<h1>Grama<a class="headerlink" href="#grama" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>TODO the <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> package builds on top of Pandas to provide a pipeline-based data (and model) infrastructure.</p>
+<p>Grama provides</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+   <span class="n">df_mpea</span>
+   <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It’s helpful to think of the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> symbol as meaning “and then”. That means code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Can be read something like an English sentence, where we are using various <em>verbs</em> to operate on the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">Start</span> <span class="k">with</span> <span class="n">df_mpea</span>
+    <span class="ow">and</span> <span class="n">then</span> <span class="nb">filter</span> <span class="n">the</span> <span class="n">data</span>
+    <span class="ow">and</span> <span class="n">then</span> <span class="n">mutate</span> <span class="n">the</span> <span class="n">data</span>
+    <span class="ow">and</span> <span class="n">then</span> <span class="n">pivot</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">to</span> <span class="n">a</span> <span class="n">longer</span> <span class="nb">format</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We don’t yet know what these verbs do; we’ll learn more in the exercises below!</p>
+<div class="section" id="selecting">
+<h2>Selecting<a class="headerlink" href="#selecting" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;FORMULA&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="qx">
+<h2><strong>qX</strong><a class="headerlink" href="#qx" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;FORMULA&quot;</span><span class="p">,</span> <span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><strong>qX</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="renaming">
+<h2>Renaming<a class="headerlink" href="#renaming" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span>
+        <span class="n">microstructure</span><span class="o">=</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interlude-pipelines-and-the-data-pronoun">
+<h1>Interlude: Pipelines and the “Data Pronoun<a class="headerlink" href="#interlude-pipelines-and-the-data-pronoun" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>(Illustrate the use of the data pronoun)</p>
+<p>Imagine we wanted to search through the dataset to find only those materials with a FCC microstructure. Above, we gave the <code class="docutils literal notranslate"><span class="pre">microstructure</span></code> column a new, convenient name. We might like to use that new, convenient name when searching for FCC materials. However, we’re going to run into an issue:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Try uncommenting and running the following code; it WILL break!</span>
+<span class="c1"># (</span>
+<span class="c1">#     df_mpea</span>
+<span class="c1">#     &gt;&gt; gr.tf_rename(</span>
+<span class="c1">#         microstructure=&quot;PROPERTY: Microstructure&quot;,</span>
+<span class="c1">#     )</span>
+<span class="c1">#     &gt;&gt; gr.tf_filter(</span>
+<span class="c1">#         df_mpea[&quot;microstructure&quot;] == &quot;FCC&quot;</span>
+<span class="c1">#     )</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to refer to the data <em>now</em>—as it is currently in the pipeline—we need a name to refer to that DataFrame. This is where the <em>data pronoun</em> comes in; remember when we ran this line way up above in the setup chunk?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This assigns the data pronoun to the name <code class="docutils literal notranslate"><span class="pre">DF</span></code>. We can use this to take advantage of the new (shorter) name we gave to the microstructure column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span>
+        <span class="n">microstructure</span><span class="o">=</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;microstructure&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;FCC&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Together, the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> and the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> form a powerful team that helps us do sophisticated data operations.</p>
+<div class="section" id="id2">
+<h2><strong>qX</strong><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Eliminate the intermediate variables by using the data pronoun</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="back-to-verbs">
+<h1>Back to Verbs<a class="headerlink" href="#back-to-verbs" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="id3">
+<h2><strong>qX</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+<span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: YS (MPa)&quot;</span><span class="p">]))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mutating">
+<h2>Mutating<a class="headerlink" href="#mutating" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">E_MPa</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: Young modulus (GPa)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E_MPa</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pivoting-data">
+<h1>Pivoting Data<a class="headerlink" href="#pivoting-data" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
 <p>TODO</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -435,9 +710,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="qx">
-<h2><strong>QX</strong><a class="headerlink" href="#qx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2><strong>QX</strong><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>(Make sure to add an <code class="docutils literal notranslate"><span class="pre">observation</span></code> column with the <code class="docutils literal notranslate"><span class="pre">index_to</span></code> argument.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

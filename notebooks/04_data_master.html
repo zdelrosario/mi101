@@ -237,13 +237,84 @@
      : Inspecting a DataFrame
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grama">
+   Grama
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pivoting">
-     Pivoting
+    <a class="reference internal nav-link" href="#selecting">
+     Selecting
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#qx">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#renaming">
+     Renaming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interlude-pipelines-and-the-data-pronoun">
+   Interlude: Pipelines and the “Data Pronoun
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#back-to-verbs">
+   Back to Verbs
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     Filtering
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <strong>
+      qX
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutating">
+     Mutating
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-data">
+   Pivoting Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
      <strong>
       QX
      </strong>
@@ -321,6 +392,10 @@
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+
+<span class="c1"># For downloading data</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
@@ -329,42 +404,400 @@
 </div>
 <div class="section" id="dataframes">
 <h1>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a data structure provided by Pandas. In contrast with <code class="docutils literal notranslate"><span class="pre">lists</span></code> (which we saw in the previous exercise), DataFrames are explicitly designed to facilitate data analysis. Accordingly, they provide a number of helpful features that aid in data analysis and operations.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <em>rectangular</em> representation of data – it consists of rows and columns. Each <em>row</em> represents an <em>observation</em> – a single instance of data. Each <em>column</em> represents a <em>variable</em> – a particular attribute of the observation.</p>
-<p><strong>TODO</strong> (Update) For instance, we have loaded some alloy data into the DataFrame <code class="docutils literal notranslate"><span class="pre">df_data</span></code> – here each row is an alloy, and each column is some physical property of that alloy.</p>
+<p>For instance, the following code chunk downloads a alloy dataset into the DataFrame <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code> – here each row is an alloy, and each column is some physical property of that alloy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
+<span class="n">filename_data</span> <span class="o">=</span> <span class="s2">&quot;./data/mpea.csv&quot;</span>
+
+<span class="c1"># The following code downloads the data, or (after downloaded)</span>
+<span class="c1"># loads the data from a cached CSV on your machine</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename_data</span><span class="p">):</span>
+    <span class="c1"># Make request for data</span>
+    <span class="n">url_data</span> <span class="o">=</span> <span class="s2">&quot;https://docs.google.com/spreadsheets/u/1/d/1MsF4_jhWtEuZSvWfXLDHWEqLMScGCVXYWtqHW9Y7Yt0/export?format=csv&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_data</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">filename_data</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   MPEA data downloaded from public Google sheet&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Note data already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    MPEA data loaded locally&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Read the data into memory</span>
+<span class="n">df_mpea</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_data</span><span class="p">)</span>
+
+<span class="c1"># Check basic facts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df_mpea</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    MPEA data loaded locally
+(1653, 20)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>PROPERTY: Microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>5.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>991.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3410.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>10.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>988.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3338.0</td>
+      <td>NaN</td>
+      <td>1.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>137</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>94.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.matdes.2019.107698</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19</td>
+      <td>Al1 Cr1 Fe1 Mo1 Ni1</td>
+      <td>B2+Sec.</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>905.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2013.03.253</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155</td>
+      <td>Al1 Co0.426 Cr0.383 Cu0.106 Fe0.106 Ni0.106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>883.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.actamat.2019.03.010</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <div class="section" id="q1-inspecting-a-dataframe">
 <h2><strong>Q1</strong>: Inspecting a DataFrame<a class="headerlink" href="#q1-inspecting-a-dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Consult the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">pandas documentation</a> (it might be useful to use a page search) and use some basic calls on <code class="docutils literal notranslate"><span class="pre">df_data</span></code> to answer the following questions:</p>
 <ul class="simple">
 <li><p>What are the <em>last</em> five observations in the DataFrame?</p></li>
 <li><p>How many rows are in <code class="docutils literal notranslate"><span class="pre">df_data</span></code>? How many columns?</p></li>
-<li><p>How can you select the column “Normalizing Temperature”?</p></li>
-<li><p>How can you select the columns “Normalizing Temperature” and “Fatigue Strength”?</p></li>
+<li><p>How would we access the column <code class="docutils literal notranslate"><span class="pre">PROPERTY:</span> <span class="pre">Microstructure</span></code>?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
 <span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Show the last five observations of df_data</span>
+<span class="c1"># TODO: Show the last five observations of df_mpea</span>
 <span class="c1">###</span>
 
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 <span class="c1"># solution-begin</span>
-<span class="n">df_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_mpea</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="c1"># solution-end</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xv</span><span class="o">/</span><span class="n">k5cp232j1cn3y8kym53_nnkc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_75937</span><span class="o">/</span><span class="mf">1279774790.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># solution-begin</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">df_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># solution-end</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;df_data&#39; is not defined
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>PROPERTY: Microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1648</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>50.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>21.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1650</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>75.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1651</th>
+      <td>133</td>
+      <td>Al1 Nb1 Ti1 V1 Zr0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.64</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>1480.0</td>
+      <td>NaN</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>133</td>
+      <td>Hf1 Nb1 Ti1 Zr1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>879.0</td>
+      <td>NaN</td>
+      <td>16.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Inspect df_mpea</span>
+<span class="c1"># TODO: Determine the number of rows and columns in df_mpea</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="c1"># solution-begin</span>
+<span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># rows, columns</span>
+<span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1653, 20)
 </pre></div>
 </div>
 </div>
@@ -373,51 +806,2187 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
 <span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Determine the number of rows and columns in df_data</span>
+<span class="c1"># TODO: Grab the column `PROPERTY: Microstructure` alone</span>
 <span class="c1">###</span>
 
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 <span class="c1"># solution-begin</span>
-<span class="n">df_data</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># rows, columns</span>
+<span class="c1"># Note that this returns a Pandas Series</span>
+<span class="n">df_mpea</span><span class="p">[</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">]</span>
+<span class="c1"># And this returns a Pandas DataFrame</span>
+<span class="n">df_mpea</span><span class="p">[[</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">]]</span>
 <span class="c1"># solution-end</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
-<span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Select the column &quot;Normalizing Temperature&quot;</span>
-<span class="c1">###</span>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
-<span class="c1"># solution-begin</span>
-<span class="n">df_data</span><span class="p">[[</span><span class="s2">&quot;Normalizing Temperature&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="c1"># solution-end</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
-<span class="c1"># TASK: Inspect df_data</span>
-<span class="c1"># TODO: Select the columns &quot;Normalizing Temperature&quot; and &quot;Fatigue Strength&quot;</span>
-<span class="c1">###</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
-<span class="c1"># solution-begin</span>
-<span class="n">df_data</span><span class="p">[[</span><span class="s2">&quot;Normalizing Temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="c1"># solution-end</span>
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PROPERTY: Microstructure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>FCC</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B2+Sec.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1648</th>
+      <td>BCC</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>BCC</td>
+    </tr>
+    <tr>
+      <th>1650</th>
+      <td>BCC</td>
+    </tr>
+    <tr>
+      <th>1651</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1653 rows × 1 columns</p>
+</div></div></div>
 </div>
 <p>These manipulations are simple, but they are bread-and-butter for studying new datasets.</p>
 </div>
-<div class="section" id="pivoting">
-<h2>Pivoting<a class="headerlink" href="#pivoting" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="grama">
+<h1>Grama<a class="headerlink" href="#grama" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>TODO the <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> package builds on top of Pandas to provide a pipeline-based data (and model) infrastructure.</p>
+<p>Grama provides</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+   <span class="n">df_mpea</span>
+   <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>PROPERTY: Microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>5.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>991.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3410.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>10.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>988.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3338.0</td>
+      <td>NaN</td>
+      <td>1.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>137</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>94.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.matdes.2019.107698</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19</td>
+      <td>Al1 Cr1 Fe1 Mo1 Ni1</td>
+      <td>B2+Sec.</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>905.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2013.03.253</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155</td>
+      <td>Al1 Co0.426 Cr0.383 Cu0.106 Fe0.106 Ni0.106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>883.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.actamat.2019.03.010</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>It’s helpful to think of the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> symbol as meaning “and then”. That means code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Can be read something like an English sentence, where we are using various <em>verbs</em> to operate on the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">Start</span> <span class="k">with</span> <span class="n">df_mpea</span>
+    <span class="ow">and</span> <span class="n">then</span> <span class="nb">filter</span> <span class="n">the</span> <span class="n">data</span>
+    <span class="ow">and</span> <span class="n">then</span> <span class="n">mutate</span> <span class="n">the</span> <span class="n">data</span>
+    <span class="ow">and</span> <span class="n">then</span> <span class="n">pivot</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">to</span> <span class="n">a</span> <span class="n">longer</span> <span class="nb">format</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We don’t yet know what these verbs do; we’ll learn more in the exercises below!</p>
+<div class="section" id="selecting">
+<h2>Selecting<a class="headerlink" href="#selecting" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;FORMULA&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FORMULA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Al1 Cr1 Fe1 Mo1 Ni1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Al1 Co0.426 Cr0.383 Cu0.106 Fe0.106 Ni0.106</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1648</th>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+    </tr>
+    <tr>
+      <th>1650</th>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+    </tr>
+    <tr>
+      <th>1651</th>
+      <td>Al1 Nb1 Ti1 V1 Zr0.5</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>Hf1 Nb1 Ti1 Zr1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1653 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="qx">
+<h2><strong>qX</strong><a class="headerlink" href="#qx" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;FORMULA&quot;</span><span class="p">,</span> <span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FORMULA</th>
+      <th>PROPERTY: Microstructure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Al1 Cr1 Fe1 Mo1 Ni1</td>
+      <td>B2+Sec.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Al1 Co0.426 Cr0.383 Cu0.106 Fe0.106 Ni0.106</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1648</th>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+    </tr>
+    <tr>
+      <th>1650</th>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+    </tr>
+    <tr>
+      <th>1651</th>
+      <td>Al1 Nb1 Ti1 V1 Zr0.5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>Hf1 Nb1 Ti1 Zr1</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1653 rows × 2 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><strong>qX</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10.1016/j.matdes.2019.107698</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10.1016/j.jallcom.2013.03.253</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10.1016/j.actamat.2019.03.010</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1648</th>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1650</th>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1651</th>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+<p>1653 rows × 2 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="renaming">
+<h2>Renaming<a class="headerlink" href="#renaming" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span>
+        <span class="n">microstructure</span><span class="o">=</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>5.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>991.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3410.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>10.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>988.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3338.0</td>
+      <td>NaN</td>
+      <td>1.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>137</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>94.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.matdes.2019.107698</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19</td>
+      <td>Al1 Cr1 Fe1 Mo1 Ni1</td>
+      <td>B2+Sec.</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>905.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2013.03.253</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155</td>
+      <td>Al1 Co0.426 Cr0.383 Cu0.106 Fe0.106 Ni0.106</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>883.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.actamat.2019.03.010</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1648</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>50.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1649</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>21.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1650</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>75.50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1651</th>
+      <td>133</td>
+      <td>Al1 Nb1 Ti1 V1 Zr0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.64</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>1480.0</td>
+      <td>NaN</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>133</td>
+      <td>Hf1 Nb1 Ti1 Zr1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>879.0</td>
+      <td>NaN</td>
+      <td>16.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+<p>1653 rows × 20 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="interlude-pipelines-and-the-data-pronoun">
+<h1>Interlude: Pipelines and the “Data Pronoun<a class="headerlink" href="#interlude-pipelines-and-the-data-pronoun" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>(Illustrate the use of the data pronoun)</p>
+<p>Imagine we wanted to search through the dataset to find only those materials with a FCC microstructure. Above, we gave the <code class="docutils literal notranslate"><span class="pre">microstructure</span></code> column a new, convenient name. We might like to use that new, convenient name when searching for FCC materials. However, we’re going to run into an issue:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Try uncommenting and running the following code; it WILL break!</span>
+<span class="c1"># (</span>
+<span class="c1">#     df_mpea</span>
+<span class="c1">#     &gt;&gt; gr.tf_rename(</span>
+<span class="c1">#         microstructure=&quot;PROPERTY: Microstructure&quot;,</span>
+<span class="c1">#     )</span>
+<span class="c1">#     &gt;&gt; gr.tf_filter(</span>
+<span class="c1">#         df_mpea[&quot;microstructure&quot;] == &quot;FCC&quot;</span>
+<span class="c1">#     )</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>137</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>94.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.matdes.2019.107698</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>209</td>
+      <td>Al0.5 Co1 Fe1 Ni1 Ti0.5</td>
+      <td>FCC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>733.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.msea.2019.05.056</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>7.89</td>
+      <td>615.0</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>35</td>
+      <td>Al1 Cu1 Ni1 Ti1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>5.7</td>
+      <td>NaN</td>
+      <td>537.0</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>300.0</td>
+      <td>536.0</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>108.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.apsusc.2015.07.207</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>130</td>
+      <td>C0.429 Co1 Cr1 Fe1 Ni1 W0.429</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>0.0182</td>
+      <td>NaN</td>
+      <td>8.39</td>
+      <td>531.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/coatings9010016</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272</th>
+      <td>119</td>
+      <td>Co1 Cr1 Cu1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>300.0</td>
+      <td>NaN</td>
+      <td>50.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11665-018-3837-1</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>5.26</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>274</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>6.26</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>7.84</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>130</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>0.0276</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/coatings9010016</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>277 rows × 20 columns</p>
+</div></div></div>
+</div>
+<p>If we want to refer to the data <em>now</em>—as it is currently in the pipeline—we need a name to refer to that DataFrame. This is where the <em>data pronoun</em> comes in; remember when we ran this line way up above in the setup chunk?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This assigns the data pronoun to the name <code class="docutils literal notranslate"><span class="pre">DF</span></code>. We can use this to take advantage of the new (shorter) name we gave to the microstructure column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span>
+        <span class="n">microstructure</span><span class="o">=</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;microstructure&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;FCC&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>137</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>94.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.matdes.2019.107698</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>209</td>
+      <td>Al0.5 Co1 Fe1 Ni1 Ti0.5</td>
+      <td>FCC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>733.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.msea.2019.05.056</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>7.89</td>
+      <td>615.0</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>35</td>
+      <td>Al1 Cu1 Ni1 Ti1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>5.7</td>
+      <td>NaN</td>
+      <td>537.0</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>300.0</td>
+      <td>536.0</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>108.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.apsusc.2015.07.207</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>130</td>
+      <td>C0.429 Co1 Cr1 Fe1 Ni1 W0.429</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>0.0182</td>
+      <td>NaN</td>
+      <td>8.39</td>
+      <td>531.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/coatings9010016</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>272</th>
+      <td>119</td>
+      <td>Co1 Cr1 Cu1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>300.0</td>
+      <td>NaN</td>
+      <td>50.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11665-018-3837-1</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>5.26</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>274</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>6.26</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>120</td>
+      <td>Co1 Cr1 Cu1 Ni1 Zn1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>500.0000</td>
+      <td>NaN</td>
+      <td>7.84</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/e21020122</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>130</td>
+      <td>Co1 Cr1 Fe1 Ni1</td>
+      <td>FCC</td>
+      <td>POWDER</td>
+      <td>0.0276</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.3390/coatings9010016</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>277 rows × 20 columns</p>
+</div></div></div>
+</div>
+<p>Together, the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> and the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> form a powerful team that helps us do sophisticated data operations.</p>
+<div class="section" id="id2">
+<h2><strong>qX</strong><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Eliminate the intermediate variables by using the data pronoun</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="back-to-verbs">
+<h1>Back to Verbs<a class="headerlink" href="#back-to-verbs" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="id3">
+<h2><strong>qX</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+<span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: YS (MPa)&quot;</span><span class="p">]))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original shape: (1653, 20)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>PROPERTY: Microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>PROPERTY: YS (MPa)</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>5.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>991.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3410.0</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>146</td>
+      <td>Cr1 Mo1 Nb1 Ta1 V1 W1</td>
+      <td>NaN</td>
+      <td>POWDER</td>
+      <td>10.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>988.3</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>3338.0</td>
+      <td>NaN</td>
+      <td>1.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7946.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2018.11.318</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>181</td>
+      <td>Al0.667 Co0.833 Cr0.833 Fe0.833 Ni0.833 Ti1</td>
+      <td>NaN</td>
+      <td>CAST</td>
+      <td>22.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>856.9</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>1272.0</td>
+      <td>NaN</td>
+      <td>3.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2019.07.100</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19</td>
+      <td>Al1 Cr1 Fe1 Mo0.8 Ni1</td>
+      <td>B2+Sec.</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>854.0</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>1513.0</td>
+      <td>1513.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.jallcom.2013.03.253</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>186</td>
+      <td>Cr1 Fe1 Mo1 Nb1 V1</td>
+      <td>NaN</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>826.0</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>2663.0</td>
+      <td>NaN</td>
+      <td>2.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s40195-019-00935-x</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1141</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>24.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>1107.0</td>
+      <td>977.0</td>
+      <td>13.90</td>
+      <td>NaN</td>
+      <td>92.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1142</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>31.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>1115.0</td>
+      <td>830.0</td>
+      <td>18.50</td>
+      <td>NaN</td>
+      <td>92.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1143</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>38.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>1114.0</td>
+      <td>935.0</td>
+      <td>12.20</td>
+      <td>NaN</td>
+      <td>101.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1144</th>
+      <td>133</td>
+      <td>Al1 Nb1 Ti1 V1 Zr0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.64</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>1480.0</td>
+      <td>NaN</td>
+      <td>50.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1145</th>
+      <td>133</td>
+      <td>Hf1 Nb1 Ti1 Zr1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>25.0</td>
+      <td>879.0</td>
+      <td>NaN</td>
+      <td>16.50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1080/02670836.2018.1446267</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+<p>1146 rows × 20 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="mutating">
+<h2>Mutating<a class="headerlink" href="#mutating" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">E_MPa</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: Young modulus (GPa)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E_MPa</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IDENTIFIER: Reference ID</th>
+      <th>FORMULA</th>
+      <th>PROPERTY: Microstructure</th>
+      <th>PROPERTY: Processing method</th>
+      <th>PROPERTY: grain size ($\mu$m)</th>
+      <th>PROPERTY: ROM Density (g/cm$^3$)</th>
+      <th>PROPERTY: Exp. Density (g/cm$^3$)</th>
+      <th>PROPERTY: HV</th>
+      <th>PROPERTY: Type of test</th>
+      <th>PROPERTY: Test temperature ($^\circ$C)</th>
+      <th>...</th>
+      <th>PROPERTY: UTS (MPa)</th>
+      <th>PROPERTY: Elongation (%)</th>
+      <th>PROPERTY: Elongation plastic (%)</th>
+      <th>PROPERTY: Young modulus (GPa)</th>
+      <th>PROPERTY: O content (wppm)</th>
+      <th>PROPERTY: N content (wppm)</th>
+      <th>PROPERTY: C content (wppm)</th>
+      <th>REFERENCE: doi</th>
+      <th>REFERENCE: year</th>
+      <th>E_MPa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15</td>
+      <td>Co1 Cr1 Fe1 Mo1 Ni1 Ti1 V1 Zr1</td>
+      <td>NaN</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>7.3</td>
+      <td>NaN</td>
+      <td>850.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>193.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1002/adem.200300567</td>
+      <td>2004</td>
+      <td>193000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15</td>
+      <td>Al1 Fe1 Ni1 Ti1 V1 Zr1</td>
+      <td>BCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>5.9</td>
+      <td>NaN</td>
+      <td>800.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>132.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1002/adem.200300567</td>
+      <td>2004</td>
+      <td>132000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15</td>
+      <td>Al1 Co1 Fe1 Ni1 Ti1 V1 Zr1</td>
+      <td>BCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>6.2</td>
+      <td>NaN</td>
+      <td>790.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>143.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1002/adem.200300567</td>
+      <td>2004</td>
+      <td>143000.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>26</td>
+      <td>Al1 Co1 Cu1 Fe1 Ni1 Si1</td>
+      <td>FCC+BCC</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>5.9</td>
+      <td>NaN</td>
+      <td>682.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>145.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1016/j.msea.2012.07.003</td>
+      <td>2012</td>
+      <td>145000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15</td>
+      <td>Co1 Cr1 Cu1 Fe1 Ni1 Ti1 V1 Zr1</td>
+      <td>NaN</td>
+      <td>CAST</td>
+      <td>NaN</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>680.0</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>168.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1002/adem.200300567</td>
+      <td>2004</td>
+      <td>168000.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>385</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>1066.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>105.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+      <td>105300.0</td>
+    </tr>
+    <tr>
+      <th>386</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>964.0</td>
+      <td>4.6</td>
+      <td>NaN</td>
+      <td>91.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+      <td>91600.0</td>
+    </tr>
+    <tr>
+      <th>387</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>24.4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>977.0</td>
+      <td>13.9</td>
+      <td>NaN</td>
+      <td>92.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+      <td>92600.0</td>
+    </tr>
+    <tr>
+      <th>388</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>31.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>830.0</td>
+      <td>18.5</td>
+      <td>NaN</td>
+      <td>92.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+      <td>92600.0</td>
+    </tr>
+    <tr>
+      <th>389</th>
+      <td>132</td>
+      <td>Hf1 Nb1 Ta1 Ti1 Zr1</td>
+      <td>BCC</td>
+      <td>OTHER</td>
+      <td>38.4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>T</td>
+      <td>25.0</td>
+      <td>...</td>
+      <td>935.0</td>
+      <td>12.2</td>
+      <td>NaN</td>
+      <td>101.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.1007/s11661-018-4646-8</td>
+      <td>2019</td>
+      <td>101300.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>390 rows × 21 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="pivoting-data">
+<h1>Pivoting Data<a class="headerlink" href="#pivoting-data" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
 <p>TODO</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -426,6 +2995,138 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thick</th>
+      <th>E_00</th>
+      <th>mu_00</th>
+      <th>E_45</th>
+      <th>mu_45</th>
+      <th>E_90</th>
+      <th>mu_90</th>
+      <th>alloy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.022</td>
+      <td>10600</td>
+      <td>0.321</td>
+      <td>10700</td>
+      <td>0.329</td>
+      <td>10500</td>
+      <td>0.310</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.022</td>
+      <td>10600</td>
+      <td>0.323</td>
+      <td>10500</td>
+      <td>0.331</td>
+      <td>10700</td>
+      <td>0.323</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.032</td>
+      <td>10400</td>
+      <td>0.329</td>
+      <td>10400</td>
+      <td>0.318</td>
+      <td>10300</td>
+      <td>0.322</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.032</td>
+      <td>10300</td>
+      <td>0.319</td>
+      <td>10500</td>
+      <td>0.326</td>
+      <td>10400</td>
+      <td>0.330</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.064</td>
+      <td>10500</td>
+      <td>0.323</td>
+      <td>10400</td>
+      <td>0.331</td>
+      <td>10400</td>
+      <td>0.327</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.064</td>
+      <td>10700</td>
+      <td>0.328</td>
+      <td>10500</td>
+      <td>0.328</td>
+      <td>10500</td>
+      <td>0.320</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.081</td>
+      <td>10000</td>
+      <td>0.315</td>
+      <td>10000</td>
+      <td>0.320</td>
+      <td>9900</td>
+      <td>0.314</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.081</td>
+      <td>10100</td>
+      <td>0.312</td>
+      <td>9900</td>
+      <td>0.312</td>
+      <td>10000</td>
+      <td>0.316</td>
+      <td>al_24st</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.081</td>
+      <td>10000</td>
+      <td>0.311</td>
+      <td>-1</td>
+      <td>-1.000</td>
+      <td>9900</td>
+      <td>0.314</td>
+      <td>al_24st</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Our goal will be to wrangle this messy, wide dataset into tidy, long format.</p>
 <div class="cell docutils container">
@@ -435,6 +3136,125 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>E</th>
+      <th>mu</th>
+      <th>ang</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600</td>
+      <td>0.321</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600</td>
+      <td>0.323</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10400</td>
+      <td>0.329</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10300</td>
+      <td>0.319</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500</td>
+      <td>0.323</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10400</td>
+      <td>0.327</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500</td>
+      <td>0.320</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900</td>
+      <td>0.314</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10000</td>
+      <td>0.316</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900</td>
+      <td>0.314</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+<p>76 rows × 5 columns</p>
+</div></div></div>
 </div>
 <p>(What does pivoting look like? Here’s an example.)</p>
 <div class="cell docutils container">
@@ -459,10 +3279,87 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   A  B  C
+0  1  4  7
+1  2  5  8
+2  3  6  9
+</pre></div>
 </div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>C</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>C</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>C</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<div class="section" id="qx">
-<h2><strong>QX</strong><a class="headerlink" href="#qx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2><strong>QX</strong><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>(Make sure to add an <code class="docutils literal notranslate"><span class="pre">observation</span></code> column with the <code class="docutils literal notranslate"><span class="pre">index_to</span></code> argument.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -481,6 +3378,474 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>observation</th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>name</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10600.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10600.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10400.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10300.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10500.000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10700.000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10000.000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10100.000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_00</td>
+      <td>10000.000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.321</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.319</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.315</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_00</td>
+      <td>0.311</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10700.000</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10500.000</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10400.000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10500.000</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10400.000</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10500.000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>10000.000</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>9900.000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_45</td>
+      <td>-1.000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.318</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.326</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.320</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_45</td>
+      <td>-1.000</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10500.000</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10700.000</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10300.000</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10400.000</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10400.000</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10500.000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>9900.000</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>10000.000</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>E_90</td>
+      <td>9900.000</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.310</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.322</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.330</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.327</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.320</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.314</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.316</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>mu_90</td>
+      <td>0.314</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Execute the following to check your work.</p>
 <div class="cell docutils container">
@@ -504,6 +3869,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Success!
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="qy">
@@ -524,6 +3894,523 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>observation</th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>value</th>
+      <th>var</th>
+      <th>angle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10600.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10400.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10300.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10700.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10000.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10100.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10000.000</td>
+      <td>E</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>0.321</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>0.323</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>0.329</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>0.319</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>0.323</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>0.328</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.315</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.312</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.311</td>
+      <td>mu</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10700.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10500.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10400.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10500.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10400.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10000.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>-1.000</td>
+      <td>E</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>0.329</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>0.331</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>0.318</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>0.326</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>0.331</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>0.328</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.320</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.312</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>-1.000</td>
+      <td>mu</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10500.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>10700.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10300.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>10400.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10400.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>10500.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>10000.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>9900.000</td>
+      <td>E</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>0.310</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>0.323</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>0.322</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>0.330</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>0.327</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>0.320</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.314</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.316</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>0.314</td>
+      <td>mu</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,6 +4430,11 @@
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;The DataFrame should have an &#39;angle&#39; column&quot;</span><span class="p">)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Success!
 </pre></div>
 </div>
 </div>
@@ -566,6 +4458,280 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>observation</th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>angle</th>
+      <th>E</th>
+      <th>mu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10600.0</td>
+      <td>0.321</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10700.0</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10500.0</td>
+      <td>0.310</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10600.0</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10500.0</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10700.0</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10400.0</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10400.0</td>
+      <td>0.318</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10300.0</td>
+      <td>0.322</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10300.0</td>
+      <td>0.319</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10500.0</td>
+      <td>0.326</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3</td>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10400.0</td>
+      <td>0.330</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10500.0</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10400.0</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>4</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10400.0</td>
+      <td>0.327</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10700.0</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10500.0</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>5</td>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10500.0</td>
+      <td>0.320</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10000.0</td>
+      <td>0.315</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10000.0</td>
+      <td>0.320</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>6</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>9900.0</td>
+      <td>0.314</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10100.0</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>9900.0</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10000.0</td>
+      <td>0.316</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10000.0</td>
+      <td>0.311</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>-1.0</td>
+      <td>-1.000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>8</td>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>9900.0</td>
+      <td>0.314</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -593,6 +4759,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Success!
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="bonus-one-step-pivot">
@@ -611,6 +4782,258 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thick</th>
+      <th>alloy</th>
+      <th>angle</th>
+      <th>E</th>
+      <th>mu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10600.0</td>
+      <td>0.321</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10700.0</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10500.0</td>
+      <td>0.310</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10600.0</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10500.0</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.022</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10700.0</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10400.0</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10400.0</td>
+      <td>0.318</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10300.0</td>
+      <td>0.322</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10300.0</td>
+      <td>0.319</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10500.0</td>
+      <td>0.326</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.032</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10400.0</td>
+      <td>0.330</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10500.0</td>
+      <td>0.323</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10400.0</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10400.0</td>
+      <td>0.327</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10700.0</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10500.0</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.064</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10500.0</td>
+      <td>0.320</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10000.0</td>
+      <td>0.315</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>10000.0</td>
+      <td>0.320</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>9900.0</td>
+      <td>0.314</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10100.0</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>9900.0</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>10000.0</td>
+      <td>0.316</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>00</td>
+      <td>10000.0</td>
+      <td>0.311</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>45</td>
+      <td>-1.0</td>
+      <td>-1.000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0.081</td>
+      <td>al_24st</td>
+      <td>90</td>
+      <td>9900.0</td>
+      <td>0.314</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 </div>
@@ -621,6 +5044,16 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_data</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">xv</span><span class="o">/</span><span class="n">k5cp232j1cn3y8kym53_nnkc0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_22801</span><span class="o">/</span><span class="mf">3658842013.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_data</span><span class="o">.</span><span class="n">dtypes</span>
+
+<span class="ne">NameError</span>: name &#39;df_data&#39; is not defined
 </pre></div>
 </div>
 </div>
