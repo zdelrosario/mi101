@@ -5,4 +5,4 @@ sections:
 - file: exercises
   sections:
   - file: notebooks/01_python_assignment
-  - file: notebooks/04_data_assignment
+  - file: notebooks/03_data_assignment
