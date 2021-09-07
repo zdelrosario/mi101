@@ -245,22 +245,49 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-pipe-operator">
+     The pipe operator
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &gt;&gt;
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#selecting">
      Selecting
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qx">
+    <a class="reference internal nav-link" href="#qx-use-tf-select-to-select-the-formula-and-microstructure-columns-only">
      <strong>
       qX
      </strong>
+     Use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tf_select
+      </span>
+     </code>
+     to select the formula and microstructure columns only.
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#qx-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference">
      <strong>
       qX
      </strong>
+     Use a selection helper to find
+     <strong>
+      all
+     </strong>
+     of the columns with the string
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       "REFERENCE"
+      </span>
+     </code>
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -276,7 +303,7 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
+    <a class="reference internal nav-link" href="#qx">
      <strong>
       qX
      </strong>
@@ -295,15 +322,29 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
+    <a class="reference internal nav-link" href="#qx-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows">
      <strong>
       qX
      </strong>
+     Filter the MPEA dataset to only those rows with a valid Yield Strength. Compare the original number of rows with the number of valid rows.
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mutating">
      Mutating
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qx-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent">
+     <strong>
+      QX
+     </strong>
+     Convert the weight parts per million (wppm) of Oxygen to a (weight) percent.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-data">
+     Converting Data
     </a>
    </li>
   </ul>
@@ -314,7 +355,7 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id1">
      <strong>
       QX
      </strong>
@@ -363,6 +404,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#endnotes">
+   Endnotes
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -382,8 +428,8 @@
 <h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
 <p>By working through this notebook, you will be able to:</p>
 <ul class="simple">
-<li><p>Learn some basics of <em>data wrangling</em></p></li>
-<li><p>Use DataFrame operations from the package <code class="docutils literal notranslate"><span class="pre">py-grama</span></code></p></li>
+<li><p>Use Pandas’ <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object to represent data</p></li>
+<li><p>Use DataFrame operations from the package <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> to operate on data</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -427,21 +473,43 @@
     
 <span class="c1"># Read the data into memory</span>
 <span class="n">df_mpea</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_data</span><span class="p">)</span>
-
-<span class="c1"># Check basic facts</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">df_mpea</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Let’s use some of the basic attributes of the data to get some basic facts:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the shape</span>
+<span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have <code class="docutils literal notranslate"><span class="pre">1653</span></code> rows (also called observations) on 20 columns (also called variables or features).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mpea</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">head</span></code> method shows just the top of the DataFrame; this is useful for “getting a sense” for what’s in the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mpea</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute gives us the data type for each column. Depending on the dataset, you might find that your data loads in with strange datatypes. This can happen, for instance, if your numeric values are contained within string characters (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;1.23&quot;</span></code>). If this happens, you can catch the fact with a call to <code class="docutils literal notranslate"><span class="pre">df_data.dtypes</span></code>.</p>
 <div class="section" id="q1-inspecting-a-dataframe">
 <h2><strong>Q1</strong>: Inspecting a DataFrame<a class="headerlink" href="#q1-inspecting-a-dataframe" title="Permalink to this headline">¶</a></h2>
-<p>Consult the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">pandas documentation</a> (it might be useful to use a page search) and use some basic calls on <code class="docutils literal notranslate"><span class="pre">df_data</span></code> to answer the following questions:</p>
+<p>Consult the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">pandas documentation</a> (it might be useful to use a page search) and use some basic calls on <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code> to answer the following questions:</p>
 <ul class="simple">
 <li><p>What are the <em>last</em> five observations in the DataFrame?</p></li>
-<li><p>How many rows are in <code class="docutils literal notranslate"><span class="pre">df_data</span></code>? How many columns?</p></li>
-<li><p>How would we access the column <code class="docutils literal notranslate"><span class="pre">PROPERTY:</span> <span class="pre">Microstructure</span></code>?</p></li>
+<li><p>How many rows are in <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code>? How many columns?</p></li>
+<li><p>How would you access the column <code class="docutils literal notranslate"><span class="pre">PROPERTY:</span> <span class="pre">Microstructure</span></code>?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -485,8 +553,7 @@
 <div class="section" id="grama">
 <h1>Grama<a class="headerlink" href="#grama" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>TODO the <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> package builds on top of Pandas to provide a pipeline-based data (and model) infrastructure.</p>
-<p>Grama provides</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> package builds on top of Pandas to provide a pipeline-based data (and model) infrastructure. Grama provides many of the same functions as Pandas (really, just different ways to use the same Pandas functions):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -497,7 +564,32 @@
 </div>
 </div>
 </div>
-<p>It’s helpful to think of the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> symbol as meaning “and then”. That means code like this:</p>
+<p>One of the advantages of using <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> is that we can write <em>data pipelines</em> to organize our data operations. For instance, the following code filters the MPEA dataset to only those cases that have a valid Yield Strength (YS) and Ultimate Tensile Strength (UTS), and computes a correlation coefficient between those two quantities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; run and see the result</span>
+<span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: YS (MPa)&quot;</span><span class="p">]),</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: UTS (MPa)&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">rho_YS_UTS</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span>
+            <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: YS (MPa)&quot;</span><span class="p">],</span>
+            <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: UTS (MPa)&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we might expect, these two properties are strongly correlated.</p>
+<p>This code shows off a few concepts, which we’ll explore below: The pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, Grama verbs (such as <code class="docutils literal notranslate"><span class="pre">tf_filter</span></code>), and the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code>.</p>
+<div class="section" id="the-pipe-operator">
+<h2>The pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code><a class="headerlink" href="#the-pipe-operator" title="Permalink to this headline">¶</a></h2>
+<p>It’s helpful to think of the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> as the words “and then”. That means code like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_mpea</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
@@ -516,9 +608,10 @@
 </pre></div>
 </div>
 <p>We don’t yet know what these verbs do; we’ll learn more in the exercises below!</p>
+</div>
 <div class="section" id="selecting">
 <h2>Selecting<a class="headerlink" href="#selecting" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tf_select</span></code> verb allows us to select one or more columns; this is helpful when we want to focus on just a handful of properties, such as the chemical formulas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -530,27 +623,61 @@
 </div>
 </div>
 </div>
-<div class="section" id="qx">
-<h2><strong>qX</strong><a class="headerlink" href="#qx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx-use-tf-select-to-select-the-formula-and-microstructure-columns-only">
+<h2><strong>qX</strong> Use <code class="docutils literal notranslate"><span class="pre">tf_select</span></code> to select the formula and microstructure columns only.<a class="headerlink" href="#qx-use-tf-select-to-select-the-formula-and-microstructure-columns-only" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Select the formula and microstructure columns only</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use some <em>selection helpers</em> to make <code class="docutils literal notranslate"><span class="pre">tf_select</span></code> even more convenient. For instance, the <code class="docutils literal notranslate"><span class="pre">gr.everything()</span></code> function just selects all the columns, which at first seems silly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_mpea</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;FORMULA&quot;</span><span class="p">,</span> <span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2><strong>qX</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>However, when we use <code class="docutils literal notranslate"><span class="pre">gr.everything()</span></code> <em>along</em> with specific columns, we can <em>re-arrange</em> the columns to make quick comparisons easier. For instance, let’s move the reference information to the left. We could then easily copy the DOI’s to find the original reference for each observation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_mpea</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;REFERENCE: doi&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a variety of other selection helpers, including:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gr.starts_with(...)</span></code> will select all columns that start with a given string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gr.ends_with(...)</span></code> will select all columns that end with a given string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gr.contains(...)</span></code> will select all columns that contain a given string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gr.matches(...)</span></code> will select all columns that match a given <a class="reference external" href="https://regexone.com/">regular expression</a></p></li>
+</ul>
+<p>You’ll practice using selection helpers in the next task.</p>
+</div>
+<div class="section" id="qx-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference">
+<h2><strong>qX</strong> Use a selection helper to find <strong>all</strong> of the columns with the string <code class="docutils literal notranslate"><span class="pre">&quot;REFERENCE&quot;</span></code><a class="headerlink" href="#qx-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Select the formula and microstructure columns only</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 </pre></div>
 </div>
 </div>
@@ -558,18 +685,22 @@
 </div>
 <div class="section" id="renaming">
 <h2>Renaming<a class="headerlink" href="#renaming" title="Permalink to this headline">¶</a></h2>
+<p>Aside from selecting columns, we can also make convenience modifications to the data. The verb <code class="docutils literal notranslate"><span class="pre">tf_rename</span></code> allows us to rename columns, usually to create a more compact, convenient name:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_mpea</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span>
         <span class="n">microstructure</span><span class="o">=</span><span class="s2">&quot;PROPERTY: Microstructure&quot;</span><span class="p">,</span>
     <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>This is a good time to step aside from verbs to talk about the <em>data pronoun</em>.</p>
 </div>
 </div>
 <div class="section" id="interlude-pipelines-and-the-data-pronoun">
@@ -597,7 +728,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This assigns the data pronoun to the name <code class="docutils literal notranslate"><span class="pre">DF</span></code>. We can use this to take advantage of the new (shorter) name we gave to the microstructure column:</p>
+<p>This assigns the data pronoun to the name <code class="docutils literal notranslate"><span class="pre">DF</span></code>. The data pronoun represents a DataFrame, so we can use things like column access <code class="docutils literal notranslate"><span class="pre">DF[&quot;column</span> <span class="pre">name&quot;]</span></code>. We can use this to take advantage of the new (shorter) name we gave to the microstructure column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -614,11 +745,39 @@
 </div>
 </div>
 <p>Together, the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> and the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> form a powerful team that helps us do sophisticated data operations.</p>
-<div class="section" id="id2">
-<h2><strong>qX</strong><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qx">
+<h2><strong>qX</strong><a class="headerlink" href="#qx" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: Eliminate the intermediate variables by using the data pronoun</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Eliminate the intermediate variables by using the data pronoun</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- NO NEED TO EDIT; REWRITE THIS CODE -----</span>
+<span class="c1"># Set up a simple dataset</span>
+<span class="n">df_initial</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">A</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">longcolumnname</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_initial</span><span class="p">)</span>
+
+<span class="n">df_new</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_initial</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">B</span><span class="o">=</span><span class="s2">&quot;longcolumnname&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_new</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">df_new</span><span class="o">.</span><span class="n">B</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="p">(</span>
+    <span class="n">df_initial</span>
+    <span class="c1"># Use pipes &gt;&gt; and the data pronoun DF;</span>
+    <span class="c1"># you should only need two lines of code</span>
+
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -630,18 +789,33 @@
 <hr class="docutils" />
 <div class="section" id="filtering">
 <h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
-</div>
-<div class="section" id="id3">
-<h2><strong>qX</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>We saw <code class="docutils literal notranslate"><span class="pre">tf_filter</span></code> above; this allows us to filter a dataset to only those rows satisfying some logical criterion. This makes answering basic questions about the data very easy. For instance, we might be interested in a particular processing method; we could find only those rows matching a specified method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="p">(</span>
     <span class="n">df_mpea</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: YS (MPa)&quot;</span><span class="p">]))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: Processing method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;POWDER&quot;</span><span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that not all of the cells have useful values; some have <code class="docutils literal notranslate"><span class="pre">NaN</span></code> as their value (which means Not a Number). These could be due to any of a number of potential issues; perhaps the original reference did not report that value, meaning that information exists but is missing.</p>
+<p>There are some helper functions to help deal with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in filters: <code class="docutils literal notranslate"><span class="pre">gr.not_nan(df.column)</span></code> will return <code class="docutils literal notranslate"><span class="pre">True</span></code> when its input is not <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, while <code class="docutils literal notranslate"><span class="pre">gr.is_nan(df.column)</span></code> will do the reverse.</p>
+</div>
+<div class="section" id="qx-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows">
+<h2><strong>qX</strong> Filter the MPEA dataset to only those rows with a valid Yield Strength. Compare the original number of rows with the number of valid rows.<a class="headerlink" href="#qx-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Filter the data to find the non-NaN Yield Strength values</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- NO NEED TO EDIT; USE FOR COMPARISON -----</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_mpea</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 </pre></div>
 </div>
 </div>
@@ -649,15 +823,116 @@
 </div>
 <div class="section" id="mutating">
 <h2>Mutating<a class="headerlink" href="#mutating" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tf_mutate</span></code> verb allows us to create / modify columns based on existing column values. For instance, we could use a mutation to convert the units in a column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
     <span class="n">df_mpea</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
         <span class="n">E_MPa</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: Young modulus (GPa)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
     <span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E_MPa</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This might be useful if we aimed to compare two quantities; elasticity and ultimate tensile strength are somewhat related properties, so we might want to compare them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">E_MPa</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: Young modulus (GPa)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span>
+        <span class="n">UTS_MPa</span> <span class="o">=</span> <span class="s2">&quot;PROPERTY: UTS (MPa)&quot;</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">UTS_MPa</span><span class="p">),</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">E_MPa</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span>
+        <span class="s2">&quot;UTS_MPa&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;E_MPa&quot;</span><span class="p">,</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">(),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="qx-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent">
+<h2><strong>QX</strong> Convert the weight parts per million (wppm) of Oxygen to a (weight) percent.<a class="headerlink" href="#qx-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Convert wppm to a weight percentage</span>
+<span class="c1"># NOTE: There is some scaffolding code; you need only</span>
+<span class="c1">#       write the call to tf_mutate</span>
+<span class="c1">###</span>
+
+<span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;PROPERTY: O content (wppm)&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+<span class="c1"># -- WRITE YOUR CODE HERE -----</span>
+    <span class="c1">## TODO: Use gr.tf_mutate to do the conversion</span>
+
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;O_percent&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="converting-data">
+<h2>Converting Data<a class="headerlink" href="#converting-data" title="Permalink to this headline">¶</a></h2>
+<p>(TODO there’s something wrong with the Nitrogen content column)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Oxygen and Carbon content columns are fine—they’re <code class="docutils literal notranslate"><span class="pre">float64</span></code>, which is a numeric type as we’d expect. But the Nitrogen content is an <code class="docutils literal notranslate"><span class="pre">object</span></code>. Let’s see what specific values this column takes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span>
+    <span class="n">df_mpea</span><span class="p">[</span><span class="s2">&quot;PROPERTY: N content (wppm)&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It seems that the original data is mixed; some values are a numeric ppm value, while others are the qualitative statement <code class="docutils literal notranslate"><span class="pre">&quot;undetectable&quot;</span></code> (and yet others are simply missing). We can use the Grama helper <code class="docutils literal notranslate"><span class="pre">gr.as_numeric()</span></code> to help convert the data to a numeric type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">N_wppm</span><span class="o">=</span><span class="s2">&quot;PROPERTY: N content (wppm)&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">N_converted</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">as_numeric</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">N_wppm</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;N_wppm&quot;</span><span class="p">,</span> <span class="s2">&quot;N_converted&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_mpea</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">N_wppm</span><span class="o">=</span><span class="s2">&quot;PROPERTY: N content (wppm)&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">N_converted</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">as_numeric</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">N_wppm</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;N_wppm&quot;</span><span class="p">,</span> <span class="s2">&quot;N_converted&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -710,8 +985,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2><strong>QX</strong><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2><strong>QX</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>(Make sure to add an <code class="docutils literal notranslate"><span class="pre">observation</span></code> column with the <code class="docutils literal notranslate"><span class="pre">index_to</span></code> argument.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -947,6 +1222,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="endnotes">
+<h1>Endnotes<a class="headerlink" href="#endnotes" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>The data portions of Grama make heavy use of ideas from the <a class="reference external" href="https://www.tidyverse.org/">Tidyverse</a>; specifically the <a class="reference external" href="https://dplyr.tidyverse.org/">dplyr</a> package. However, those packages are for the R programming language.</p></li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
