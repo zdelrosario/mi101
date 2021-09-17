@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Intro to Python and Jupyter Notebooks" href="01_python_assignment.html" />
+    <link rel="prev" title="Intro to Data Wrangling and Tidy Data" href="02_tidy_assignment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -110,6 +110,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="01_python_assignment.html">
      Intro to Python and Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_tidy_assignment.html">
+     Intro to Data Wrangling and Tidy Data
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -223,39 +228,32 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Programmatic Data Operations
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-outcomes">
+   Learning Outcomes
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-outcomes">
-     Learning Outcomes
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataframes">
    DataFrames
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-inspecting-a-dataframe">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-inspect-a-dataframe">
      <strong>
       Q1
      </strong>
-     : Inspecting a DataFrame
+     : Inspect a DataFrame
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#grama">
    Grama
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-pipe-operator">
      The pipe operator
      <code class="docutils literal notranslate">
@@ -265,17 +263,17 @@
      </code>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#selecting">
      Selecting
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q2-use-tf-select-to-select-the-formula-and-microstructure-columns-only">
      <strong>
       Q2
      </strong>
-     Use
+     : Use
      <code class="docutils literal notranslate">
       <span class="pre">
        tf_select
@@ -284,7 +282,7 @@
      to select the formula and microstructure columns only.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q3-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference">
      <strong>
       Q3
@@ -301,19 +299,19 @@
      </code>
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#renaming">
      Renaming
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interlude-pipelines-and-the-data-pronoun">
    Interlude: Pipelines and the “Data Pronoun
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q4-re-write-the-following-code-using-the-pipe-operator-and-data-pronoun">
      <strong>
       Q4
@@ -323,17 +321,17 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#back-to-verbs">
    Back to Verbs
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering">
      Filtering
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q5-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows">
      <strong>
       Q5
@@ -341,12 +339,12 @@
      Filter the MPEA dataset to only those rows with a valid Yield Strength. Compare the original number of rows with the number of valid rows.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mutating">
      Mutating
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q6-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent">
      <strong>
       Q6
@@ -356,17 +354,17 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#wrangling-data">
    Wrangling Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-converting">
      Data Converting
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q7-fix-the-conversion-from-wppm-to-a-weight-percentage">
      <strong>
       Q7
@@ -374,12 +372,12 @@
      Fix the conversion from wppm to a weight percentage
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pivoting-data">
      Pivoting Data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q8-pivot-df-stang-wide-longer-to-put-all-the-angle-values-in-cells">
      <strong>
       Q8
@@ -393,7 +391,7 @@
      longer to put all the angle values in cells
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q9-use-gr-tf-separate-to-separate-the-measurement-identifiers-e-mu-from-the-measurement-angles-make-sure-to-call-the-angle-column-angle">
      <strong>
       Q9
@@ -422,7 +420,7 @@
      .
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q10-pivot-the-data-wider-to-turn-the-measurement-identifiers-e-mu-back-into-column-names">
      <strong>
       Q10
@@ -439,14 +437,14 @@
      back into column names.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bonus-one-step-pivot">
      Bonus: One-step pivot
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#endnotes">
    Endnotes
   </a>
@@ -464,7 +462,7 @@
                 
   <div class="section" id="programmatic-data-operations">
 <h1>Programmatic Data Operations<a class="headerlink" href="#programmatic-data-operations" title="Permalink to this headline">¶</a></h1>
-<p><em>Authors: Zach del Rosario</em></p>
+<p><em>Author</em>: Zach del Rosario</p>
 <p>The purpose of this exercise is to give you some tools to work with data <em>programmatically</em>; that is, using a programming language. While you can carry out many data operations by hand or with spreadsheet programs, you will see that doing things programmatically is extremely powerful.</p>
 <div class="section" id="learning-outcomes">
 <h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
@@ -491,9 +489,8 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="dataframes">
-<h1>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h1>
+<h2>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a data structure provided by Pandas. In contrast with <code class="docutils literal notranslate"><span class="pre">lists</span></code> (which we saw in a previous exercise), DataFrames are explicitly designed to facilitate data analysis. Accordingly, they provide a number of helpful features that aid in data analysis and operations.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <em>rectangular</em> representation of data – it consists of rows and columns. Each <em>row</em> represents an <em>observation</em> – a single instance of data. Each <em>column</em> represents a <em>variable</em> – a particular attribute of the observation.</p>
@@ -547,8 +544,8 @@
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute gives us the data type for each column. Depending on the dataset, you might find that your data loads in with strange datatypes. This can happen, for instance, if your numeric values are contained within string characters (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;1.23&quot;</span></code>). If this happens, you can catch the fact with a call to <code class="docutils literal notranslate"><span class="pre">df_data.dtypes</span></code>.</p>
-<div class="section" id="q1-inspecting-a-dataframe">
-<h2><strong>Q1</strong>: Inspecting a DataFrame<a class="headerlink" href="#q1-inspecting-a-dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q1-inspect-a-dataframe">
+<h3><strong>Q1</strong>: Inspect a DataFrame<a class="headerlink" href="#q1-inspect-a-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>Consult the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">pandas documentation</a> (it might be useful to use a page search) and use some basic calls on <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code> to answer the following questions:</p>
 <ul class="simple">
 <li><p>What are the <em>last</em> five observations in the DataFrame?</p></li>
@@ -595,7 +592,7 @@
 </div>
 </div>
 <div class="section" id="grama">
-<h1>Grama<a class="headerlink" href="#grama" title="Permalink to this headline">¶</a></h1>
+<h2>Grama<a class="headerlink" href="#grama" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>The <code class="docutils literal notranslate"><span class="pre">py-grama</span></code> package builds on top of Pandas to provide a pipeline-based data (and model) infrastructure. Grama provides many of the same functions as Pandas (really, just different ways to use the same Pandas functions):</p>
 <div class="cell docutils container">
@@ -632,7 +629,7 @@
 <p>As we might expect, these two properties are strongly correlated.</p>
 <p>This code shows off a few concepts, which we’ll explore below: The pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, Grama verbs (such as <code class="docutils literal notranslate"><span class="pre">tf_filter</span></code>), and the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code>.</p>
 <div class="section" id="the-pipe-operator">
-<h2>The pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code><a class="headerlink" href="#the-pipe-operator" title="Permalink to this headline">¶</a></h2>
+<h3>The pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code><a class="headerlink" href="#the-pipe-operator" title="Permalink to this headline">¶</a></h3>
 <p>It’s helpful to think of the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> as the words “and then”. That means code like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_mpea</span>
@@ -654,7 +651,7 @@
 <p>We don’t yet know what these verbs do; we’ll learn more in the exercises below!</p>
 </div>
 <div class="section" id="selecting">
-<h2>Selecting<a class="headerlink" href="#selecting" title="Permalink to this headline">¶</a></h2>
+<h3>Selecting<a class="headerlink" href="#selecting" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">tf_select</span></code> verb allows us to select one or more columns; this is helpful when we want to focus on just a handful of properties, such as the chemical formulas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -669,7 +666,7 @@
 <p>We can select multiple columns by providing multiple arguments.</p>
 </div>
 <div class="section" id="q2-use-tf-select-to-select-the-formula-and-microstructure-columns-only">
-<h2><strong>Q2</strong> Use <code class="docutils literal notranslate"><span class="pre">tf_select</span></code> to select the formula and microstructure columns only.<a class="headerlink" href="#q2-use-tf-select-to-select-the-formula-and-microstructure-columns-only" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q2</strong>: Use <code class="docutils literal notranslate"><span class="pre">tf_select</span></code> to select the formula and microstructure columns only.<a class="headerlink" href="#q2-use-tf-select-to-select-the-formula-and-microstructure-columns-only" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -715,7 +712,7 @@
 <p>You’ll practice using selection helpers in the next task.</p>
 </div>
 <div class="section" id="q3-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference">
-<h2><strong>Q3</strong> Use a selection helper to find <strong>all</strong> of the columns with the string <code class="docutils literal notranslate"><span class="pre">&quot;REFERENCE&quot;</span></code><a class="headerlink" href="#q3-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q3</strong> Use a selection helper to find <strong>all</strong> of the columns with the string <code class="docutils literal notranslate"><span class="pre">&quot;REFERENCE&quot;</span></code><a class="headerlink" href="#q3-use-a-selection-helper-to-find-all-of-the-columns-with-the-string-reference" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -729,7 +726,7 @@
 </div>
 </div>
 <div class="section" id="renaming">
-<h2>Renaming<a class="headerlink" href="#renaming" title="Permalink to this headline">¶</a></h2>
+<h3>Renaming<a class="headerlink" href="#renaming" title="Permalink to this headline">¶</a></h3>
 <p>Aside from selecting columns, we can also make convenience modifications to the data. The verb <code class="docutils literal notranslate"><span class="pre">tf_rename</span></code> allows us to rename columns, usually to create a more compact, convenient name:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,7 +746,7 @@
 </div>
 </div>
 <div class="section" id="interlude-pipelines-and-the-data-pronoun">
-<h1>Interlude: Pipelines and the “Data Pronoun<a class="headerlink" href="#interlude-pipelines-and-the-data-pronoun" title="Permalink to this headline">¶</a></h1>
+<h2>Interlude: Pipelines and the “Data Pronoun<a class="headerlink" href="#interlude-pipelines-and-the-data-pronoun" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Imagine we wanted to search through the dataset to find only those materials with a FCC microstructure. Above, we gave the <code class="docutils literal notranslate"><span class="pre">microstructure</span></code> column a new, convenient name. We might like to use that new, convenient name when searching for FCC materials. However, we’re going to run into an issue:</p>
 <div class="cell docutils container">
@@ -790,7 +787,7 @@
 </div>
 <p>Together, the pipe operator <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> and the data pronoun <code class="docutils literal notranslate"><span class="pre">DF</span></code> form a powerful team that helps us do sophisticated data operations.</p>
 <div class="section" id="q4-re-write-the-following-code-using-the-pipe-operator-and-data-pronoun">
-<h2><strong>Q4</strong> Re-write the following code using the pipe operator and data pronoun<a class="headerlink" href="#q4-re-write-the-following-code-using-the-pipe-operator-and-data-pronoun" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q4</strong> Re-write the following code using the pipe operator and data pronoun<a class="headerlink" href="#q4-re-write-the-following-code-using-the-pipe-operator-and-data-pronoun" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -829,10 +826,10 @@
 </div>
 </div>
 <div class="section" id="back-to-verbs">
-<h1>Back to Verbs<a class="headerlink" href="#back-to-verbs" title="Permalink to this headline">¶</a></h1>
+<h2>Back to Verbs<a class="headerlink" href="#back-to-verbs" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <div class="section" id="filtering">
-<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
 <p>We saw <code class="docutils literal notranslate"><span class="pre">tf_filter</span></code> above; this allows us to filter a dataset to only those rows satisfying some logical criterion. This makes answering basic questions about the data very easy. For instance, we might be interested in a particular processing method; we could find only those rows matching a specified method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -849,7 +846,7 @@
 <p>There are some helper functions to help deal with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in filters: <code class="docutils literal notranslate"><span class="pre">gr.not_nan(df.column)</span></code> will return <code class="docutils literal notranslate"><span class="pre">True</span></code> when its input is not <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, while <code class="docutils literal notranslate"><span class="pre">gr.is_nan(df.column)</span></code> will do the reverse.</p>
 </div>
 <div class="section" id="q5-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows">
-<h2><strong>Q5</strong> Filter the MPEA dataset to only those rows with a valid Yield Strength. Compare the original number of rows with the number of valid rows.<a class="headerlink" href="#q5-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q5</strong> Filter the MPEA dataset to only those rows with a valid Yield Strength. Compare the original number of rows with the number of valid rows.<a class="headerlink" href="#q5-filter-the-mpea-dataset-to-only-those-rows-with-a-valid-yield-strength-compare-the-original-number-of-rows-with-the-number-of-valid-rows" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -866,7 +863,7 @@
 </div>
 </div>
 <div class="section" id="mutating">
-<h2>Mutating<a class="headerlink" href="#mutating" title="Permalink to this headline">¶</a></h2>
+<h3>Mutating<a class="headerlink" href="#mutating" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">tf_mutate</span></code> verb allows us to create / modify columns based on existing column values. For instance, we could use a mutation to convert the units in a column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -910,7 +907,7 @@
 </div>
 </div>
 <div class="section" id="q6-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent">
-<h2><strong>Q6</strong> Convert the weight parts per million (wppm) of Oxygen to a (weight) percent.<a class="headerlink" href="#q6-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q6</strong> Convert the weight parts per million (wppm) of Oxygen to a (weight) percent.<a class="headerlink" href="#q6-convert-the-weight-parts-per-million-wppm-of-oxygen-to-a-weight-percent" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -937,11 +934,11 @@
 </div>
 </div>
 <div class="section" id="wrangling-data">
-<h1>Wrangling Data<a class="headerlink" href="#wrangling-data" title="Permalink to this headline">¶</a></h1>
+<h2>Wrangling Data<a class="headerlink" href="#wrangling-data" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>With these basic tools—data pipelines and verbs—we have many of the tools we need to do <em>data wrangling</em>. <em>Very</em> frequently, data are messy and unusable; we need to do some <em>wrangling</em> to get our data into-shape for analysis. The last few tasks will focus on key steps in data wrangling.</p>
 <div class="section" id="data-converting">
-<h2>Data Converting<a class="headerlink" href="#data-converting" title="Permalink to this headline">¶</a></h2>
+<h3>Data Converting<a class="headerlink" href="#data-converting" title="Permalink to this headline">¶</a></h3>
 <p>There’s something wrong with the Nitrogen content column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -985,7 +982,7 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 <p>With this type conversion, we can express all three element columns as percentages.</p>
 </div>
 <div class="section" id="q7-fix-the-conversion-from-wppm-to-a-weight-percentage">
-<h2><strong>Q7</strong> Fix the conversion from wppm to a weight percentage<a class="headerlink" href="#q7-fix-the-conversion-from-wppm-to-a-weight-percentage" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q7</strong> Fix the conversion from wppm to a weight percentage<a class="headerlink" href="#q7-fix-the-conversion-from-wppm-to-a-weight-percentage" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -1012,7 +1009,7 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 </div>
 </div>
 <div class="section" id="pivoting-data">
-<h2>Pivoting Data<a class="headerlink" href="#pivoting-data" title="Permalink to this headline">¶</a></h2>
+<h3>Pivoting Data<a class="headerlink" href="#pivoting-data" title="Permalink to this headline">¶</a></h3>
 <p>Another common data issue is when our data are in the wrong <em>shape</em>. To illustrate, let’s look at another dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1059,7 +1056,7 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 </div>
 </div>
 <div class="section" id="q8-pivot-df-stang-wide-longer-to-put-all-the-angle-values-in-cells">
-<h2><strong>Q8</strong> Pivot <code class="docutils literal notranslate"><span class="pre">df_stang_wide</span></code> longer to put all the angle values in cells<a class="headerlink" href="#q8-pivot-df-stang-wide-longer-to-put-all-the-angle-values-in-cells" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q8</strong> Pivot <code class="docutils literal notranslate"><span class="pre">df_stang_wide</span></code> longer to put all the angle values in cells<a class="headerlink" href="#q8-pivot-df-stang-wide-longer-to-put-all-the-angle-values-in-cells" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint 1</em>: Make sure to add an <code class="docutils literal notranslate"><span class="pre">observation</span></code> column with the <code class="docutils literal notranslate"><span class="pre">index_to</span></code> argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1116,7 +1113,7 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 </div>
 </div>
 <div class="section" id="q9-use-gr-tf-separate-to-separate-the-measurement-identifiers-e-mu-from-the-measurement-angles-make-sure-to-call-the-angle-column-angle">
-<h2><strong>Q9</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.tf_separate()</span></code> to separate the measurement identifiers <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;,</span> <span class="pre">&quot;mu&quot;</span></code> from the measurement angles. Make sure to call the angle column <code class="docutils literal notranslate"><span class="pre">&quot;angle&quot;</span></code>.<a class="headerlink" href="#q9-use-gr-tf-separate-to-separate-the-measurement-identifiers-e-mu-from-the-measurement-angles-make-sure-to-call-the-angle-column-angle" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q9</strong> Use <code class="docutils literal notranslate"><span class="pre">gr.tf_separate()</span></code> to separate the measurement identifiers <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;,</span> <span class="pre">&quot;mu&quot;</span></code> from the measurement angles. Make sure to call the angle column <code class="docutils literal notranslate"><span class="pre">&quot;angle&quot;</span></code>.<a class="headerlink" href="#q9-use-gr-tf-separate-to-separate-the-measurement-identifiers-e-mu-from-the-measurement-angles-make-sure-to-call-the-angle-column-angle" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -1160,7 +1157,7 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 <p>We’re nearly there! Finally, we need to turn the measurement identifiers <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;,</span> <span class="pre">&quot;mu&quot;</span></code> back into column names. We can do this by pivoting wider.</p>
 </div>
 <div class="section" id="q10-pivot-the-data-wider-to-turn-the-measurement-identifiers-e-mu-back-into-column-names">
-<h2><strong>Q10</strong> Pivot the data wider to turn the measurement identifiers <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;,</span> <span class="pre">&quot;mu&quot;</span></code> back into column names.<a class="headerlink" href="#q10-pivot-the-data-wider-to-turn-the-measurement-identifiers-e-mu-back-into-column-names" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q10</strong> Pivot the data wider to turn the measurement identifiers <code class="docutils literal notranslate"><span class="pre">&quot;E&quot;,</span> <span class="pre">&quot;mu&quot;</span></code> back into column names.<a class="headerlink" href="#q10-pivot-the-data-wider-to-turn-the-measurement-identifiers-e-mu-back-into-column-names" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint</em>: You should only need to set the <code class="docutils literal notranslate"><span class="pre">names_from</span></code> and <code class="docutils literal notranslate"><span class="pre">values_from</span></code> arguments with this function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1209,7 +1206,7 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 </div>
 </div>
 <div class="section" id="bonus-one-step-pivot">
-<h2>Bonus: One-step pivot<a class="headerlink" href="#bonus-one-step-pivot" title="Permalink to this headline">¶</a></h2>
+<h3>Bonus: One-step pivot<a class="headerlink" href="#bonus-one-step-pivot" title="Permalink to this headline">¶</a></h3>
 <p>As a closing, bonus demonstration, we illustrate some advanced options in <code class="docutils literal notranslate"><span class="pre">gr.tf_pivot_longer()</span></code> that would allow you to reshape the data in single call. This uses the <code class="docutils literal notranslate"><span class="pre">&quot;.value&quot;</span></code> special argument to signal that the values that would be placed in that <code class="docutils literal notranslate"><span class="pre">names_to</span></code> column should really be column names themselves; put differently, the <code class="docutils literal notranslate"><span class="pre">&quot;.value&quot;</span></code> keyword is like adding a pivot wider after the pivot longer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1229,10 +1226,11 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 </div>
 </div>
 <div class="section" id="endnotes">
-<h1>Endnotes<a class="headerlink" href="#endnotes" title="Permalink to this headline">¶</a></h1>
+<h2>Endnotes<a class="headerlink" href="#endnotes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The data portions of Grama make heavy use of ideas from the <a class="reference external" href="https://www.tidyverse.org/">Tidyverse</a>; specifically the <a class="reference external" href="https://dplyr.tidyverse.org/">dplyr</a> package. However, those packages are for the R programming language.</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1265,11 +1263,11 @@ It seems that the original data are mixed; some values are a numeric ppm value, 
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="01_python_assignment.html" title="previous page">
+        <a class="left-prev" href="02_tidy_assignment.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Intro to Python and Jupyter Notebooks</p>
+                <p class="prevnext-title">Intro to Data Wrangling and Tidy Data</p>
             </div>
         </a>
     </div>
