@@ -4,5 +4,6 @@ sections:
 - file: setup
 - file: exercises
   sections:
+  - file: notebooks/00_tabula-webplotdigitizer_assignment
   - file: notebooks/01_python_assignment
   - file: notebooks/03_data_assignment
