@@ -376,6 +376,17 @@
 <li><p>Extract data from tables in published documents with Tabula</p></li>
 <li><p>Liberate data from graphs with WebPlotDigitizer</p></li>
 </ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="designing-data-collection">
 <h2>Designing Data Collection<a class="headerlink" href="#designing-data-collection" title="Permalink to this headline">¶</a></h2>
@@ -530,6 +541,15 @@
 </div>
 <div class="section" id="q9-once-satisfied-click-export-to-download-the-data">
 <h3>Q9 Once satisfied, click <code class="docutils literal notranslate"><span class="pre">Export</span></code> to download the data.<a class="headerlink" href="#q9-once-satisfied-click-export-to-download-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Once you finish this, you should have access to a CSV that looks like the following:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_extracted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/tabula-weibull1939-table4.csv&quot;</span><span class="p">)</span>
+<span class="n">df_extracted</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="important-caveat-image-based-pdf-s">
 <h3>Important caveat! Image-based PDF’s.<a class="headerlink" href="#important-caveat-image-based-pdf-s" title="Permalink to this headline">¶</a></h3>
@@ -541,6 +561,7 @@
 <div class="section" id="webplotdigitizer-liberating-data-from-images">
 <h2>WebPlotDigitizer: Liberating data from images<a class="headerlink" href="#webplotdigitizer-liberating-data-from-images" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
+<p>Sometimes data are messy—we’ll learn how to deal with that later in the workshop. Other times data are “locked up” in a format we can’t easily analyze, such as in an image. In this exercise you’ll learn how to <em>liberate</em> data from a plot using WebPlotDigitizer.</p>
 </div>
 </div>
 

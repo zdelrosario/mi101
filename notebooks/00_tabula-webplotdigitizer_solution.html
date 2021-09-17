@@ -374,6 +374,17 @@
 <li><p>Extract data from tables in published documents with Tabula</p></li>
 <li><p>Liberate data from graphs with WebPlotDigitizer</p></li>
 </ul>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="designing-data-collection">
 <h2>Designing Data Collection<a class="headerlink" href="#designing-data-collection" title="Permalink to this headline">¶</a></h2>
@@ -568,6 +579,163 @@
 </div>
 <div class="section" id="q9-once-satisfied-click-export-to-download-the-data">
 <h3>Q9 Once satisfied, click <code class="docutils literal notranslate"><span class="pre">Export</span></code> to download the data.<a class="headerlink" href="#q9-once-satisfied-click-export-to-download-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Once you finish this, you should have access to a CSV that looks like the following:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_extracted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/tabula-weibull1939-table4.csv&quot;</span><span class="p">)</span>
+<span class="n">df_extracted</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>No.</th>
+      <th>Area mm^2</th>
+      <th>sigma_d kg/mm^2</th>
+      <th>No..1</th>
+      <th>Area mm^2.1</th>
+      <th>sigma_d kg/mm^2.1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>21.50</td>
+      <td>0.61</td>
+      <td>14.0</td>
+      <td>23.10</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>22.31</td>
+      <td>0.60</td>
+      <td>15.0</td>
+      <td>21.91</td>
+      <td>0.62</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>23.00</td>
+      <td>0.50</td>
+      <td>16.0</td>
+      <td>23.23</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>14.18</td>
+      <td>0.63</td>
+      <td>17.0</td>
+      <td>25.80</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>22.03</td>
+      <td>0.48</td>
+      <td>18.0</td>
+      <td>20.68</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>22.79</td>
+      <td>0.60</td>
+      <td>19.0</td>
+      <td>15.90</td>
+      <td>0.59</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>28.88</td>
+      <td>0.56</td>
+      <td>20.0</td>
+      <td>16.47</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>17.79</td>
+      <td>0.59</td>
+      <td>21.0</td>
+      <td>18.75</td>
+      <td>0.54</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>23.60</td>
+      <td>0.60</td>
+      <td>22.0</td>
+      <td>17.91</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>23.60</td>
+      <td>0.52</td>
+      <td>23.0</td>
+      <td>25.55</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>28.51</td>
+      <td>0.57</td>
+      <td>24.0</td>
+      <td>22.03</td>
+      <td>0.48</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>25.93</td>
+      <td>0.55</td>
+      <td>25.0</td>
+      <td>20.96</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>22.97</td>
+      <td>0.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 <div class="section" id="important-caveat-image-based-pdf-s">
 <h3>Important caveat! Image-based PDF’s.<a class="headerlink" href="#important-caveat-image-based-pdf-s" title="Permalink to this headline">¶</a></h3>
@@ -579,6 +747,7 @@
 <div class="section" id="webplotdigitizer-liberating-data-from-images">
 <h2>WebPlotDigitizer: Liberating data from images<a class="headerlink" href="#webplotdigitizer-liberating-data-from-images" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
+<p>Sometimes data are messy—we’ll learn how to deal with that later in the workshop. Other times data are “locked up” in a format we can’t easily analyze, such as in an image. In this exercise you’ll learn how to <em>liberate</em> data from a plot using WebPlotDigitizer.</p>
 </div>
 </div>
 
