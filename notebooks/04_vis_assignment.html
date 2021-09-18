@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualization in Python &#8212; Materials Informatics 101</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Materials Informatics 101</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Materials Informatics 101
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../exercises.html">
+   Exercise Notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_tabula-webplotdigitizer_assignment.html">
+     Data Extraction and Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_python_assignment.html">
+     Intro to Python and Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_tidy_assignment.html">
+     Intro to Data Wrangling and Tidy Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_data_assignment.html">
+     Programmatic Data Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/04_vis_assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zdelrosario/Materials Informatics 101"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zdelrosario/Materials Informatics 101/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04_vis_assignment.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zdelrosario/Materials Informatics 101/main?urlpath=tree/docs/notebooks/04_vis_assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Visualization in Python
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-outcomes">
+     Learning outcomes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-bit-of-wrangling">
+   A Bit of Wrangling
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-with-plotnine">
+   Visualizing with Plotnine
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-study-the-magnesium-content">
+     <strong>
+      Q1
+     </strong>
+     : Study the Magnesium content
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-what-does-this-histogram-tell-you">
+     <strong>
+      Q2
+     </strong>
+     : What does this histogram tell you?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elements-of-plotnine">
+     Elements of Plotnine
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rule-1-of-histograms-play-with-the-bin-size">
+     Rule #1 of Histograms: Play with the bin size
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-change-the-number-of-bins-in-the-histogram">
+     <strong>
+      Q3
+     </strong>
+     : Change the number of bins in the histogram
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-what-does-this-histogram-tell-us-about-magnesium-content">
+     <strong>
+      Q4
+     </strong>
+     : What does this histogram tell us about Magnesium content?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changing-the-geometry">
+     Changing the geometry
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q5-use-a-frequency-polygon-rather-than-a-histogram">
+     <strong>
+      Q5
+     </strong>
+     : Use a frequency polygon, rather than a histogram
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-aesthetics">
+     Adding aesthetics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q6-add-an-aesthetic-for-the-alloy-series">
+     <strong>
+      Q6
+     </strong>
+     : Add an aesthetic for the alloy series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducing-plots">
+   Reproducing plots
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q7-reproduce-this-set-of-boxplots">
+     <strong>
+      Q7
+     </strong>
+     : Reproduce this set of boxplots
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q8-what-does-this-boxplot-plot-tell-you">
+     <strong>
+      Q8
+     </strong>
+     : What does this boxplot plot tell you?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q9-reproduce-this-scatterplot">
+     <strong>
+      Q9
+     </strong>
+     : Reproduce this scatterplot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q10-what-does-this-scatterplot-tell-you">
+     <strong>
+      Q10
+     </strong>
+     : What does this scatterplot tell you?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dimension-reduction">
+   Dimension Reduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q11-recreate-this-scatterplot-using-the-umap-data">
+     <strong>
+      Q11
+     </strong>
+     : Recreate this scatterplot using the UMAP data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q12-what-does-this-umap-plot-tell-you">
+     <strong>
+      Q12
+     </strong>
+     : What does this UMAP plot tell you?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-plotly-vs-plotnine">
+   BONUS: Plotly vs Plotnine
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="visualization-in-python">
+<h1>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Permalink to this headline">¶</a></h1>
+<p><em>Author</em>: Zach del Rosario</p>
+<div class="section" id="learning-outcomes">
+<h2>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
+<p>By working through this notebook, you will be able to:</p>
+<ul class="simple">
+<li><p>Re-create a number of different plots using <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>.</p></li>
+<li><p>Draw conclusions about data using histograms, boxplots, and scatterplots.</p></li>
+<li><p>Use an advanced dimension reduction technique to plot high-dimensional data: UMAP</p></li>
+<li><p>Note when another visualization package—<code class="docutils literal notranslate"><span class="pre">plotly</span></code>—might be useful for interactive plots.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">pt</span>
+
+<span class="kn">from</span> <span class="nn">grama.tran</span> <span class="kn">import</span> <span class="n">tf_umap</span>
+
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+
+<span class="c1"># Show all pandas columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># For downloading data</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-bit-of-wrangling">
+<h1>A Bit of Wrangling<a class="headerlink" href="#a-bit-of-wrangling" title="Permalink to this headline">¶</a></h1>
+<p>(First, download the data)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
+<span class="n">filename_data</span> <span class="o">=</span> <span class="s2">&quot;./data/alloys.csv&quot;</span>
+
+<span class="c1"># The following code downloads the data, or (after downloaded)</span>
+<span class="c1"># loads the data from a cached CSV on your machine</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename_data</span><span class="p">):</span>
+    <span class="c1"># Make request for data</span>
+    <span class="n">url_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zdelrosario/mi101/main/mi101/data/wiki_comp.csv&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_data</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">filename_data</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Alloy data downloaded from public Google sheet&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Note data already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Alloy data loaded locally&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Read the data into memory</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a dataset about Aluminum alloys, scraped from <a class="reference external" href="https://en.wikipedia.org/wiki/Aluminium_alloy#Wrought_alloys">Wikipedia</a>. The <code class="docutils literal notranslate"><span class="pre">alloy</span></code> column identifies the specific alloy, <code class="docutils literal notranslate"><span class="pre">al_percent</span></code> gives the percent Aluminum content (by weight), and the remaining columns give other alloying elements. From the “head” of the data (the first few observations) we can see the alloying elements are <em>sparse</em>—many of the entries are zero.</p>
+<p>When studying a new dataset, it’s always a good idea to do some simple ‘first checks’ before going straight to visualizing. We’ll see from these first checks that we need to do some wrangling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the data&#39;s shape</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have 137 observations on 28 variables. Because there are so many variables, these data will be difficult to visualize!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Glimpse the data</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have the alloy designation, the aluminum percentage, and a percentage associated with each alloying element (by weight). To better categorize alloys, we might like to create a <code class="docutils literal notranslate"><span class="pre">series</span></code> column that gives the first digit of the <code class="docutils literal notranslate"><span class="pre">alloy</span></code> column. Since the <code class="docutils literal notranslate"><span class="pre">alloy</span></code> values all seem to be integers, it seems like we might be able to do this by doing a floor-division by 1000. However, let’s inspect the datatypes before we try that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the data types</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hmmm, the <code class="docutils literal notranslate"><span class="pre">alloy</span></code> column is an object. When we’ve seen that before, it’s meant the underlying entries are strings. Maybe there are some special characters in some of the alloy identifiers?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_raw</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">str_detect</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s2">&quot;[^</span><span class="se">\\</span><span class="s2">d]&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a few strange, special names in here! On the original Wiki article the <code class="docutils literal notranslate"><span class="pre">V-XXXX</span></code> alloys are listed under the 1000-Series alloys, so if we could just get the first digit in every <code class="docutils literal notranslate"><span class="pre">alloy</span></code> string, that would be our series number. The following code uses <a class="reference external" href="https://regexone.com/">regular expressions</a> to do just that (<code class="docutils literal notranslate"><span class="pre">\\d</span></code> means “any digit character”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="c1">## This code extracts the first digit of the</span>
+<span class="c1">## `alloy` column to create a `series` column</span>
+<span class="n">df_alloys</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_raw</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">series</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">str_extract</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">d&quot;</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;series&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+<span class="n">df_alloys</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can run the filter again to check that we processed the special names the way we intended:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">str_detect</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s2">&quot;[^</span><span class="se">\\</span><span class="s2">d]&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Excellent! Now that we’ve prepped the data, we’re ready to start visualizing. Here’s a first example using plotnine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;al_percent&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll start learning plotnine by making changes to this visual.</p>
+</div>
+<div class="section" id="visualizing-with-plotnine">
+<h1>Visualizing with Plotnine<a class="headerlink" href="#visualizing-with-plotnine" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><em>Note</em>: You’ll notice that plotnine graphs start with this weird <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> call; that’s because plotnine is an <em>implementation of the <strong>g</strong>rammar of <strong>g</strong>raphics</em>. <a class="reference external" href="https://ggplot2.tidyverse.org/">Ggplot2</a> is the original implementation of this concept, but that package is for the R programming language. Plotnine is essentially a port of ggplot2 into Python.</p>
+<div class="section" id="q1-study-the-magnesium-content">
+<h2><strong>Q1</strong>: Study the Magnesium content<a class="headerlink" href="#q1-study-the-magnesium-content" title="Permalink to this headline">¶</a></h2>
+<p>Modify the plot below to create a histogram of Magnesium content, rather than aluminum content.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Modify the plot below</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;al_percent&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="q2-what-does-this-histogram-tell-you">
+<h2><strong>Q2</strong>: What does this histogram tell you?<a class="headerlink" href="#q2-what-does-this-histogram-tell-you" title="Permalink to this headline">¶</a></h2>
+<p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the histogram above.</p>
+<ul class="simple">
+<li><p>(Write your observations here!)</p></li>
+</ul>
+</div>
+<div class="section" id="elements-of-plotnine">
+<h2>Elements of Plotnine<a class="headerlink" href="#elements-of-plotnine" title="Permalink to this headline">¶</a></h2>
+<p>You’ve already edited some plotnine code, but let’s break it down to better understand how plotnine works:</p>
+<p><em>Anatomy of a ggplot</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_alloys</span>                   <span class="c1"># Data to visualize</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span>               <span class="c1"># Initial call; starts a ggplot object</span>
+    
+        <span class="n">mapping</span><span class="o">=</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Mg&quot;</span><span class="p">)</span>  <span class="c1"># Aesthetic mapping; we define how</span>
+                                <span class="c1">#   columns in the dataset map to </span>
+                                <span class="c1">#   aesthetics in the plot.</span>
+    <span class="p">)</span>  
+    
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>       <span class="c1"># Geometry; takes the aesthetic mapping</span>
+                                <span class="c1">#   along with the data and produces</span>
+                                <span class="c1">#   graphical elements.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>With these basic ingredients—a dataset, a ggplot object, and a geometry—we have everything necessary to produce a simple plot. The <em>power</em> of the ggplot concept (implemented in plotnine) is that we can <em>very easily tweak graphs</em> starting from this minimal working code.</p>
+</div>
+<div class="section" id="rule-1-of-histograms-play-with-the-bin-size">
+<h2>Rule #1 of Histograms: Play with the bin size<a class="headerlink" href="#rule-1-of-histograms-play-with-the-bin-size" title="Permalink to this headline">¶</a></h2>
+<p>Let’s practice using plotnine by enacting Rule #1 of histograms:</p>
+<div class="admonition-rule-1-of-histograms-play-with-the-bin-size admonition">
+<p class="admonition-title">Rule #1 of Histograms: Play with the bin size</p>
+<p>When doing an analysis with a histogram, make sure to try multiple bin sizes to ensure you get a thorough sense of the data’s distribution.</p>
+</div>
+</div>
+<div class="section" id="q3-change-the-number-of-bins-in-the-histogram">
+<h2><strong>Q3</strong>: Change the number of bins in the histogram<a class="headerlink" href="#q3-change-the-number-of-bins-in-the-histogram" title="Permalink to this headline">¶</a></h2>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> gives us a <em>warning</em> that we ought to pick a more informed bin count. Change the bin count to a larger value below.</p>
+<div class="admonition-accessing-documentation admonition">
+<p class="admonition-title">Accessing documentation</p>
+<p>Remember in the Python basics notebook we learned about accessing <em>documentation</em>. You can call <code class="docutils literal notranslate"><span class="pre">help(pt.geom_histogram)</span></code> or use the <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code> method to read documentation on this geometry. This will tell you which argument to change in order to complete this exercise.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Modify the plot below to use a larger bin count</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="q4-what-does-this-histogram-tell-us-about-magnesium-content">
+<h2><strong>Q4</strong>: What does this histogram tell us about Magnesium content?<a class="headerlink" href="#q4-what-does-this-histogram-tell-us-about-magnesium-content" title="Permalink to this headline">¶</a></h2>
+<p>Focus on what you can see in your <em>new</em> graph, as opposed to your previous graph.</p>
+<ul class="simple">
+<li><p>(Write your observations here!)</p></li>
+</ul>
+</div>
+<div class="section" id="changing-the-geometry">
+<h2>Changing the geometry<a class="headerlink" href="#changing-the-geometry" title="Permalink to this headline">¶</a></h2>
+<p>The specific <code class="docutils literal notranslate"><span class="pre">geom_*</span></code> call we use will determine which <em>geometry</em> is used to map the values to visual elements. Using plotnine, we can easily edit our visual by changing the <code class="docutils literal notranslate"><span class="pre">geom_*</span></code>.</p>
+</div>
+<div class="section" id="q5-use-a-frequency-polygon-rather-than-a-histogram">
+<h2><strong>Q5</strong>: Use a frequency polygon, rather than a histogram<a class="headerlink" href="#q5-use-a-frequency-polygon-rather-than-a-histogram" title="Permalink to this headline">¶</a></h2>
+<p>The plotnine function for a frequency polygon is <code class="docutils literal notranslate"><span class="pre">pt.geom_freqpoly()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Modify the plot below to use a frequency polygon</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a simple tweak, but it will be important for the next change we’ll make.</p>
+</div>
+<div class="section" id="adding-aesthetics">
+<h2>Adding aesthetics<a class="headerlink" href="#adding-aesthetics" title="Permalink to this headline">¶</a></h2>
+<p>Part of the magic of ggplot is that it can <em>automatically</em> handle additional aesthetics, simply by changing the mapping. The <code class="docutils literal notranslate"><span class="pre">pt.aes(..)</span></code> can take additional keyword arguments, allowing us to visualize additional variables on the same plot.</p>
+<p>For a histogram or frequency polygon, we must provide an x-coordinate. However, we can provide additional aesthetic mappings, such as <code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">linetype</span></code>.</p>
+<div class="admonition-ggplot-and-defauls admonition">
+<p class="admonition-title">Ggplot and defauls</p>
+<p>To make ggplot easy-to-use, it has a large variety of <em>default settings</em>, with the option to <em>override</em> those defaults. By default the <code class="docutils literal notranslate"><span class="pre">pt.aes()</span></code> function will assume your first two arguments are x and y; put differently this <code class="docutils literal notranslate"><span class="pre">pt.aes(x=&quot;var1&quot;,</span> <span class="pre">y=&quot;var2&quot;)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">pt.aes(&quot;var1&quot;,</span> <span class="pre">&quot;var2&quot;)</span></code>.</p>
+</div>
+</div>
+<div class="section" id="q6-add-an-aesthetic-for-the-alloy-series">
+<h2><strong>Q6</strong>: Add an aesthetic for the alloy series<a class="headerlink" href="#q6-add-an-aesthetic-for-the-alloy-series" title="Permalink to this headline">¶</a></h2>
+<p>Add an aesthetic mapping in <code class="docutils literal notranslate"><span class="pre">pt.aes(...)</span></code> to visualize the <code class="docutils literal notranslate"><span class="pre">&quot;series&quot;</span></code> column. Answer the questions below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Modify the plot below to add the &quot;series&quot; column to the plot</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Observations</em>:</p>
+<ul class="simple">
+<li><p>What kinds of questions can you answer with this plot that you couldn’t before?</p>
+<ul>
+<li><p>(Write your observations here!)</p></li>
+</ul>
+</li>
+<li><p>Try switching the geometry back to a histogram; what happens? How interpretable is the resulting graph?</p>
+<ul>
+<li><p>(Write your observations here!)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="reproducing-plots">
+<h1>Reproducing plots<a class="headerlink" href="#reproducing-plots" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Now that we’ve learned some basics of plotnine / ggplot, let’s take this learning further by reproducing some plots.</p>
+<div class="section" id="q7-reproduce-this-set-of-boxplots">
+<h2><strong>Q7</strong>: Reproduce this set of boxplots<a class="headerlink" href="#q7-reproduce-this-set-of-boxplots" title="Permalink to this headline">¶</a></h2>
+<p><em>Hint 1</em>: The plotnine function for a boxplot is <code class="docutils literal notranslate"><span class="pre">pt.geom_boxplot</span></code>.</p>
+<p><em>Hint 2</em>: The grama function <code class="docutils literal notranslate"><span class="pre">gr.fct_reorder()</span></code> will help you re-order one variable in terms of a second variable. You can use this within a <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> call to modify the ordering in the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Reproduce the plot below</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="Boxplot image to recreate" src="../_images/vis-boxplot.png" /></p>
+<!-- task-end --></div>
+<div class="section" id="q8-what-does-this-boxplot-plot-tell-you">
+<h2><strong>Q8</strong>: What does this boxplot plot tell you?<a class="headerlink" href="#q8-what-does-this-boxplot-plot-tell-you" title="Permalink to this headline">¶</a></h2>
+<p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the boxplots above.</p>
+<ul class="simple">
+<li><p>(Write your observations here!)</p></li>
+</ul>
+</div>
+<div class="section" id="q9-reproduce-this-scatterplot">
+<h2><strong>Q9</strong>: Reproduce this scatterplot<a class="headerlink" href="#q9-reproduce-this-scatterplot" title="Permalink to this headline">¶</a></h2>
+<p><em>Hint 1</em>: The plotnine function for a scatterplot is <code class="docutils literal notranslate"><span class="pre">pt.geom_point</span></code>.</p>
+<p><em>Hint 2</em>: The plotnine function <code class="docutils literal notranslate"><span class="pre">pt.theme_minimal()</span></code> will strip away the grey, giving you a cleaner visual.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Reproduce the plot below</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+<span class="c1"># (</span>
+<span class="c1">#     df_alloys</span>
+    
+<span class="c1">#     &gt;&gt; pt.ggplot(pt.aes(&quot;al_percent&quot;, ))</span>
+<span class="c1">#     + pt.geom_*</span>
+<span class="c1">#     + pt.labs()</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="Scatterplot image to recreate" src="../_images/vis-scatter.png" /></p>
+<!-- task-end --></div>
+<div class="section" id="q10-what-does-this-scatterplot-tell-you">
+<h2><strong>Q10</strong>: What does this scatterplot tell you?<a class="headerlink" href="#q10-what-does-this-scatterplot-tell-you" title="Permalink to this headline">¶</a></h2>
+<p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the scatterplot above.</p>
+<ul class="simple">
+<li><p>(Write your observations here!)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="dimension-reduction">
+<h1>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Studying <em>all</em> the variables at once is difficult, as we cannot directly visualize 25-dimensional space! Instead, we will use different <em>dimension reduction</em> techniques to visualize the data while preserving low-dimensional structure. We will illustrate one advanced technique: UMAP.</p>
+<p><a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a> stands for <em>uniform manifold approximation</em>; this is a nonlinear dimension reduction technique. UMAP coordinates don’t have any physical interpretation, but the technique can frequently capture low-dimensional structure that PCA cannot. <a class="reference external" href="https://pair-code.github.io/understanding-umap/">This article</a> is a fantastic resource for understanding UMAP.</p>
+<p>The following carries out a UMAP transformation of the alloy dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform UMAP reduction</span>
+<span class="n">df_umap_data</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_alloys</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="s2">&quot;series&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">tf_umap</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_cols</span><span class="p">(</span><span class="n">df_alloys</span><span class="p">[[</span><span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="s2">&quot;series&quot;</span><span class="p">]])</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;series&quot;</span><span class="p">,</span> <span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_umap_data</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>TODO</p>
+<div class="section" id="q11-recreate-this-scatterplot-using-the-umap-data">
+<h2><strong>Q11</strong>: Recreate this scatterplot using the UMAP data<a class="headerlink" href="#q11-recreate-this-scatterplot-using-the-umap-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Reproduce the plot below</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="UMAP scatterplot image to recreate" src="../_images/vis-umap.png" /></p>
+<!-- task-end --></div>
+<div class="section" id="q12-what-does-this-umap-plot-tell-you">
+<h2><strong>Q12</strong>: What does this UMAP plot tell you?<a class="headerlink" href="#q12-what-does-this-umap-plot-tell-you" title="Permalink to this headline">¶</a></h2>
+<p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the scatterplot above.</p>
+<ul class="simple">
+<li><p>(Write your observations here!)</p></li>
+</ul>
+<div class="admonition-important-caveats-about-umap admonition">
+<p class="admonition-title">Important caveats about UMAP!</p>
+<p>Interpreting a UMAP plot is <a class="reference external" href="https://pair-code.github.io/understanding-umap/">subtle and challenging</a>, but also extremely powerful. One of the caveats of UMAP is that the coordinates themselves do not have a simple interpretation, so the location of clusters in the two coordinates fairly arbitrary. The distances between clusters is also not necessarily meaningful. A well-calibrated UMAP will tend to reveal clustering in the data, in which case points nearby in UMAP space can be understood to be close in the original space.</p>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-plotly-vs-plotnine">
+<h1>BONUS: Plotly vs Plotnine<a class="headerlink" href="#bonus-plotly-vs-plotnine" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://plotly.com/python/basic-charts/">This page</a> gives details on how to make a wide variety of charts with plotly. The easiest way is probably by using <code class="docutils literal notranslate"><span class="pre">px.scatter()</span></code>, which is documented <a class="reference external" href="https://plotly.com/python/line-and-scatter/">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Import plotly</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="c1"># Necessary to show plotly figures in Jupyter</span>
+<span class="o">%</span><span class="k">matplotlib</span> widget
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df_umap_data</span><span class="p">,</span> 
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;xi0&quot;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;xi1&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;series&quot;</span><span class="p">,</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;alloy&quot;</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;UMAP Plot&quot;</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;xi0&quot;</span><span class="p">:</span> <span class="s2">&quot;UMAP Coordinate 1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;xi1&quot;</span><span class="p">:</span> <span class="s2">&quot;UMAP Coordinate 2&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Zachary del Rosario<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
