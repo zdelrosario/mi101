@@ -237,24 +237,31 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#q1-complete-the-code-below-to-rename-the-columns">
-   <strong>
-    Q1
-   </strong>
-   : Complete the code below to rename the columns
+  <a class="reference internal nav-link" href="#setup">
+   Setup
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names">
-   <strong>
-    Q2
-   </strong>
-   : Complete the
-   <em>
-    data dictionary
-   </em>
-   below to document the units associated with the short column names.
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-complete-the-code-below-to-rename-the-columns">
+     <strong>
+      Q1
+     </strong>
+     : Complete the code below to rename the columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names">
+     <strong>
+      Q2
+     </strong>
+     : Complete the
+     <em>
+      data dictionary
+     </em>
+     below to document the units associated with the short column names.
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pivoting">
@@ -265,6 +272,16 @@
   <a class="reference internal nav-link" href="#tidy-data">
    Tidy Data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-inspect-the-original-form-of-the-data-why-are-these-data-not-tidy-how-would-you-make-the-data-tidy">
+     <strong>
+      Q3
+     </strong>
+     : Inspect the original form of the data. Why are these data not tidy? How would you make the data tidy?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-wrangling">
@@ -272,14 +289,34 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q3-convert-the-units-to-mpa">
+    <a class="reference internal nav-link" href="#unit-conversion">
+     Unit conversion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-convert-the-units-to-mpa">
      <strong>
-      Q3
+      Q4
      </strong>
      : Convert the units to MPa.
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-invalid-values">
+     Filtering invalid values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-types">
+     Converting types
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-the-payoff-of-tidying-and-wrangling">
+   Bonus: The Payoff of Tidying and Wrangling
+  </a>
  </li>
 </ul>
 
@@ -299,8 +336,15 @@
 <h2>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
 <p>By working through this notebook, you will be able to:</p>
 <ul class="simple">
+<li><p>Understand basic principles of working with data in software</p></li>
 <li><p>State the basic ideas of tidy data</p></li>
+<li><p>State the basic ideas of data wrangling</p></li>
 </ul>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>In this day exercise, we’ll make use of the Pandas and Grama packages to work with data. <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> is a package for data analysis, and it supplies the DataFrame object for representing data. <a class="reference external" href="https://github.com/zdelrosario/py_grama">Grama</a> builds on top of Pandas to provide pipeline-based tools for data and machine learning.</p>
+<p>This notebook focuses on introducing <em>ideas</em>, the evening notebook will teach you the <em>mechanics</em> of how to use these tools.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -349,9 +393,8 @@
 </div>
 </div>
 <p>Note that Pandas renamed some columns to avoid giving us duplicate column names. The names are useful for holding metadata, but shorter column names are far easier to work with in a computational environment.</p>
-</div>
 <div class="section" id="q1-complete-the-code-below-to-rename-the-columns">
-<h2><strong>Q1</strong>: Complete the code below to rename the columns<a class="headerlink" href="#q1-complete-the-code-below-to-rename-the-columns" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q1</strong>: Complete the code below to rename the columns<a class="headerlink" href="#q1-complete-the-code-below-to-rename-the-columns" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint</em>: You can click-and-drag on the DataFrame printout above for a less error-prone way of giving the original column names.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -394,8 +437,8 @@
 <p>Now the column names are much shorter, but we’ve</p>
 </div>
 <div class="section" id="q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names">
-<h2><strong>Q2</strong>: Complete the <em>data dictionary</em> below to document the units associated with the short column names.<a class="headerlink" href="#q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names" title="Permalink to this headline">¶</a></h2>
-<p><em>Note</em>: Weibull in his (1939) paper reports these stress values in units <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">/</span> <span class="pre">mm^2</span></code>. For the data to be sensible, his <code class="docutils literal notranslate"><span class="pre">kg</span></code> must refer to a kilogram-force, sometimes denoted <code class="docutils literal notranslate"><span class="pre">kgf</span></code>. One <code class="docutils literal notranslate"><span class="pre">kgf</span></code> is the force exerted by a kilogram in standard gravity (<code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">9.8</span> <span class="pre">m/s^2</span></code>). We’ll convert to less strange units later!</p>
+<h3><strong>Q2</strong>: Complete the <em>data dictionary</em> below to document the units associated with the short column names.<a class="headerlink" href="#q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names" title="Permalink to this headline">¶</a></h3>
+<p><em>Note</em>: Weibull in his (1939) paper reports these stress values in units <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">/</span> <span class="pre">mm^2</span></code>. This is strange; we’ll return to this later!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tabula</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -431,9 +474,10 @@
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="pivoting">
 <h2>Pivoting<a class="headerlink" href="#pivoting" title="Permalink to this headline">¶</a></h2>
-<p>(TODO Describe the “blocks”)</p>
+<p>Note that the data are in a rather strange layout; the first three columns report the specimen number (<code class="docutils literal notranslate"><span class="pre">obs_1</span></code>), cross-sectional area (<code class="docutils literal notranslate"><span class="pre">area_1</span></code>), and measured stress (<code class="docutils literal notranslate"><span class="pre">sigma_1</span></code>) for all the observations up to <code class="docutils literal notranslate"><span class="pre">13</span></code>. Then the last three columns report the same quantities starting at observation <code class="docutils literal notranslate"><span class="pre">14</span></code>. This sort of layout with “two blocks” is <em>convenient</em> for reporting values in a compact form, but it is <em>highly inconvenient</em> for doing analysis, as we’ll see next.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_q1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -465,7 +509,7 @@
 <p>But it would be far easier if we could just <em>combine</em> all the relevant columns so they’re not in “blocks.” This is what <strong>pivoting</strong> a dataset allows us to do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: NO need to edit; you&#39;ll learn how to do this in the evening&#39;s notebook</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit; you&#39;ll learn this in the evening&#39;s notebook</span>
 <span class="n">df_long</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_q1</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_pivot_longer</span><span class="p">(</span>
@@ -480,29 +524,54 @@
 </div>
 </div>
 </div>
+<p>Pivoting is one of the key tools we need to <em>tidy</em> our data.</p>
 </div>
 <div class="section" id="tidy-data">
 <h2>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">¶</a></h2>
-<p>(TODO: Write up the principles of tidy data.)</p>
+<p><em>Tidy data</em> is a very simple—but very powerful—idea. The image below gives the definition of tidy data.</p>
+<p><img alt="In tidy data: each variable forms a column, each observation forms a row, each cell is a single measurement." src="../_images/tidydata_1.jpg" /></p>
+<p>Artwork by Allison Horst, <a class="reference external" href="https://www.openscapes.org/blog/2020/10/12/tidy-data/">generously released</a> under an open-source license!</p>
+<p>The big payoff of making your data tidy is that <em>you don’t have to build special-purpose tools to work with your data</em>. Since every untidy dataset is untidy in its own unique (hideous) way, you would have to build special-purpose tools for every untidy dataset. By having one standard form of data, you can use the same tools for every dataset.</p>
+<p><img alt="Comical cartoon comparing tools for tidy data and tools for untidy data." src="../_images/tidydata_3.jpg" /></p>
+<p>Let’s apply these ideas to the data we extracted using Tabula.</p>
+<div class="section" id="q3-inspect-the-original-form-of-the-data-why-are-these-data-not-tidy-how-would-you-make-the-data-tidy">
+<h3><strong>Q3</strong>: Inspect the original form of the data. Why are these data not tidy? How would you make the data tidy?<a class="headerlink" href="#q3-inspect-the-original-form-of-the-data-why-are-these-data-not-tidy-how-would-you-make-the-data-tidy" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NO NEED TO EDIT; run and inspect</span>
+<span class="n">df_tabula</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>(Your response here)</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="data-wrangling">
 <h2>Data Wrangling<a class="headerlink" href="#data-wrangling" title="Permalink to this headline">¶</a></h2>
-<p>(Part of data wrangling is screaming. Here’s an example trying to make sense of the plaster data.)</p>
+<p>Even once our data are <em>tidy</em>, they still might not be as usable as we might like. Another, less well-defined aspect of making data usable is <em>wrangling</em> the data into a more useful form. We’ll talk about a few aspects we might need to wrangle our data to fix: unit conversion, filtering, and data types.</p>
+<div class="section" id="unit-conversion">
+<h3>Unit conversion<a class="headerlink" href="#unit-conversion" title="Permalink to this headline">¶</a></h3>
 <p>Weibull reports the <span class="math notranslate nohighlight">\(\sigma_d\)</span> values in <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">/</span> <span class="pre">mm^2</span></code>; if we interpret <code class="docutils literal notranslate"><span class="pre">kg</span></code> as a kilogram (mass) then these can’t be stress values! However, suppose for a moment that he were using <code class="docutils literal notranslate"><span class="pre">kg</span></code> to denote a kilogram-force, where <span class="math notranslate nohighlight">\(1 \text{kgf} = 1 \text{kg} \times 9.8 m/s^2\)</span>.</p>
 <p>Weibull gives a summary value for the same stress in the more interpretable units <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">/</span> <span class="pre">(cm</span> <span class="pre">s^2)</span></code>. Let’s check this hypothesis by comparing the proposed unit converstion with our data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (540 x 10^5 g/(cm s^2)) / (980 cm/s^2) * (kg / 1000 g) * (cm^2 / 100 mm^2)</span>
-<span class="mf">540e5</span> <span class="o">/</span> <span class="mi">980</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculated: </span><span class="si">{0:4.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">540e5</span> <span class="o">/</span> <span class="mi">980</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">df_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>This is very near the <code class="docutils literal notranslate"><span class="pre">sigma</span></code> values we have in our dataset, which lends a great deal of credibility to our interpretation of <code class="docutils literal notranslate"><span class="pre">kg</span></code> as <code class="docutils literal notranslate"><span class="pre">kgf</span></code>. With this, we can make a unit conversation to more standard units.</p>
+<p>This is very near the <code class="docutils literal notranslate"><span class="pre">sigma</span></code> values we have in our dataset, which lends a great deal of credibility to our interpretation of <code class="docutils literal notranslate"><span class="pre">kg</span></code> as <code class="docutils literal notranslate"><span class="pre">kgf</span></code>. With this determined, we can make a unit conversation to more standard units.</p>
 <div class="math notranslate nohighlight">
 \[\text{kgf} / \text{mm}^2 = 9.8 \text{MPa}\]</div>
-<div class="section" id="q3-convert-the-units-to-mpa">
-<h3><strong>Q3</strong>: Convert the units to MPa.<a class="headerlink" href="#q3-convert-the-units-to-mpa" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="q4-convert-the-units-to-mpa">
+<h3><strong>Q4</strong>: Convert the units to MPa.<a class="headerlink" href="#q4-convert-the-units-to-mpa" title="Permalink to this headline">¶</a></h3>
+<p>Replace the factor of <code class="docutils literal notranslate"><span class="pre">1.0</span></code> below to convert the units to MPa.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -510,18 +579,121 @@
 <span class="c1">###</span>
 
 
-<span class="n">df_q3</span> <span class="o">=</span> <span class="p">(</span>
+<span class="n">df_q4</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_long</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">sigma_MPa</span><span class="o">=</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">)</span> <span class="c1"># Replace 1.0 with correct factor</span>
 
 <span class="p">)</span>
 
-<span class="n">df_q3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_q4</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
+<div class="section" id="filtering-invalid-values">
+<h3>Filtering invalid values<a class="headerlink" href="#filtering-invalid-values" title="Permalink to this headline">¶</a></h3>
+<p>If we take a look at the end of the dataset, we see some strange <code class="docutils literal notranslate"><span class="pre">NaN</span></code> entries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_q4</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is a special value that denotes <em>Not a Number</em>. Essentially, this is the way we represent something invalid. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> can represent a missing value, a failed type conversion, or any of a variety of ways something can fail to be a number.</p>
+<p>Often, the way we deal with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values is simply to remove the offending row from our dataset. We can do that with a <em>filter</em> operation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_q4</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">not_nan</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">sigma_MPa</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">df_filtered</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="converting-types">
+<h3>Converting types<a class="headerlink" href="#converting-types" title="Permalink to this headline">¶</a></h3>
+<p>Lastly, it’s worth noting that all of our columns have a <em>data type</em> associated with them. We can inspect that type with the <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_q4</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">float64</span></code> is a way of representing a decimal value. The <code class="docutils literal notranslate"><span class="pre">area</span></code> and stress values we’d expect to be decimal values, but what’s up with <code class="docutils literal notranslate"><span class="pre">block</span></code> and <code class="docutils literal notranslate"><span class="pre">obs</span></code>? We’d expect those to be integers. If the types of your columns are not what you’d expect, you can do a <a class="reference external" href="https://en.wikipedia.org/wiki/Type_conversion">type conversion</a> to attempt a converstion from one data type to a desired type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_converted</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_filtered</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span>
+        <span class="n">block</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">as_int</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">block</span><span class="p">),</span>
+        <span class="n">obs</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">as_int</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">obs</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df_converted</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll see more about casting in the evening notebook. But now, we have a tidy and wrangled dataset!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_converted</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-the-payoff-of-tidying-and-wrangling">
+<h2>Bonus: The Payoff of Tidying and Wrangling<a class="headerlink" href="#bonus-the-payoff-of-tidying-and-wrangling" title="Permalink to this headline">¶</a></h2>
+<p>As a preview for why we want to learn how to tidy and wrangle data, let’s see what some of these tidy data tools will allow us to do. The <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/">plotnine</a> package is a plotting package designed for tidy data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">pt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using plotnine, we can very quickly construct simple graphs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_converted</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma_MPa&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Part of the power of plotnine (over other graphing software) is that we can very easily tweak our graphs to show additional information. For instance, if we also wanted to see if the samples in the two blocks were at all different, we could easily color the points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="p">(</span>
+    <span class="n">df_converted</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma_MPa&quot;</span><span class="p">))</span>
+<span class="c1">#     + pt.geom_point() # Original</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;block&quot;</span><span class="p">))</span> <span class="c1"># Modified for color</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll learn more about plotnine and visualization in tomorrow’s workshop exercises.</p>
 </div>
 </div>
 
