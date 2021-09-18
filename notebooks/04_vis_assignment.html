@@ -51,6 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Programmatic Data Operations" href="03_data_assignment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -85,22 +86,22 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../setup.html">
    Software Setup
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../exercises.html">
    Exercise Notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="00_tabula-webplotdigitizer_assignment.html">
      Data Extraction and Management
@@ -119,6 +120,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="03_data_assignment.html">
      Programmatic Data Operations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Visualization in Python
     </a>
    </li>
   </ul>
@@ -435,7 +441,7 @@
 </div>
 <div class="section" id="a-bit-of-wrangling">
 <h1>A Bit of Wrangling<a class="headerlink" href="#a-bit-of-wrangling" title="Permalink to this headline">¶</a></h1>
-<p>(First, download the data)</p>
+<p>Let’s download a dataset to use for this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
@@ -764,7 +770,7 @@
 <div class="section" id="dimension-reduction">
 <h1>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>Studying <em>all</em> the variables at once is difficult, as we cannot directly visualize 25-dimensional space! Instead, we will use different <em>dimension reduction</em> techniques to visualize the data while preserving low-dimensional structure. We will illustrate one advanced technique: UMAP.</p>
+<p>Studying <em>all</em> the variables at once is difficult, as we cannot directly visualize 25-dimensional space! Instead, we will use <em>dimension reduction</em> techniques to visualize the data while preserving low-dimensional structure. We will illustrate one advanced technique: UMAP.</p>
 <p><a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a> stands for <em>uniform manifold approximation</em>; this is a nonlinear dimension reduction technique. UMAP coordinates don’t have any physical interpretation, but the technique can frequently capture low-dimensional structure that PCA cannot. <a class="reference external" href="https://pair-code.github.io/understanding-umap/">This article</a> is a fantastic resource for understanding UMAP.</p>
 <p>The following carries out a UMAP transformation of the alloy dataset.</p>
 <div class="cell docutils container">
@@ -781,17 +787,18 @@
 </div>
 </div>
 </div>
-<p>TODO</p>
+<p>Let’s inspect the UMAP-transformed data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_umap_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_head</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>TODO</p>
+<p>The original numerical features have been reduced to just two; we use these two coordinates for plotting.</p>
 <div class="section" id="q11-recreate-this-scatterplot-using-the-umap-data">
 <h2><strong>Q11</strong>: Recreate this scatterplot using the UMAP data<a class="headerlink" href="#q11-recreate-this-scatterplot-using-the-umap-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -884,6 +891,15 @@
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="03_data_assignment.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Programmatic Data Operations</p>
+            </div>
+        </a>
+    </div>
 
 </div>
         

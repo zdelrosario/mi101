@@ -125,6 +125,11 @@
      Programmatic Data Operations
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_vis_assignment.html">
+     Visualization in Python
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -420,11 +425,6 @@
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conclusion">
-     Conclusion
-    </a>
    </li>
   </ul>
  </li>
@@ -918,7 +918,11 @@ else:
 </div>
 </div>
 <p>Note that we need to use the math operators <em>from numpy</em> in order to do this, which we specify using the “dot” notation.</p>
-<p>There exist various numpy functions which help us to <em>summarize</em> data. For instance, we could take the minimum value over the entire array <code class="docutils literal notranslate"><span class="pre">np.min(X)</span></code>, or along a particular axis <code class="docutils literal notranslate"><span class="pre">np.min(X,</span> <span class="pre">axis</span> <span class="pre">=</span> <span class="pre">0)</span></code>. The following calls illustrate the difference.</p>
+<p>There exist various numpy functions which help us to <em>summarize</em> data. For instance, we could take the minimum value over the entire array <code class="docutils literal notranslate"><span class="pre">np.min(X)</span></code>, or along a particular axis <code class="docutils literal notranslate"><span class="pre">np.min(X,</span> <span class="pre">axis=0)</span></code>. The following calls illustrate the difference.</p>
+<div class="admonition-function-arguments admonition">
+<p class="admonition-title">Function arguments</p>
+<p>Note that when calling a function, its inputs are called <em>arguments</em>. An argument preceded by a name and <code class="docutils literal notranslate"><span class="pre">=</span></code> sign is called a <em>keyword argument</em>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
@@ -1063,10 +1067,6 @@ else:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>This concludes the Introduction to Python and Jupyter lesson.</p>
 </div>
 </div>
 
