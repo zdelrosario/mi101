@@ -5,3 +5,5 @@ ghp-import
 nbstripout
 py-grama
 plotnine
+plotly
+umap-learn
