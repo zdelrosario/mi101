@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises in Machine Learning &#8212; Materials Informatics 101</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Materials Informatics 101</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Materials Informatics 101
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Software Setup
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../exercises.html">
+   Exercise Notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_tabula-webplotdigitizer_assignment.html">
+     Data Extraction and Management
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_python_assignment.html">
+     Intro to Python and Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_tidy_assignment.html">
+     Intro to Data Wrangling and Tidy Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_data_assignment.html">
+     Programmatic Data Operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_vis_assignment.html">
+     Visualization in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/05_ml_assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/zdelrosario/Materials Informatics 101"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/zdelrosario/Materials Informatics 101/issues/new?title=Issue%20on%20page%20%2Fnotebooks/05_ml_assignment.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/zdelrosario/Materials Informatics 101/main?urlpath=tree/docs/notebooks/05_ml_assignment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercises in Machine Learning
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-outcomes">
+     Learning outcomes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#helper-function">
+   Helper Function
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#primer-the-key-ideas">
+   Primer: The Key Ideas
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-fit-a-linear-regression">
+     Q1: Fit a linear regression
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-flexibility-and-underfitting">
+     Model Flexibility and
+     <em>
+      Underfitting
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#featurization">
+     Featurization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aside-features-as-data">
+     Aside: Features as data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-build-polynomial-features">
+     Q2: Build polynomial features
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-fit-a-quadratic-regression">
+     Q3: Fit a quadratic regression
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noise-and-overfitting">
+     Noise and
+     <em>
+      Overfitting
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-fit-a-quadratic-model-to-noisy-data">
+     Q4: Fit a quadratic model to noisy data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#avoiding-optimistic-estimates-cross-validation">
+     Avoiding Optimistic Estimates: Cross-Validation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q5-k-fold-cross-validation">
+     Q5: K-fold Cross-Validation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-models-for-materials-informatics">
+     Using Models for Materials Informatics
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exercises-in-machine-learning">
+<h1>Exercises in Machine Learning<a class="headerlink" href="#exercises-in-machine-learning" title="Permalink to this headline">¶</a></h1>
+<p><em>Author</em>: Zach del Rosario</p>
+<p>The <em>primary</em> purpose of this notebook is to help you <em>not get fooled by machine learning</em>! As Drew Conway notes, possessing hacking skills and substantive experience – but having no math or statistics background – puts one in the <a class="reference external" href="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram">danger zone</a>. While we can’t possibly cover <em>everything</em> you need in a single workshop, this exercise will highlight some of the challenges of doing machine learning well.</p>
+<div class="section" id="learning-outcomes">
+<h2>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
+<p>By working through this notebook, you will be able to:</p>
+<ul class="simple">
+<li><p>Use scikit-learn to fit regression models to data</p></li>
+<li><p>Use cross-validation to help avoid <em>underfitting</em> and <em>overfitting</em> of data</p></li>
+</ul>
+<p>Tips:</p>
+<ul class="simple">
+<li><p>This exercise will make heavy use of <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a>; you can find lots of useful info on the <a class="reference external" href="https://scikit-learn.org/stable/documentation.html">documentation site</a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">pt</span>
+<span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+
+<span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+
+<span class="c1"># Model training tools</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper functions</span>
+<span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add noise to deterministic functions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">new_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_function</span>
+
+<span class="c1"># Reference points for regression examples</span>
+<span class="n">X_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Reference models</span>
+<span class="k">def</span> <span class="nf">fcn_1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fcn_2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fcn_1_noisy</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">make_symbolic</span><span class="p">(</span><span class="n">add_noise</span><span class="p">(</span><span class="n">fcn_1</span><span class="p">))</span>
+<span class="n">fcn_2_noisy</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">make_symbolic</span><span class="p">(</span><span class="n">add_noise</span><span class="p">(</span><span class="n">fcn_2</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
+
+<span class="c1"># Package as a dataframe</span>
+<span class="n">df_data</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">X_ref</span><span class="p">,</span>
+    <span class="n">y_1</span><span class="o">=</span><span class="n">fcn_1_noisy</span><span class="p">(</span><span class="n">X_ref</span><span class="p">),</span>
+    <span class="n">y_2</span><span class="o">=</span><span class="n">fcn_2_noisy</span><span class="p">(</span><span class="n">X_ref</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="helper-function">
+<h1>Helper Function<a class="headerlink" href="#helper-function" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>(This function will automate some steps so we can focus on high-level ideas, but I define it here in case you’d like to see the details)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## For partial evaluation</span>
+<span class="kn">from</span> <span class="nn">toolz</span> <span class="kn">import</span> <span class="n">curry</span>
+
+<span class="c1">## Encapsulate featurizer and regressor in one function</span>
+<span class="k">class</span> <span class="nc">FunctionLM</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">var</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;_mean&quot;</span><span class="p">,</span> <span class="n">out</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runtime</span> <span class="o">=</span> <span class="n">runtime</span>
+
+    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="c1">## Check invariant; model inputs must be subset of df columns</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Model function `</span><span class="si">{}</span><span class="s2">` var not a subset of given columns&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1">## Featurize</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">X_feat</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="c1">## Predict</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_feat</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">)</span>
+
+<span class="c1">## Fitting routine</span>
+<span class="nd">@curry</span>
+<span class="k">def</span> <span class="nf">fit_regression</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fit a linear regression of specified order</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        df (DataFrame): Data for fitting</span>
+<span class="sd">        var (iterable of str): Names of input variable (feature); must be column in df</span>
+<span class="sd">        out (iterable of str): Name of output variable (response); must be column in df</span>
+<span class="sd">        order (int): Polynomial order for fit</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;This simple helper&quot;</span><span class="p">)</span>
+    <span class="c1"># Featurize</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">X_feat</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="c1"># Fit regression</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">out</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">lm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_feat</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Package</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="n">FunctionLM</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="s2">&quot;Linear Model&quot;</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">gr</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">functions</span><span class="o">=</span><span class="p">[</span><span class="n">fun</span><span class="p">],</span> <span class="n">domain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    
+<span class="c1">## Create pipe-enabled regression utility</span>
+<span class="n">ft_regression</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="n">fit_regression</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="primer-the-key-ideas">
+<h1>Primer: The Key Ideas<a class="headerlink" href="#primer-the-key-ideas" title="Permalink to this headline">¶</a></h1>
+<p>First we’ll cover some key ideas on simple functions. These are not ‘real’ data, but the simplicity of the examples will allow us to focus on concepts.</p>
+<p>Here I generate some data from a simple polynomial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="c1"># Ground-truth data; no noise</span>
+<span class="n">df_ex1</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">fcn_1</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="p">(</span>
+    <span class="n">df_ex1</span>
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will fit a simple <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression">linear regression</a> to these data. To do this, we’ll use the implementation <code class="docutils literal notranslate"><span class="pre">LinearRegression()</span></code> from scikit-learn. To start, we’ll assume that the data were generated from an underlying rule (a <em>model</em>) of the form</p>
+<div class="math notranslate nohighlight">
+\[y = m x + b,\]</div>
+<p>and attempt to <em>learn</em> the slope <span class="math notranslate nohighlight">\(m\)</span> and intercept <span class="math notranslate nohighlight">\(b\)</span> by <em>minimizing</em> the difference between the measured values <code class="docutils literal notranslate"><span class="pre">Y_1</span></code> and the predicted values <code class="docutils literal notranslate"><span class="pre">Y_1_linear_pred</span></code>.</p>
+<div class="section" id="q1-fit-a-linear-regression">
+<h2>Q1: Fit a linear regression<a class="headerlink" href="#q1-fit-a-linear-regression" title="Permalink to this headline">¶</a></h2>
+<p>Use the scikit-learn function <code class="docutils literal notranslate"><span class="pre">LinearRegression()</span></code> to fit a line to the data <code class="docutils literal notranslate"><span class="pre">X_c,</span> <span class="pre">Y_1</span></code>.</p>
+<p>Note: You will have to <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">look up</a> the documentation for <code class="docutils literal notranslate"><span class="pre">LinearRegression()</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Fit a line on X_c, Y_1</span>
+<span class="c1"># TODO: Fit a scikit learn regression with LinearRegression()</span>
+<span class="c1">###</span>
+
+<span class="n">reg_1_linear</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># -- NO NEED TO EDIT BELOW HERE -----</span>
+
+
+<span class="c1"># Predict using fitted model</span>
+<span class="n">Y_1_ref</span> <span class="o">=</span> <span class="n">fcn_1</span><span class="p">(</span><span class="n">X_ref</span><span class="p">)</span>
+<span class="n">Y_1_linear_pred</span> <span class="o">=</span> <span class="n">reg_1_linear</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">X_ref</span><span class="p">))</span>  <span class="c1"># Predict using model from above</span>
+
+<span class="c1"># Compute mean-squared error</span>
+<span class="n">nde_1</span> <span class="o">=</span> <span class="n">nde</span><span class="p">(</span><span class="n">Y_1_ref</span><span class="p">,</span> <span class="n">Y_1_linear_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nde = </span><span class="si">{0:4.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nde_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(Should be nde = 0.158)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_1_ref</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Truth&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_1</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Measured&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_1_linear_pred</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-flexibility-and-underfitting">
+<h2>Model Flexibility and <em>Underfitting</em><a class="headerlink" href="#model-flexibility-and-underfitting" title="Permalink to this headline">¶</a></h2>
+<p>Note that we had to <em>assume</em> a model-form in order to do the fitting. From the figure above, we can see that the model is close to the true values, but obviously lacks the curvature of the true data-generating process.</p>
+<p>This phenomenon – failing to capture behavior in the data – is called <em>underfitting</em>. This leads to error in the model, which is quantified above using <em>non-dimensional error</em> (NDE). To reduce this contribution to error, we need to make our model <em>more flexible</em> – one way to do this is to add additional <em>features</em> for the model to fit.</p>
+</div>
+<div class="section" id="featurization">
+<h2>Featurization<a class="headerlink" href="#featurization" title="Permalink to this headline">¶</a></h2>
+<p>In this simple problem, we only have a single input <span class="math notranslate nohighlight">\(x\)</span>. However, we can generate additional <em>features</em> on which to fit by considering additional <em>powers</em> of <span class="math notranslate nohighlight">\(x\)</span>. For instance, we could fit a quadratic model</p>
+<div class="math notranslate nohighlight">
+\[y = b x^0 + m_1 x^1 + m_2 x^2.\]</div>
+<p>It is a <em>common misconception</em> that linear regression <em>cannot fit nonlinear models</em>. Clearly the model above is nonlinear, but it is <em>linear in the features</em> <span class="math notranslate nohighlight">\([1, x^1, x^2]\)</span>. By providing the additional quadratic term, we give the model more flexibility to fit patterns in the data. Below, you will compute this quadratic featurization by using the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures()</span></code> function from scikit-learn.</p>
+</div>
+<div class="section" id="aside-features-as-data">
+<h2>Aside: Features as data<a class="headerlink" href="#aside-features-as-data" title="Permalink to this headline">¶</a></h2>
+<p>It may seem strange that we are featurizing by modifying the data – we’re essentially adding “fake” variables to our dataset. So long as we keep track of which variables are real and which are synthetic, this will not be an issue. In the next workshop exercise (on Sequential Learning), we will see ways to bring in additional “real” variables based on physical featurizations – in that case, we will also be adding columns.</p>
+</div>
+<div class="section" id="q2-build-polynomial-features">
+<h2>Q2: Build polynomial features<a class="headerlink" href="#q2-build-polynomial-features" title="Permalink to this headline">¶</a></h2>
+<p>Use the scikit-learn function <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures()</span></code> to build a matrix of values <span class="math notranslate nohighlight">\([1, x^1, x^2]\)</span>.</p>
+<p>Note: You’ll probably need to look up the documentation for <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures()</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Featurize the data</span>
+<span class="c1"># TODO: Do a Google search for &quot;scikit-learn PolynomialFeatures&quot; to find the documentation</span>
+<span class="c1"># TODO: Generate a transformation object using PolynomialFeatures(), assign to poly_2d</span>
+<span class="c1"># TODO: Compute a featurization of the data to add quadratic term, assign to X_quad</span>
+<span class="c1"># Use &quot;a method&quot; of poly_2d on X_c</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- UNCOMMENT AND FINISH THE CODE BELOW -----</span>
+<span class="c1"># poly_2d = None</span>
+<span class="c1"># X_quad = None</span>
+
+<span class="c1"># -- NO NEED TO EDIT BELOW HERE -----</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_quad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(Should be)</span><span class="se">\n</span><span class="s2"> [Constant,    Linear,     Quadratic]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this featurization gives rows of <span class="math notranslate nohighlight">\([x^0, x^1, x^2]\)</span>, as we discussed above. Now we can use the featurized data to fit a quadratic model, and can use the same transform to evaluate the model on the reference points <code class="docutils literal notranslate"><span class="pre">X_ref</span></code>.</p>
+<p>Once you have generated <code class="docutils literal notranslate"><span class="pre">X_quad</span></code>, we can visualize the features to make sure they’re what we would expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">X_quad</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Constant&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">X_quad</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linear&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">X_quad</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Quadratic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By passing these features to <code class="docutils literal notranslate"><span class="pre">LinearRegression()</span></code></p>
+</div>
+<div class="section" id="q3-fit-a-quadratic-regression">
+<h2>Q3: Fit a quadratic regression<a class="headerlink" href="#q3-fit-a-quadratic-regression" title="Permalink to this headline">¶</a></h2>
+<p>Use the transform <code class="docutils literal notranslate"><span class="pre">poly_2d</span></code> and featurized data <code class="docutils literal notranslate"><span class="pre">X_quad</span></code> to fit and evaluate a quadratic model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Use your featurization to fit a new model</span>
+<span class="c1"># TODO: Perform regression on X_quad, assign to reg_1_quad</span>
+<span class="c1"># TODO: Compute predictions on X_ref, assign to Y_1_quad_pred</span>
+<span class="c1"># make sure to featurize the inputs!</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- UNCOMMENT AND FINISH THIS CODE -----</span>
+<span class="c1"># reg_1_quad = None</span>
+<span class="c1"># Y_1_quad_pred = None</span>
+
+<span class="c1"># -- NO NEED TO EDIT BELOW HERE -----</span>
+
+<span class="c1"># Compute mean-squared error</span>
+<span class="n">nde_1_quad</span> <span class="o">=</span> <span class="n">nde</span><span class="p">(</span><span class="n">Y_1_ref</span><span class="p">,</span> <span class="n">Y_1_quad_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nde = </span><span class="si">{0:4.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nde_1_quad</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(Should be nde = 0.000)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_1_ref</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Truth&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_1</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Measured&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_1_quad_pred</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can see the model fits the data <em>perfectly</em>, which is corroborated by <code class="docutils literal notranslate"><span class="pre">nde</span> <span class="pre">=</span> <span class="pre">0.000</span></code>. This <em>suggests</em> that we have successfully discovered the <em>exact</em> rule that generated these data, which in <em>this special case happens to be true</em>.</p>
+<p>However, we will very rarely be able to fit the true function exactly. This is because real data tend to have <em>noise</em>, which corrupts the underlying function we are trying to learn.</p>
+</div>
+<div class="section" id="noise-and-overfitting">
+<h2>Noise and <em>Overfitting</em><a class="headerlink" href="#noise-and-overfitting" title="Permalink to this headline">¶</a></h2>
+<p>Below, I generate data from the same model, but add a little bit of noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Noisy data</span>
+<span class="n">Y_1_noisy</span> <span class="o">=</span> <span class="n">fcn_1_noisy</span><span class="p">(</span><span class="n">X_c</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_1_noisy</span><span class="p">,</span> <span class="s2">&quot;b.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y + noise&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, try fitting a quadratic to these new data, and inspect the fit.</p>
+</div>
+<div class="section" id="q4-fit-a-quadratic-model-to-noisy-data">
+<h2>Q4: Fit a quadratic model to noisy data<a class="headerlink" href="#q4-fit-a-quadratic-model-to-noisy-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Fit a model on X_1, Y_1_noisy</span>
+<span class="c1"># TODO: Compute predictions, assign to Y_1_noisy_pred</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- UNCOMMENT AND FINISH THIS CODE -----</span>
+<span class="c1"># Y_1_noisy_pred = None</span>
+
+
+<span class="c1"># -- NO NEED TO EDIT BELOW HERE -----</span>
+<span class="c1"># Compute the non-dimensional error</span>
+<span class="n">nde_1_noisy</span> <span class="o">=</span> <span class="n">nde</span><span class="p">(</span><span class="n">Y_1_ref</span><span class="p">,</span> <span class="n">Y_1_noisy_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nde = </span><span class="si">{0:4.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nde_1_noisy</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(Should be nde = 0.139)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_1_ref</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_1_noisy</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Measured&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_1_noisy_pred</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can see that the fit is no longer perfect, despite coming from the “same” model. This is also reflected in the finite NDE value. Since we already know that a quadratic can fit the underlying function perfectly, underfitting is not the issue here. Instead, the error is increased due to the noise in the data.</p>
+<p><em>However</em>, we have not yet seen a case of <em>overfitting</em>. To see that phenomenon, let’s consider a slightly more complicated function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate data from the true function</span>
+<span class="n">Y_2_ref</span> <span class="o">=</span> <span class="n">fcn_2</span><span class="p">(</span><span class="n">X_ref</span><span class="p">)</span>
+<span class="c1"># Generate noisy data</span>
+<span class="n">Y_2_noisy</span> <span class="o">=</span> <span class="n">fcn_2_noisy</span><span class="p">(</span><span class="n">X_c</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_2_ref</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_2_noisy</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Measured&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can see a somewhat complicated function that is quite corrupted by noise. Below, I’m going to fit a number of polynomial models of different orders. In practice, we would like to <em>make a decision</em> about what polynomial order to use. A sensible choice would be to pick the order that minimizes the error – let’s see which model accomplishes this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- DEMONSTRATION CODE, NO NEED TO EDIT -----</span>
+
+<span class="c1"># First, define a helper function to automate fitting a</span>
+<span class="c1"># regression of user-selected `order`</span>
+
+
+<span class="k">def</span> <span class="nf">fit_poly</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">X_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">reg</span><span class="p">,</span> <span class="n">poly</span>
+
+
+<span class="c1"># Setup to fit over different polynomial orders</span>
+<span class="n">Ord_all</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">Ord_plot</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">Y_pred_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">),</span> <span class="n">X_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">Y_pred_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">),</span> <span class="n">X_ref</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">NDE_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">))</span>
+<span class="n">NDE_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">))</span>
+
+<span class="c1"># Loop over orders</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_2_ref</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">)):</span>
+    <span class="c1"># Fit model</span>
+    <span class="n">reg</span><span class="p">,</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">fit_poly</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_2_noisy</span><span class="p">,</span> <span class="n">Ord_all</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># Predict on same data &amp; on reference points</span>
+    <span class="n">Y_pred_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_c</span><span class="p">))</span>
+    <span class="n">Y_pred_ref</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_ref</span><span class="p">))</span>
+    <span class="c1"># Compute error *on same data* -&gt; estimated error</span>
+    <span class="n">NDE_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nde</span><span class="p">(</span><span class="n">Y_2_noisy</span><span class="p">,</span> <span class="n">Y_pred_c</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># Compute error on reference points -&gt; &#39;true&#39; error</span>
+    <span class="n">NDE_ref</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nde</span><span class="p">(</span><span class="n">Y_2_ref</span><span class="p">,</span> <span class="n">Y_pred_ref</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="c1"># Plot curve</span>
+    <span class="k">if</span> <span class="n">Ord_all</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Ord_plot</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_ref</span><span class="p">,</span> <span class="n">Y_pred_ref</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Order = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_c</span><span class="p">,</span> <span class="n">Y_2_noisy</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here I’ve selected just a few of the models to plot. We can see</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">1</span></code> case is underfit, like we saw in the example above</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">9</span></code> case curves tortuously to go through <em>every single point</em>; this is an example of <em>overfitting</em></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">3</span></code> case is not perfect, but fairly close to the true (dashed) curve. This is a well-fit model.</p></li>
+</ul>
+<p>More generally, <em>overfitting</em> is when the model fits to spurrious patterns in the data; essentially, we are fitting to noise, rather than signal. We would like to detect and avoid overfitting in practice! While we can see above some suspicious behavior based on the fitted curves, we might like a <em>quantitative</em> way to compare models. We can do this with the NDE values, but there is a <em>subtle issue</em> at play here.</p>
+<p>Let’s compare the <code class="docutils literal notranslate"><span class="pre">NDE</span></code> values <code class="docutils literal notranslate"><span class="pre">Estimated</span></code> on only the available (noisy) data, and the error computed using evaluations from the <code class="docutils literal notranslate"><span class="pre">True</span></code> (noiseless) function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">,</span> <span class="n">NDE_c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estimated&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ord_all</span><span class="p">,</span> <span class="n">NDE_ref</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Poly Order&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ND Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can see the <code class="docutils literal notranslate"><span class="pre">Estimated</span></code> and <code class="docutils literal notranslate"><span class="pre">True</span></code> error values <em>greatly diverge</em>. This is <em>highly problematic</em> for two interrelated reasons:</p>
+<ol class="simple">
+<li><p>In practice, we would only have access to the <code class="docutils literal notranslate"><span class="pre">Estimated</span></code> curve, as the <code class="docutils literal notranslate"><span class="pre">True</span></code> curve relies on data we do not have.</p></li>
+<li><p>If we were to make a decision about <code class="docutils literal notranslate"><span class="pre">Poly</span> <span class="pre">Order</span></code> based on the <code class="docutils literal notranslate"><span class="pre">Estimated</span></code> curve, we would choose a much higher order than what would minimize the NDE in the <code class="docutils literal notranslate"><span class="pre">True</span></code> case.</p></li>
+</ol>
+<p>The underlying reason for the poor error estimate here is that <em>we are using the same data to both train and test the model</em>. We can improve our estimates for the error through various techniques; below, we will use the technique of <em>cross-validation</em>.</p>
+</div>
+<div class="section" id="avoiding-optimistic-estimates-cross-validation">
+<h2>Avoiding Optimistic Estimates: Cross-Validation<a class="headerlink" href="#avoiding-optimistic-estimates-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">Cross-validation</a> is a technique for estimating the error in a way that avoids the “optimism” we saw above. For the variant <em>k-fold cross-validation</em>, we split all our data into <em>folds</em>, and use these to build <em>training</em> and <em>test</em> sets. Generally:</p>
+<ul class="simple">
+<li><p><em>Training</em> data are used to fit a model</p></li>
+<li><p><em>Test</em> data are used to evaluate a model</p></li>
+</ul>
+<p><img alt="CV schematic" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg" /></p>
+<p>(Fabian Flock, via Wikimedia)</p>
+<p>In each of our <span class="math notranslate nohighlight">\(k\)</span> iterations, we <em>do not allow</em> the model to see a test fold (<code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">data</span></code> above) during training, and fit the model only on the remaining data (<code class="docutils literal notranslate"><span class="pre">Training</span> <span class="pre">data</span></code> above). After training, we compute our chosen error metric on the test fold. Finally, we repeat this process on each of the <span class="math notranslate nohighlight">\(k\)</span> chosen folds. This gives us a set of less optimistic estimates for the error, which we can summarize e.g. as a mean CV error.</p>
+<p>This procedure is implemented in the scikit-learn function <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code>. Use this routine to estimate the NDE in the case where the polynomial order is <code class="docutils literal notranslate"><span class="pre">9</span></code>. You will have to choose a number of folds to run; while <code class="docutils literal notranslate"><span class="pre">5</span></code> to <code class="docutils literal notranslate"><span class="pre">10</span></code> is common, since we have so few data, you will need to use a smaller number of folds.</p>
+</div>
+<div class="section" id="q5-k-fold-cross-validation">
+<h2>Q5: K-fold Cross-Validation<a class="headerlink" href="#q5-k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Perform k-fold cross validation on the order <code class="docutils literal notranslate"><span class="pre">9</span></code> polynomial model using the scikit-learn function <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code>. You will need to look up the documentation for <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code>, and pick the <code class="docutils literal notranslate"><span class="pre">cv</span></code> strategy to use the k-fold strategy with a reasonable value for <span class="math notranslate nohighlight">\(k\)</span>. Make sure to report both the <code class="docutils literal notranslate"><span class="pre">train_score</span></code> and <code class="docutils literal notranslate"><span class="pre">test_score</span></code> values. Compare the two sets of values.</p>
+<p><em>Hints:</em></p>
+<ul class="simple">
+<li><p>You can pass <code class="docutils literal notranslate"><span class="pre">nde_score</span></code> to the keyword argument <code class="docutils literal notranslate"><span class="pre">scoring</span></code> to have <code class="docutils literal notranslate"><span class="pre">cross_validate()</span></code> compute the NDE</p></li>
+<li><p>You can use the helper function <code class="docutils literal notranslate"><span class="pre">estimator,</span> <span class="pre">poly</span> <span class="pre">=</span> <span class="pre">fit_poly()</span></code> function above to help complete this task</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
+<span class="c1"># TASK: Use cross_validate() on the 9th order model to estimate the NDE</span>
+<span class="c1"># TODO: Compute the cross validation scores and assign to `scores`</span>
+<span class="c1"># Hint, you can pass the helper function `nde_score` (defined above) to cross_validate()</span>
+<span class="c1">###</span>
+
+<span class="c1"># -- WRITE YOUR CODE HERE -----</span>
+
+
+<span class="c1"># -- NO NEED TO EDIT BELOW -----</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">train_score</span></code> values are quite optimistic, while the <code class="docutils literal notranslate"><span class="pre">test_score</span></code> values are <em>abysmal</em>.</p>
+<p>Below, I show results for performing k-fold cross validation across the same set of polynomial orders as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># REDACTED....</span>
+<span class="c1"># -- NO NEED TO WRITE CODE HERE -----</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img src="../images/05_cv_order.png">
+<!-- task-end --><p>The individual CV estimates are reported as dots, while their mean is given as a line. Here we can see that the NDE takes reasonable values for order at or below <code class="docutils literal notranslate"><span class="pre">3</span></code>. Beyond this point, the NDE explodes as models begin to overfit wildly. These cross-validated error metrics would be far more informative for making a decision about polynomial order.</p>
+<p>Here we have just one tunable knob (polynomial order) that defines our model. More generally, these kinds of user-selected quantities are called <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)">hyperparameters</a>. Cross-validation and related techniques are key to <em>tuning hyperparameters</em>.</p>
+</div>
+<div class="section" id="using-models-for-materials-informatics">
+<h2>Using Models for Materials Informatics<a class="headerlink" href="#using-models-for-materials-informatics" title="Permalink to this headline">¶</a></h2>
+<p>In the final part of the workshop, we will discuss how to <em>use</em> these machine learning models to do useful work in materials science. Stay tuned!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Zachary del Rosario<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
