@@ -317,8 +317,8 @@
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beyond-k-folds-cross-validation-loco-cv">
-   Beyond K-folds Cross-Validation: LOCO-CV
+  <a class="reference internal nav-link" href="#towards-a-real-case-magpie-features-and-alloy-data">
+   Towards a real case: Magpie Features and Alloy Data
   </a>
  </li>
 </ul>
@@ -358,6 +358,13 @@
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+
+<span class="c1"># Show all pandas columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># For downloading data</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
@@ -400,7 +407,7 @@
 <div class="section" id="helper-function">
 <h1>Helper Function<a class="headerlink" href="#helper-function" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>(This function will automate some steps so we can focus on high-level ideas, but I define it here in case you’d like to see the details)</p>
+<p>This function will automate some steps so we can focus on high-level ideas, but I define it here in case you’d like to see the details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## For partial evaluation</span>
@@ -711,7 +718,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="c1"># More complicated function with noise</span>
 <span class="n">df_ex3</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">fcn_2_noisy</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
 <span class="p">)</span>
 
@@ -729,9 +736,9 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- DEMONSTRATION CODE, NO NEED TO EDIT -----</span>
 <span class="c1"># Fit on many different orders</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+<span class="n">df_train_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_test_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Fit the model</span>
     <span class="n">md_tmp</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">df_ex3</span>
@@ -743,19 +750,19 @@
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_ex3</span><span class="p">)</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_train_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_train_err</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="c1"># Evaluate model on test data</span>
     <span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">fcn_2</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md</span><span class="o">=</span><span class="n">md_tmp</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_test</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_test_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_test_err</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Visualize a few cases</span>
 <span class="p">(</span>
-    <span class="n">df_train</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">var_in</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">19</span><span class="p">]))</span>
+    <span class="n">df_train_err</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">var_in</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>
     <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y_mean&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(order)&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_ex3</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">))</span>
@@ -767,7 +774,7 @@
 <p>Here I’ve selected just a few of the models to plot. We can see</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">1</span></code> case is underfit, like we saw in the example above</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">19</span></code> case curves tortuously to go through <em>every single point</em>; this is an example of <em>overfitting</em></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">9</span></code> case curves tortuously to go through many points; this is an example of <em>overfitting</em></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">3</span></code> case is not perfect, but tends to balance between underfitting and overfitting. This is a well-fit model.</p></li>
 </ul>
 <p>More generally, <em>overfitting</em> is when the model fits to spurrious patterns in the data; essentially, we are fitting to noise, rather than signal. We would like to detect and avoid overfitting in practice! While we can see above some suspicious behavior based on the fitted curves, we might like a <em>quantitative</em> way to compare models. We can do this with the NDE values, but there is a <em>subtle issue</em> at play here.</p>
@@ -781,7 +788,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="p">(</span>
-    <span class="n">df_train</span>
+    <span class="n">df_train_err</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
         <span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">rmse</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y_mean</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
@@ -802,10 +809,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_train</span> 
+    <span class="n">df_train_err</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
-        <span class="n">df_test</span>
+        <span class="n">df_test_err</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
@@ -863,11 +870,16 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- DEMONSTRATION CODE, NO NEED TO EDIT -----</span>
 <span class="c1"># Fit on many different orders</span>
 <span class="n">df_kfolds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Evaluate model on test data</span>
     <span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">df_ex3</span>
-        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span><span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">))</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+            <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">),</span>
+            <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+            <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="p">)</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">df_kfolds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_kfolds</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -876,8 +888,8 @@
 <span class="p">(</span>
     <span class="n">df_kfolds</span>
     <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;order&quot;</span><span class="p">,</span> <span class="s2">&quot;mse_y&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">()</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;order&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">scale_y_log10</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
@@ -888,9 +900,189 @@
 <p>Here we have just one tunable knob (polynomial order) that defines our model. More generally, these kinds of user-selected quantities are called <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)">hyperparameters</a>. Cross-validation and related techniques are key to <em>tuning hyperparameters</em>.</p>
 </div>
 </div>
-<div class="section" id="beyond-k-folds-cross-validation-loco-cv">
-<h1>Beyond K-folds Cross-Validation: LOCO-CV<a class="headerlink" href="#beyond-k-folds-cross-validation-loco-cv" title="Permalink to this headline">¶</a></h1>
-<p>TODO: Extrapolation and LOCO-CV</p>
+<div class="section" id="towards-a-real-case-magpie-features-and-alloy-data">
+<h1>Towards a real case: Magpie Features and Alloy Data<a class="headerlink" href="#towards-a-real-case-magpie-features-and-alloy-data" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
+<span class="n">filename_data</span> <span class="o">=</span> <span class="s2">&quot;./data/agarawal_data.csv&quot;</span>
+
+<span class="c1"># The following code downloads the data, or (after downloaded)</span>
+<span class="c1"># loads the data from a cached CSV on your machine</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename_data</span><span class="p">):</span>
+    <span class="c1"># Make request for data</span>
+    <span class="n">url_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zdelrosario/mi101/main/mi101/data/agrawal_data.csv&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_data</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">filename_data</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Alloy data downloaded from public GitHub file&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Note data already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Alloy data loaded locally&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Read the data into memory</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_data</span><span class="p">)</span>
+
+<span class="c1"># Drop the index columns</span>
+<span class="n">df_fatigue_data</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_raw</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="s2">&quot;Sample Number&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">,</span> <span class="s2">&quot;chemical_formula&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_fatigue_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Obtain column names for the response and features</span>
+<span class="n">col_response</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]</span>
+<span class="n">col_features</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="n">col_response</span><span class="p">,</span> <span class="s2">&quot;chemical_formula&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">col_features</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_fatigue</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_features</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">md_fatigue</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df_fatigue_data</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength_mean&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]),</span>
+        <span class="n">rsq</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">rsq</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength_mean&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]),</span>
+        <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength_mean&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.tran</span> <span class="kn">import</span> <span class="n">tf_feat_composition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_fatigue_magpie</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">tf_feat_composition</span><span class="p">(</span><span class="n">var_formula</span><span class="o">=</span><span class="s2">&quot;chemical_formula&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_fatigue_magpie</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Obtain full feature set</span>
+<span class="n">col_feat_magpie</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_magpie</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="n">col_response</span><span class="p">,</span> <span class="s2">&quot;chemical_formula&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">col_feat_magpie</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_err_feat</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_features</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing only&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_err_magpie</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_magpie</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_feat_magpie</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing + Magpie&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_err_feat</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_magpie</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;feats&quot;</span><span class="p">,</span> <span class="s2">&quot;ndme_Fatigue Strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;feats&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_err_feat_ord2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_features</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing only, order=2&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_err_magpie_ord2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_magpie</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_feat_magpie</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing + Magpie, order=2&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_err_feat</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_magpie</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_feat_ord2</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_magpie_ord2</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;feats&quot;</span><span class="p">,</span> <span class="s2">&quot;ndme_Fatigue Strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;feats&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">scale_y_log10</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">axis_text_x</span><span class="o">=</span><span class="n">pt</span><span class="o">.</span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">270</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

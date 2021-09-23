@@ -317,8 +317,8 @@
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beyond-k-folds-cross-validation-loco-cv">
-   Beyond K-folds Cross-Validation: LOCO-CV
+  <a class="reference internal nav-link" href="#towards-a-real-case-magpie-features-and-alloy-data">
+   Towards a real case: Magpie Features and Alloy Data
   </a>
  </li>
 </ul>
@@ -358,6 +358,13 @@
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
+
+<span class="c1"># Show all pandas columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># For downloading data</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
@@ -400,7 +407,7 @@
 <div class="section" id="helper-function">
 <h1>Helper Function<a class="headerlink" href="#helper-function" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>(This function will automate some steps so we can focus on high-level ideas, but I define it here in case you’d like to see the details)</p>
+<p>This function will automate some steps so we can focus on high-level ideas, but I define it here in case you’d like to see the details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## For partial evaluation</span>
@@ -498,7 +505,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_6_0.png" src="../_images/05_ml_solution_6_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744263793643)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921381265)&gt;
 </pre></div>
 </div>
 </div>
@@ -535,7 +542,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_8_0.png" src="../_images/05_ml_solution_8_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744263793508)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921709621)&gt;
 </pre></div>
 </div>
 </div>
@@ -607,7 +614,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_13_0.png" src="../_images/05_ml_solution_13_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245620011)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921765669)&gt;
 </pre></div>
 </div>
 </div>
@@ -667,7 +674,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_17_0.png" src="../_images/05_ml_solution_17_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245609855)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921706485)&gt;
 </pre></div>
 </div>
 </div>
@@ -698,7 +705,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_20_0.png" src="../_images/05_ml_solution_20_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744263824427)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763922077349)&gt;
 </pre></div>
 </div>
 </div>
@@ -721,7 +728,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_22_0.png" src="../_images/05_ml_solution_22_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245588896)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763922139673)&gt;
 </pre></div>
 </div>
 </div>
@@ -760,7 +767,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_25_0.png" src="../_images/05_ml_solution_25_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245563986)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763922227121)&gt;
 </pre></div>
 </div>
 </div>
@@ -771,7 +778,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="c1"># More complicated function with noise</span>
 <span class="n">df_ex3</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">fcn_2_noisy</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
 <span class="p">)</span>
 
@@ -785,7 +792,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_27_0.png" src="../_images/05_ml_solution_27_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245572886)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921985525)&gt;
 </pre></div>
 </div>
 </div>
@@ -795,9 +802,9 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- DEMONSTRATION CODE, NO NEED TO EDIT -----</span>
 <span class="c1"># Fit on many different orders</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+<span class="n">df_train_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_test_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Fit the model</span>
     <span class="n">md_tmp</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">df_ex3</span>
@@ -809,19 +816,19 @@
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_ex3</span><span class="p">)</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_train_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_train_err</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="c1"># Evaluate model on test data</span>
     <span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">gr</span><span class="o">.</span><span class="n">df_make</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">fcn_2</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_md</span><span class="p">(</span><span class="n">md</span><span class="o">=</span><span class="n">md_tmp</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_test</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_test_err</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_test_err</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Visualize a few cases</span>
 <span class="p">(</span>
-    <span class="n">df_train</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">var_in</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">19</span><span class="p">]))</span>
+    <span class="n">df_train_err</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_filter</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">var_in</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>
     <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y_mean&quot;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;factor(order)&quot;</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
     <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_ex3</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">))</span>
@@ -831,7 +838,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/05_ml_solution_29_0.png" src="../_images/05_ml_solution_29_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245557797)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921707845)&gt;
 </pre></div>
 </div>
 </div>
@@ -839,7 +846,7 @@
 <p>Here I’ve selected just a few of the models to plot. We can see</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">1</span></code> case is underfit, like we saw in the example above</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">19</span></code> case curves tortuously to go through <em>every single point</em>; this is an example of <em>overfitting</em></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">9</span></code> case curves tortuously to go through many points; this is an example of <em>overfitting</em></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Order</span> <span class="pre">=</span> <span class="pre">3</span></code> case is not perfect, but tends to balance between underfitting and overfitting. This is a well-fit model.</p></li>
 </ul>
 <p>More generally, <em>overfitting</em> is when the model fits to spurrious patterns in the data; essentially, we are fitting to noise, rather than signal. We would like to detect and avoid overfitting in practice! While we can see above some suspicious behavior based on the fitted curves, we might like a <em>quantitative</em> way to compare models. We can do this with the NDE values, but there is a <em>subtle issue</em> at play here.</p>
@@ -853,7 +860,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="p">(</span>
-    <span class="n">df_train</span>
+    <span class="n">df_train_err</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
         <span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">rmse</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">y_mean</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">y</span><span class="p">),</span>
@@ -893,133 +900,63 @@
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>4.969534e-01</td>
-      <td>0.934821</td>
-      <td>0.126109</td>
+      <td>4.668461e-01</td>
+      <td>0.732299</td>
+      <td>0.463738</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>4.072525e-01</td>
-      <td>0.766084</td>
-      <td>0.413115</td>
+      <td>4.050477e-01</td>
+      <td>0.635361</td>
+      <td>0.596316</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>1.648872e-01</td>
-      <td>0.310170</td>
-      <td>0.903795</td>
+      <td>1.577792e-01</td>
+      <td>0.247494</td>
+      <td>0.938747</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>1.648095e-01</td>
-      <td>0.310024</td>
-      <td>0.903885</td>
+      <td>1.329599e-01</td>
+      <td>0.208562</td>
+      <td>0.956502</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>1.542671e-01</td>
-      <td>0.290192</td>
-      <td>0.915788</td>
+      <td>1.326107e-01</td>
+      <td>0.208014</td>
+      <td>0.956730</td>
     </tr>
     <tr>
       <th>5</th>
       <td>6</td>
-      <td>1.454572e-01</td>
-      <td>0.273620</td>
-      <td>0.925132</td>
+      <td>9.853369e-02</td>
+      <td>0.154561</td>
+      <td>0.976111</td>
     </tr>
     <tr>
       <th>6</th>
       <td>7</td>
-      <td>1.264886e-01</td>
-      <td>0.237938</td>
-      <td>0.943385</td>
+      <td>6.828802e-02</td>
+      <td>0.107117</td>
+      <td>0.988526</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
-      <td>1.237756e-01</td>
-      <td>0.232835</td>
-      <td>0.945788</td>
+      <td>6.490153e-04</td>
+      <td>0.001018</td>
+      <td>0.999999</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
-      <td>1.233580e-01</td>
-      <td>0.232049</td>
-      <td>0.946153</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10</td>
-      <td>1.223457e-01</td>
-      <td>0.230145</td>
-      <td>0.947033</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>11</td>
-      <td>1.206520e-01</td>
-      <td>0.226959</td>
-      <td>0.948490</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>12</td>
-      <td>1.201218e-01</td>
-      <td>0.225962</td>
-      <td>0.948941</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>13</td>
-      <td>1.179524e-01</td>
-      <td>0.221881</td>
-      <td>0.950769</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>14</td>
-      <td>1.155649e-01</td>
-      <td>0.217390</td>
-      <td>0.952742</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>15</td>
-      <td>1.153814e-01</td>
-      <td>0.217044</td>
-      <td>0.952892</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>16</td>
-      <td>8.759447e-02</td>
-      <td>0.164774</td>
-      <td>0.972849</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>17</td>
-      <td>8.623900e-02</td>
-      <td>0.162225</td>
-      <td>0.973683</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>18</td>
-      <td>3.800031e-02</td>
-      <td>0.071483</td>
-      <td>0.994890</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>19</td>
-      <td>6.627494e-10</td>
+      <td>4.681930e-15</td>
       <td>0.000000</td>
       <td>1.000000</td>
     </tr>
@@ -1036,10 +973,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">df_train</span> 
+    <span class="n">df_train_err</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span>
-        <span class="n">df_test</span>
+        <span class="n">df_test_err</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_group_by</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="n">DF</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
@@ -1061,7 +998,7 @@
 </pre></div>
 </div>
 <img alt="../_images/05_ml_solution_35_1.png" src="../_images/05_ml_solution_35_1.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245519415)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763922733437)&gt;
 </pre></div>
 </div>
 </div>
@@ -1131,32 +1068,32 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.085764</td>
-      <td>0.262905</td>
+      <td>0.108525</td>
+      <td>-845.309197</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.034198</td>
-      <td>0.645016</td>
+      <td>171.743484</td>
+      <td>-1999.093619</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>5.133231</td>
-      <td>-8.366486</td>
+      <td>49.593784</td>
+      <td>-37.624744</td>
       <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.026155</td>
-      <td>0.483682</td>
+      <td>0.082404</td>
+      <td>-1.476301</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.969556</td>
-      <td>-14.717339</td>
+      <td>1.724433</td>
+      <td>-15.585805</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -1170,11 +1107,16 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- DEMONSTRATION CODE, NO NEED TO EDIT -----</span>
 <span class="c1"># Fit on many different orders</span>
 <span class="n">df_kfolds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Evaluate model on test data</span>
     <span class="n">df_tmp</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">df_ex3</span>
-        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span><span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">))</span>
+        <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+            <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">),</span>
+            <span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+            <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="p">)</span>
         <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">df_kfolds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_kfolds</span><span class="p">,</span> <span class="n">df_tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1183,59 +1125,16 @@
 <span class="p">(</span>
     <span class="n">df_kfolds</span>
     <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;order&quot;</span><span class="p">,</span> <span class="s2">&quot;mse_y&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_smooth</span><span class="p">()</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;order&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">scale_y_log10</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-... tran_kfolds is using default k=5
-... tran_kfolds is using default summaries mse and rsq
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Confidence intervals are not yet implementedfor lowess smoothings.
-</pre></div>
-</div>
-<img alt="../_images/05_ml_solution_40_2.png" src="../_images/05_ml_solution_40_2.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8744245489448)&gt;
+<img alt="../_images/05_ml_solution_40_0.png" src="../_images/05_ml_solution_40_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763922886801)&gt;
 </pre></div>
 </div>
 </div>
@@ -1244,9 +1143,2414 @@
 <p>Here we have just one tunable knob (polynomial order) that defines our model. More generally, these kinds of user-selected quantities are called <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)">hyperparameters</a>. Cross-validation and related techniques are key to <em>tuning hyperparameters</em>.</p>
 </div>
 </div>
-<div class="section" id="beyond-k-folds-cross-validation-loco-cv">
-<h1>Beyond K-folds Cross-Validation: LOCO-CV<a class="headerlink" href="#beyond-k-folds-cross-validation-loco-cv" title="Permalink to this headline">¶</a></h1>
-<p>TODO: Extrapolation and LOCO-CV</p>
+<div class="section" id="towards-a-real-case-magpie-features-and-alloy-data">
+<h1>Towards a real case: Magpie Features and Alloy Data<a class="headerlink" href="#towards-a-real-case-magpie-features-and-alloy-data" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
+<span class="n">filename_data</span> <span class="o">=</span> <span class="s2">&quot;./data/agarawal_data.csv&quot;</span>
+
+<span class="c1"># The following code downloads the data, or (after downloaded)</span>
+<span class="c1"># loads the data from a cached CSV on your machine</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename_data</span><span class="p">):</span>
+    <span class="c1"># Make request for data</span>
+    <span class="n">url_data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zdelrosario/mi101/main/mi101/data/agrawal_data.csv&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_data</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">open</span><span class="p">(</span><span class="n">filename_data</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Alloy data downloaded from public GitHub file&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Note data already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Alloy data loaded locally&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Read the data into memory</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename_data</span><span class="p">)</span>
+
+<span class="c1"># Drop the index columns</span>
+<span class="n">df_fatigue_data</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_raw</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="s2">&quot;Sample Number&quot;</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">,</span> <span class="s2">&quot;chemical_formula&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Alloy data loaded locally
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_fatigue_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fatigue Strength</th>
+      <th>chemical_formula</th>
+      <th>Area Proportion of Inclusions Occurring in Discontinuous Array</th>
+      <th>Quenching Media Temperature (for Carburization)</th>
+      <th>Diffusion time</th>
+      <th>Through Hardening Time</th>
+      <th>Cooling Rate for Tempering</th>
+      <th>Reduction Ratio (Ingot to Bar)</th>
+      <th>Normalizing Temperature</th>
+      <th>Diffusion Temperature</th>
+      <th>Carburization Time</th>
+      <th>Cooling Rate for Through Hardening</th>
+      <th>Area Proportion of Inclusions Deformed by Plastic Work</th>
+      <th>Tempering Temperature</th>
+      <th>Area Proportion of Isolated Inclusions</th>
+      <th>Tempering Time</th>
+      <th>Carburization Temperature</th>
+      <th>Through Hardening Temperature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>451.0</td>
+      <td>Fe0.9759C0.004Mn0.0156Cu0.0005Si0.0022P0.00011...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>530.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.02</td>
+      <td>550.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>631.0</td>
+      <td>Fe0.97088C0.004Mn0.0074Cu0.001Si0.0025P0.00014...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>510.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.04</td>
+      <td>550.0</td>
+      <td>0.03</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>406.0</td>
+      <td>Fe0.97588C0.0038Mn0.0152Cu0.0007Si0.0027P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>610.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.03</td>
+      <td>600.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>433.0</td>
+      <td>Fe0.98575C0.0037Mn0.0072Cu0.0002Si0.0024P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>1740.0</td>
+      <td>865.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>24.0</td>
+      <td>0.10</td>
+      <td>550.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>865.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>385.0</td>
+      <td>Fe0.97588C0.0038Mn0.0152Cu0.0007Si0.0027P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>610.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.03</td>
+      <td>650.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>490.0</td>
+      <td>Fe0.97201C0.0041Mn0.0077Cu0.0005Si0.0024P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>530.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.03</td>
+      <td>650.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>463.0</td>
+      <td>Fe0.98354C0.0048Mn0.0075Si0.0025P0.00024S0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>1740.0</td>
+      <td>845.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>24.0</td>
+      <td>0.08</td>
+      <td>600.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>592.0</td>
+      <td>Fe0.97476C0.0035Mn0.007Cu0.0002Si0.0025P0.0002...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>820.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.10</td>
+      <td>550.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>245.0</td>
+      <td>Fe0.98918C0.0026Mn0.0045Cu0.0003Si0.0022P0.000...</td>
+      <td>0.02</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>825.0</td>
+      <td>885.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.06</td>
+      <td>30.0</td>
+      <td>0.02</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>436</th>
+      <td>526.0</td>
+      <td>Fe0.97284C0.0036Mn0.0081Cu0.0008Si0.0023P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>530.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.02</td>
+      <td>550.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>437 rows × 18 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: Obtain column names for the response and features</span>
+<span class="n">col_response</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]</span>
+<span class="n">col_features</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="n">col_response</span><span class="p">,</span> <span class="s2">&quot;chemical_formula&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">col_features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Area Proportion of Inclusions Occurring in Discontinuous Array&#39;,
+       &#39;Quenching Media Temperature (for Carburization)&#39;, &#39;Diffusion time&#39;,
+       &#39;Through Hardening Time&#39;, &#39;Cooling Rate for Tempering&#39;,
+       &#39;Reduction Ratio (Ingot to Bar)&#39;, &#39;Normalizing Temperature&#39;,
+       &#39;Diffusion Temperature&#39;, &#39;Carburization Time&#39;,
+       &#39;Cooling Rate for Through Hardening&#39;,
+       &#39;Area Proportion of Inclusions Deformed by Plastic Work&#39;,
+       &#39;Tempering Temperature&#39;, &#39;Area Proportion of Isolated Inclusions&#39;,
+       &#39;Tempering Time&#39;, &#39;Carburization Temperature&#39;,
+       &#39;Through Hardening Temperature&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md_fatigue</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_features</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">md_fatigue</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ev_df</span><span class="p">(</span><span class="n">df_fatigue_data</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_summarize</span><span class="p">(</span>
+        <span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength_mean&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]),</span>
+        <span class="n">rsq</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">rsq</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength_mean&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]),</span>
+        <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength_mean&quot;</span><span class="p">],</span> <span class="n">DF</span><span class="p">[</span><span class="s2">&quot;Fatigue Strength&quot;</span><span class="p">]),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mse</th>
+      <th>rsq</th>
+      <th>ndme</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2508.45179</td>
+      <td>0.927817</td>
+      <td>0.268669</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grama.tran</span> <span class="kn">import</span> <span class="n">tf_feat_composition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_fatigue_magpie</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">tf_feat_composition</span><span class="p">(</span><span class="n">var_formula</span><span class="o">=</span><span class="s2">&quot;chemical_formula&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_fatigue_magpie</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StrToComposition:   0%|          | 0/437 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ElementProperty:   0%|          | 0/437 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fatigue Strength</th>
+      <th>chemical_formula</th>
+      <th>Area Proportion of Inclusions Occurring in Discontinuous Array</th>
+      <th>Quenching Media Temperature (for Carburization)</th>
+      <th>Diffusion time</th>
+      <th>Through Hardening Time</th>
+      <th>Cooling Rate for Tempering</th>
+      <th>Reduction Ratio (Ingot to Bar)</th>
+      <th>Normalizing Temperature</th>
+      <th>Diffusion Temperature</th>
+      <th>Carburization Time</th>
+      <th>Cooling Rate for Through Hardening</th>
+      <th>Area Proportion of Inclusions Deformed by Plastic Work</th>
+      <th>Tempering Temperature</th>
+      <th>Area Proportion of Isolated Inclusions</th>
+      <th>Tempering Time</th>
+      <th>Carburization Temperature</th>
+      <th>Through Hardening Temperature</th>
+      <th>MagpieData minimum Number</th>
+      <th>MagpieData maximum Number</th>
+      <th>MagpieData range Number</th>
+      <th>MagpieData mean Number</th>
+      <th>MagpieData avg_dev Number</th>
+      <th>MagpieData mode Number</th>
+      <th>MagpieData minimum MendeleevNumber</th>
+      <th>MagpieData maximum MendeleevNumber</th>
+      <th>MagpieData range MendeleevNumber</th>
+      <th>MagpieData mean MendeleevNumber</th>
+      <th>MagpieData avg_dev MendeleevNumber</th>
+      <th>MagpieData mode MendeleevNumber</th>
+      <th>MagpieData minimum AtomicWeight</th>
+      <th>MagpieData maximum AtomicWeight</th>
+      <th>MagpieData range AtomicWeight</th>
+      <th>MagpieData mean AtomicWeight</th>
+      <th>MagpieData avg_dev AtomicWeight</th>
+      <th>MagpieData mode AtomicWeight</th>
+      <th>MagpieData minimum MeltingT</th>
+      <th>MagpieData maximum MeltingT</th>
+      <th>MagpieData range MeltingT</th>
+      <th>MagpieData mean MeltingT</th>
+      <th>MagpieData avg_dev MeltingT</th>
+      <th>MagpieData mode MeltingT</th>
+      <th>MagpieData minimum Column</th>
+      <th>MagpieData maximum Column</th>
+      <th>MagpieData range Column</th>
+      <th>MagpieData mean Column</th>
+      <th>MagpieData avg_dev Column</th>
+      <th>MagpieData mode Column</th>
+      <th>MagpieData minimum Row</th>
+      <th>MagpieData maximum Row</th>
+      <th>MagpieData range Row</th>
+      <th>MagpieData mean Row</th>
+      <th>MagpieData avg_dev Row</th>
+      <th>MagpieData mode Row</th>
+      <th>MagpieData minimum CovalentRadius</th>
+      <th>MagpieData maximum CovalentRadius</th>
+      <th>MagpieData range CovalentRadius</th>
+      <th>MagpieData mean CovalentRadius</th>
+      <th>MagpieData avg_dev CovalentRadius</th>
+      <th>MagpieData mode CovalentRadius</th>
+      <th>MagpieData minimum Electronegativity</th>
+      <th>MagpieData maximum Electronegativity</th>
+      <th>MagpieData range Electronegativity</th>
+      <th>MagpieData mean Electronegativity</th>
+      <th>MagpieData avg_dev Electronegativity</th>
+      <th>MagpieData mode Electronegativity</th>
+      <th>MagpieData minimum NsValence</th>
+      <th>MagpieData maximum NsValence</th>
+      <th>MagpieData range NsValence</th>
+      <th>MagpieData mean NsValence</th>
+      <th>MagpieData avg_dev NsValence</th>
+      <th>MagpieData mode NsValence</th>
+      <th>MagpieData minimum NpValence</th>
+      <th>MagpieData maximum NpValence</th>
+      <th>MagpieData range NpValence</th>
+      <th>MagpieData mean NpValence</th>
+      <th>MagpieData avg_dev NpValence</th>
+      <th>MagpieData mode NpValence</th>
+      <th>MagpieData minimum NdValence</th>
+      <th>MagpieData maximum NdValence</th>
+      <th>MagpieData range NdValence</th>
+      <th>MagpieData mean NdValence</th>
+      <th>MagpieData avg_dev NdValence</th>
+      <th>MagpieData mode NdValence</th>
+      <th>MagpieData minimum NfValence</th>
+      <th>MagpieData maximum NfValence</th>
+      <th>MagpieData range NfValence</th>
+      <th>MagpieData mean NfValence</th>
+      <th>MagpieData avg_dev NfValence</th>
+      <th>MagpieData mode NfValence</th>
+      <th>MagpieData minimum NValence</th>
+      <th>MagpieData maximum NValence</th>
+      <th>MagpieData range NValence</th>
+      <th>MagpieData mean NValence</th>
+      <th>MagpieData avg_dev NValence</th>
+      <th>MagpieData mode NValence</th>
+      <th>MagpieData minimum NsUnfilled</th>
+      <th>MagpieData maximum NsUnfilled</th>
+      <th>MagpieData range NsUnfilled</th>
+      <th>MagpieData mean NsUnfilled</th>
+      <th>MagpieData avg_dev NsUnfilled</th>
+      <th>MagpieData mode NsUnfilled</th>
+      <th>MagpieData minimum NpUnfilled</th>
+      <th>MagpieData maximum NpUnfilled</th>
+      <th>MagpieData range NpUnfilled</th>
+      <th>MagpieData mean NpUnfilled</th>
+      <th>MagpieData avg_dev NpUnfilled</th>
+      <th>MagpieData mode NpUnfilled</th>
+      <th>MagpieData minimum NdUnfilled</th>
+      <th>MagpieData maximum NdUnfilled</th>
+      <th>MagpieData range NdUnfilled</th>
+      <th>MagpieData mean NdUnfilled</th>
+      <th>MagpieData avg_dev NdUnfilled</th>
+      <th>MagpieData mode NdUnfilled</th>
+      <th>MagpieData minimum NfUnfilled</th>
+      <th>MagpieData maximum NfUnfilled</th>
+      <th>MagpieData range NfUnfilled</th>
+      <th>MagpieData mean NfUnfilled</th>
+      <th>MagpieData avg_dev NfUnfilled</th>
+      <th>MagpieData mode NfUnfilled</th>
+      <th>MagpieData minimum NUnfilled</th>
+      <th>MagpieData maximum NUnfilled</th>
+      <th>MagpieData range NUnfilled</th>
+      <th>MagpieData mean NUnfilled</th>
+      <th>MagpieData avg_dev NUnfilled</th>
+      <th>MagpieData mode NUnfilled</th>
+      <th>MagpieData minimum GSvolume_pa</th>
+      <th>MagpieData maximum GSvolume_pa</th>
+      <th>MagpieData range GSvolume_pa</th>
+      <th>MagpieData mean GSvolume_pa</th>
+      <th>MagpieData avg_dev GSvolume_pa</th>
+      <th>MagpieData mode GSvolume_pa</th>
+      <th>MagpieData minimum GSbandgap</th>
+      <th>MagpieData maximum GSbandgap</th>
+      <th>MagpieData range GSbandgap</th>
+      <th>MagpieData mean GSbandgap</th>
+      <th>MagpieData avg_dev GSbandgap</th>
+      <th>MagpieData mode GSbandgap</th>
+      <th>MagpieData minimum GSmagmom</th>
+      <th>MagpieData maximum GSmagmom</th>
+      <th>MagpieData range GSmagmom</th>
+      <th>MagpieData mean GSmagmom</th>
+      <th>MagpieData avg_dev GSmagmom</th>
+      <th>MagpieData mode GSmagmom</th>
+      <th>MagpieData minimum SpaceGroupNumber</th>
+      <th>MagpieData maximum SpaceGroupNumber</th>
+      <th>MagpieData range SpaceGroupNumber</th>
+      <th>MagpieData mean SpaceGroupNumber</th>
+      <th>MagpieData avg_dev SpaceGroupNumber</th>
+      <th>MagpieData mode SpaceGroupNumber</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>451.0</td>
+      <td>Fe0.9759C0.004Mn0.0156Cu0.0005Si0.0022P0.00011...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>530.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.02</td>
+      <td>550.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+      <td>6.0</td>
+      <td>29.0</td>
+      <td>23.0</td>
+      <td>25.87579</td>
+      <td>0.248106</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.10385</td>
+      <td>0.310521</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>63.5460</td>
+      <td>51.5353</td>
+      <td>55.589285</td>
+      <td>0.510786</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1813.841076</td>
+      <td>16.732357</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.02479</td>
+      <td>0.084003</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.98950</td>
+      <td>0.020863</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>139.0</td>
+      <td>63.0</td>
+      <td>131.83262</td>
+      <td>0.563383</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.828778</td>
+      <td>0.009002</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9986</td>
+      <td>0.002796</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01349</td>
+      <td>0.026805</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94770</td>
+      <td>0.108594</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.95979</td>
+      <td>0.083970</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0014</td>
+      <td>0.002796</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02551</td>
+      <td>0.050688</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.98730</td>
+      <td>0.058207</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.01421</td>
+      <td>0.034331</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.731722</td>
+      <td>0.052205</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.020282</td>
+      <td>0.040300</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.060158</td>
+      <td>0.098575</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.60882</td>
+      <td>0.764209</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>631.0</td>
+      <td>Fe0.97088C0.004Mn0.0074Cu0.001Si0.0025P0.00014...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>510.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.04</td>
+      <td>550.0</td>
+      <td>0.03</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+      <td>6.0</td>
+      <td>42.0</td>
+      <td>36.0</td>
+      <td>25.89566</td>
+      <td>0.276888</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.09326</td>
+      <td>0.362195</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>95.9600</td>
+      <td>83.9493</td>
+      <td>55.633207</td>
+      <td>0.586942</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1820.812713</td>
+      <td>26.784568</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.01982</td>
+      <td>0.099631</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.99088</td>
+      <td>0.021714</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>154.0</td>
+      <td>78.0</td>
+      <td>131.85184</td>
+      <td>0.610758</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.830467</td>
+      <td>0.008331</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9876</td>
+      <td>0.024492</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01454</td>
+      <td>0.028879</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94848</td>
+      <td>0.117990</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.95062</td>
+      <td>0.111820</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0124</td>
+      <td>0.024492</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02698</td>
+      <td>0.053587</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.98232</td>
+      <td>0.072595</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.02170</td>
+      <td>0.059584</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.750695</td>
+      <td>0.087031</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.020761</td>
+      <td>0.041234</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.050632</td>
+      <td>0.116566</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.67630</td>
+      <td>0.635928</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>406.0</td>
+      <td>Fe0.97588C0.0038Mn0.0152Cu0.0007Si0.0027P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>610.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.03</td>
+      <td>600.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+      <td>6.0</td>
+      <td>29.0</td>
+      <td>23.0</td>
+      <td>25.87518</td>
+      <td>0.249268</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>83.0</td>
+      <td>34.0</td>
+      <td>55.10376</td>
+      <td>0.312739</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>63.5460</td>
+      <td>51.5353</td>
+      <td>55.587950</td>
+      <td>0.514704</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1813.830695</td>
+      <td>16.221727</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>15.0</td>
+      <td>9.0</td>
+      <td>8.02474</td>
+      <td>0.084703</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.98958</td>
+      <td>0.020702</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>139.0</td>
+      <td>63.0</td>
+      <td>131.84060</td>
+      <td>0.547594</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.55</td>
+      <td>1.00</td>
+      <td>1.828564</td>
+      <td>0.008907</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9980</td>
+      <td>0.003992</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>0.01336</td>
+      <td>0.026543</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94718</td>
+      <td>0.109998</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.95854</td>
+      <td>0.086403</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0020</td>
+      <td>0.003992</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02636</td>
+      <td>0.052371</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.98662</td>
+      <td>0.059556</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.01498</td>
+      <td>0.035106</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>22.570238</td>
+      <td>16.930238</td>
+      <td>10.735324</td>
+      <td>0.056896</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.019367</td>
+      <td>0.038477</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.059937</td>
+      <td>0.099005</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.64796</td>
+      <td>0.688013</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>433.0</td>
+      <td>Fe0.98575C0.0037Mn0.0072Cu0.0002Si0.0024P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>1740.0</td>
+      <td>865.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>24.0</td>
+      <td>0.10</td>
+      <td>550.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>865.0</td>
+      <td>6.0</td>
+      <td>29.0</td>
+      <td>23.0</td>
+      <td>25.88695</td>
+      <td>0.224969</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.12760</td>
+      <td>0.299052</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>63.5460</td>
+      <td>51.5353</td>
+      <td>55.602514</td>
+      <td>0.482476</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1815.502371</td>
+      <td>15.001282</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.03265</td>
+      <td>0.080053</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.98985</td>
+      <td>0.020169</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>139.0</td>
+      <td>63.0</td>
+      <td>131.78345</td>
+      <td>0.533820</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.831016</td>
+      <td>0.006118</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9996</td>
+      <td>0.000800</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01345</td>
+      <td>0.026726</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.95510</td>
+      <td>0.090956</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.96815</td>
+      <td>0.064818</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0004</td>
+      <td>0.000800</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02525</td>
+      <td>0.050174</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.98040</td>
+      <td>0.053731</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.00605</td>
+      <td>0.015110</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.737591</td>
+      <td>0.056455</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.019175</td>
+      <td>0.038102</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.080707</td>
+      <td>0.059058</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.71185</td>
+      <td>0.568203</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>385.0</td>
+      <td>Fe0.97588C0.0038Mn0.0152Cu0.0007Si0.0027P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>610.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.03</td>
+      <td>650.0</td>
+      <td>0.01</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+      <td>6.0</td>
+      <td>29.0</td>
+      <td>23.0</td>
+      <td>25.87518</td>
+      <td>0.249268</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>83.0</td>
+      <td>34.0</td>
+      <td>55.10376</td>
+      <td>0.312739</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>63.5460</td>
+      <td>51.5353</td>
+      <td>55.587950</td>
+      <td>0.514704</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1813.830695</td>
+      <td>16.221727</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>15.0</td>
+      <td>9.0</td>
+      <td>8.02474</td>
+      <td>0.084703</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.98958</td>
+      <td>0.020702</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>139.0</td>
+      <td>63.0</td>
+      <td>131.84060</td>
+      <td>0.547594</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.55</td>
+      <td>1.00</td>
+      <td>1.828564</td>
+      <td>0.008907</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9980</td>
+      <td>0.003992</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>0.01336</td>
+      <td>0.026543</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94718</td>
+      <td>0.109998</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.95854</td>
+      <td>0.086403</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0020</td>
+      <td>0.003992</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02636</td>
+      <td>0.052371</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.98662</td>
+      <td>0.059556</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.01498</td>
+      <td>0.035106</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>22.570238</td>
+      <td>16.930238</td>
+      <td>10.735324</td>
+      <td>0.056896</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.019367</td>
+      <td>0.038477</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.059937</td>
+      <td>0.099005</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.64796</td>
+      <td>0.688013</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>490.0</td>
+      <td>Fe0.97201C0.0041Mn0.0077Cu0.0005Si0.0024P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>530.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.03</td>
+      <td>650.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+      <td>6.0</td>
+      <td>42.0</td>
+      <td>36.0</td>
+      <td>25.89156</td>
+      <td>0.280038</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.06447</td>
+      <td>0.321348</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>95.9600</td>
+      <td>83.9493</td>
+      <td>55.629046</td>
+      <td>0.591512</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1822.102271</td>
+      <td>28.290384</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.01058</td>
+      <td>0.086797</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.99111</td>
+      <td>0.021659</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>154.0</td>
+      <td>78.0</td>
+      <td>131.88135</td>
+      <td>0.579794</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.830052</td>
+      <td>0.008019</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9869</td>
+      <td>0.025857</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01402</td>
+      <td>0.027850</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94176</td>
+      <td>0.118925</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.94268</td>
+      <td>0.116134</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0131</td>
+      <td>0.025857</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02672</td>
+      <td>0.053077</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.99034</td>
+      <td>0.059771</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.03016</td>
+      <td>0.064576</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.749287</td>
+      <td>0.083763</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.020847</td>
+      <td>0.041410</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.051826</td>
+      <td>0.114380</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.70007</td>
+      <td>0.590628</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>463.0</td>
+      <td>Fe0.98354C0.0048Mn0.0075Si0.0025P0.00024S0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>1740.0</td>
+      <td>845.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>24.0</td>
+      <td>0.08</td>
+      <td>600.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>845.0</td>
+      <td>6.0</td>
+      <td>28.0</td>
+      <td>22.0</td>
+      <td>25.86006</td>
+      <td>0.276129</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.14978</td>
+      <td>0.354176</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>58.6934</td>
+      <td>46.6827</td>
+      <td>55.543915</td>
+      <td>0.593519</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1817.838531</td>
+      <td>19.973873</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.03814</td>
+      <td>0.094673</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.98744</td>
+      <td>0.024925</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>139.0</td>
+      <td>63.0</td>
+      <td>131.72466</td>
+      <td>0.665297</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.831628</td>
+      <td>0.007771</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9990</td>
+      <td>0.001998</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01620</td>
+      <td>0.032149</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>5.94534</td>
+      <td>0.108342</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>6.0</td>
+      <td>7.96054</td>
+      <td>0.078437</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0010</td>
+      <td>0.001998</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.03036</td>
+      <td>0.060249</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.97706</td>
+      <td>0.062515</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>4.0</td>
+      <td>4.00842</td>
+      <td>0.018857</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.734557</td>
+      <td>0.061742</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.024388</td>
+      <td>0.048397</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.076043</td>
+      <td>0.068101</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.64674</td>
+      <td>0.695597</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>592.0</td>
+      <td>Fe0.97476C0.0035Mn0.007Cu0.0002Si0.0025P0.0002...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>820.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.10</td>
+      <td>550.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+      <td>6.0</td>
+      <td>42.0</td>
+      <td>36.0</td>
+      <td>25.89454</td>
+      <td>0.258376</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.06052</td>
+      <td>0.298236</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>95.9600</td>
+      <td>83.9493</td>
+      <td>55.632321</td>
+      <td>0.546836</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1820.378917</td>
+      <td>24.652757</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.00966</td>
+      <td>0.079592</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.99166</td>
+      <td>0.019773</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>154.0</td>
+      <td>78.0</td>
+      <td>131.89434</td>
+      <td>0.518359</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.829806</td>
+      <td>0.007313</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9882</td>
+      <td>0.023322</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01350</td>
+      <td>0.026826</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94356</td>
+      <td>0.111653</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.94526</td>
+      <td>0.107939</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0118</td>
+      <td>0.023322</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02514</td>
+      <td>0.049956</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.99204</td>
+      <td>0.053014</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.02898</td>
+      <td>0.059322</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.753156</td>
+      <td>0.084653</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.018487</td>
+      <td>0.036737</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.057392</td>
+      <td>0.103853</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.70006</td>
+      <td>0.591698</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>245.0</td>
+      <td>Fe0.98918C0.0026Mn0.0045Cu0.0003Si0.0022P0.000...</td>
+      <td>0.02</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>825.0</td>
+      <td>885.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.06</td>
+      <td>30.0</td>
+      <td>0.02</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>6.0</td>
+      <td>29.0</td>
+      <td>23.0</td>
+      <td>25.91194</td>
+      <td>0.176902</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.11106</td>
+      <td>0.253827</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>63.5460</td>
+      <td>51.5353</td>
+      <td>55.654185</td>
+      <td>0.383452</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1813.918083</td>
+      <td>10.813308</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.02850</td>
+      <td>0.067668</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.99208</td>
+      <td>0.015756</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>139.0</td>
+      <td>63.0</td>
+      <td>131.82808</td>
+      <td>0.411942</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.831007</td>
+      <td>0.004691</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9992</td>
+      <td>0.001599</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01142</td>
+      <td>0.022718</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.96468</td>
+      <td>0.073111</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.97530</td>
+      <td>0.051490</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0008</td>
+      <td>0.001599</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02050</td>
+      <td>0.040782</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.98212</td>
+      <td>0.045552</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.00342</td>
+      <td>0.010966</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.744280</td>
+      <td>0.057274</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.014385</td>
+      <td>0.028617</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.087946</td>
+      <td>0.044942</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.74824</td>
+      <td>0.498324</td>
+      <td>229.0</td>
+    </tr>
+    <tr>
+      <th>436</th>
+      <td>526.0</td>
+      <td>Fe0.97284C0.0036Mn0.0081Cu0.0008Si0.0023P0.000...</td>
+      <td>0.00</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>530.0</td>
+      <td>870.0</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>0.02</td>
+      <td>550.0</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>30.0</td>
+      <td>855.0</td>
+      <td>6.0</td>
+      <td>42.0</td>
+      <td>36.0</td>
+      <td>25.89776</td>
+      <td>0.257519</td>
+      <td>26.0</td>
+      <td>49.0</td>
+      <td>88.0</td>
+      <td>39.0</td>
+      <td>55.06178</td>
+      <td>0.306026</td>
+      <td>55.0</td>
+      <td>12.0107</td>
+      <td>95.9600</td>
+      <td>83.9493</td>
+      <td>55.640955</td>
+      <td>0.541728</td>
+      <td>55.845</td>
+      <td>317.3</td>
+      <td>3823.0</td>
+      <td>3505.7</td>
+      <td>1820.055717</td>
+      <td>24.991117</td>
+      <td>1811.0</td>
+      <td>6.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>8.01044</td>
+      <td>0.082922</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.99174</td>
+      <td>0.019617</td>
+      <td>4.0</td>
+      <td>76.0</td>
+      <td>154.0</td>
+      <td>78.0</td>
+      <td>131.89786</td>
+      <td>0.525299</td>
+      <td>132.0</td>
+      <td>1.55</td>
+      <td>2.58</td>
+      <td>1.03</td>
+      <td>1.829641</td>
+      <td>0.007889</td>
+      <td>1.83</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.9877</td>
+      <td>0.024297</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.01310</td>
+      <td>0.026036</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>5.94704</td>
+      <td>0.111581</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>7.94784</td>
+      <td>0.108422</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0123</td>
+      <td>0.024297</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0.02446</td>
+      <td>0.048614</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.99036</td>
+      <td>0.058334</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>4.02712</td>
+      <td>0.061137</td>
+      <td>4.0</td>
+      <td>5.64</td>
+      <td>25.786875</td>
+      <td>20.146875</td>
+      <td>10.749573</td>
+      <td>0.079545</td>
+      <td>10.73</td>
+      <td>0.0</td>
+      <td>4.496</td>
+      <td>4.496</td>
+      <td>0.018675</td>
+      <td>0.037117</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.110663</td>
+      <td>2.110663</td>
+      <td>2.053637</td>
+      <td>0.110953</td>
+      <td>2.110663</td>
+      <td>2.0</td>
+      <td>229.0</td>
+      <td>227.0</td>
+      <td>228.70024</td>
+      <td>0.590132</td>
+      <td>229.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>437 rows × 150 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Obtain full feature set</span>
+<span class="n">col_feat_magpie</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_magpie</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="n">col_response</span><span class="p">,</span> <span class="s2">&quot;chemical_formula&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">col_feat_magpie</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Area Proportion of Inclusions Occurring in Discontinuous Array&#39;,
+       &#39;Quenching Media Temperature (for Carburization)&#39;, &#39;Diffusion time&#39;,
+       &#39;Through Hardening Time&#39;, &#39;Cooling Rate for Tempering&#39;,
+       &#39;Reduction Ratio (Ingot to Bar)&#39;, &#39;Normalizing Temperature&#39;,
+       &#39;Diffusion Temperature&#39;, &#39;Carburization Time&#39;,
+       &#39;Cooling Rate for Through Hardening&#39;,
+       ...
+       &#39;MagpieData range GSmagmom&#39;, &#39;MagpieData mean GSmagmom&#39;,
+       &#39;MagpieData avg_dev GSmagmom&#39;, &#39;MagpieData mode GSmagmom&#39;,
+       &#39;MagpieData minimum SpaceGroupNumber&#39;,
+       &#39;MagpieData maximum SpaceGroupNumber&#39;,
+       &#39;MagpieData range SpaceGroupNumber&#39;, &#39;MagpieData mean SpaceGroupNumber&#39;,
+       &#39;MagpieData avg_dev SpaceGroupNumber&#39;,
+       &#39;MagpieData mode SpaceGroupNumber&#39;],
+      dtype=&#39;object&#39;, length=148)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_err_feat</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_features</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing only&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_err_magpie</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_magpie</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_feat_magpie</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing + Magpie&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df_err_feat</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_magpie</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;feats&quot;</span><span class="p">,</span> <span class="s2">&quot;ndme_Fatigue Strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;feats&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/05_ml_solution_56_0.png" src="../_images/05_ml_solution_56_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763922861049)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
+<span class="n">df_err_feat_ord2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_data</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_features</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing only, order=2&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_err_magpie_ord2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_fatigue_magpie</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_kfolds</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">=</span><span class="n">ft_regression</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">col_feat_magpie</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">col_response</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">summaries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mse</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">mse</span><span class="p">,</span> <span class="n">ndme</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">ndme</span><span class="p">),</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">feats</span><span class="o">=</span><span class="s2">&quot;processing + Magpie, order=2&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df_err_feat</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_magpie</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_feat_ord2</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_rows</span><span class="p">(</span><span class="n">df_err_magpie_ord2</span><span class="p">)</span>
+    
+    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;feats&quot;</span><span class="p">,</span> <span class="s2">&quot;ndme_Fatigue Strength&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;feats&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">scale_y_log10</span><span class="p">()</span>
+    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">axis_text_x</span><span class="o">=</span><span class="n">pt</span><span class="o">.</span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">270</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/05_ml_solution_59_0.png" src="../_images/05_ml_solution_59_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggplot: (8763921963945)&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
