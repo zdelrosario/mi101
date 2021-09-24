@@ -529,6 +529,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that code cells are visually distinct from markdown cells – they have a grey background and the <code class="docutils literal notranslate"><span class="pre">[-]:</span></code> prefix.</p>
 </div>
@@ -564,6 +569,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="variables">
@@ -591,6 +601,11 @@
 <span class="c1"># solution-begin</span>
 <span class="n">c</span>
 <span class="c1"># solution-end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -624,12 +639,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, &#39;a&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that I <em>needed</em> to place <code class="docutils literal notranslate"><span class="pre">l</span></code> at the end of the cell to display the result. <code class="docutils literal notranslate"><span class="pre">append()</span></code> modified the list <em>in place</em> – it makes the list longer.</p>
 <p>We can also <em>combine</em> lists with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
 </pre></div>
 </div>
 </div>
@@ -664,12 +689,25 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>l[0] = a
+l[1] = b
+l[2] = c
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also use <em>negative indices</em> to conveniently access from the “right”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[-1] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;l[-2] = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>l[-1] = c
+l[-2] = b
 </pre></div>
 </div>
 </div>
@@ -684,6 +722,15 @@
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The second element onwards:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Everything before the second element:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Everything before the second TO LAST element:&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The second element: 1
+The second and third elements: [1, 2]
+The second element onwards: [1, 2, 3, 4, 5]
+Everything before the second element: [0]
+Everything before the second TO LAST element: [0, 1, 2, 3]
 </pre></div>
 </div>
 </div>
@@ -707,6 +754,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1, 0, 1]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="modules">
@@ -725,6 +777,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell is finished running!
+</pre></div>
+</div>
+</div>
 </div>
 <p>In the first line of the above Code cell, we imported a function <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> from a module. A function takes some number of inputs (possibly zero, like <code class="docutils literal notranslate"><span class="pre">sleep()</span></code>), and returns some number of outputs (possibly zero, like <code class="docutils literal notranslate"><span class="pre">sleep()</span></code>). The inputs to a function are called <em>arguments</em>, and are put inside the parentheses, if needed.</p>
 <p>Python modules, even when installed on your machine, must be explicitly imported before they can be used. Some modules, like <code class="docutils literal notranslate"><span class="pre">time</span></code>, are bundled with Python (we might call these “standard modules”), while others must be installed separately from an external source (“third-party modules”) before importing.</p>
@@ -735,6 +792,11 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell is finished running!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell is finished running!
 </pre></div>
 </div>
 </div>
@@ -783,6 +845,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="conditionals-and-logic">
@@ -794,6 +861,11 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not printed....&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -816,15 +888,23 @@
 <p>Logic can be done using <em>keywords</em> <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, and <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Pick a number!
-n = ???
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment and pick a number!</span>
+<span class="c1"># n = ???</span>
+<span class="c1"># solution-begin</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># solution-end</span>
 
-if n &gt; 0:
-    print(&#39;Positive.&#39;)
-elif not n &gt;= 0:
-    print(&#39;Negative.&#39;)
-else:
-    print(&#39;Zero.&#39;)
+<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Positive.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Negative.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zero.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zero.
 </pre></div>
 </div>
 </div>
@@ -847,6 +927,16 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mylist[0] = a
+mylist[1] = b
+mylist[2] = c
+a
+b
+c
+</pre></div>
+</div>
+</div>
 </div>
 <p>Loops enable us to carry out (possibly complicated) operations on a set of data. For instance, we could use a loop to help parse a set of telephone numbers.</p>
 <div class="cell docutils container">
@@ -860,6 +950,11 @@ else:
 <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">:</span>
     <span class="n">area_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">area_codes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;650&#39;, &#39;101&#39;, &#39;911&#39;]
 </pre></div>
 </div>
 </div>
@@ -900,6 +995,15 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.81, 0.0, 0.19],
+ [0.89, 0.02, 0.09],
+ [0.99, 0.01, 0.0],
+ [0.95, 0.02, 0.02],
+ [0.7, 0.16, 0.14]]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="numpy-arrays">
@@ -916,6 +1020,12 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
+       [4, 5, 6]])
+</pre></div>
+</div>
+</div>
 </div>
 <p>An advantage of using numpy is that it makes mathematical operations more convenient. For instance, suppose we wanted to add one to every element of a list-of-lists. Unfortunately, we couldn’t use the following convenient syntax:</p>
 <div class="cell docutils container">
@@ -925,7 +1035,14 @@ else:
     <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_list</span><span class="p">)</span>
-<span class="n">X_list</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1">## TODO: Uncomment and try the following:</span>
+<span class="c1"># X_list + 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 2, 3], [4, 5, 6]]
 </pre></div>
 </div>
 </div>
@@ -937,11 +1054,23 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 3, 4],
+       [5, 6, 7]])
+</pre></div>
+</div>
+</div>
 </div>
 <p>Numpy also provides a large number of mathematical operations that are written to operate on numpy arrays. For instance, we could compute the log of every element.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.69314718, 1.09861229],
+       [1.38629436, 1.60943791, 1.79175947]])
 </pre></div>
 </div>
 </div>
@@ -960,12 +1089,25 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3]
+[1 4]
+1
+</pre></div>
+</div>
+</div>
 </div>
 <p>Since our array <code class="docutils literal notranslate"><span class="pre">X</span></code> has multiple axes, we need <em>multiple indices</em> to access particular values. We can index the nested arrays through multiple square brackets, or through a numpy-specific syntax.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Python syntax</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># Numpy-specific syntax</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
 </pre></div>
 </div>
 </div>
@@ -980,6 +1122,12 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3]
+[1 4]
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">:</span></code> operator returns all entries in along the selected axis.</p>
 <p>Unlike base python lists, numpy provides additional indexing facilities. For instance, we can perform <em>logical indexing</em>.</p>
@@ -988,6 +1136,15 @@ else:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ind_threshold</span><span class="p">)</span>  <span class="c1"># A set of boolean values</span>
 <span class="n">X</span><span class="p">[:,</span> <span class="n">ind_threshold</span><span class="p">]</span>  <span class="c1"># Logical indexing</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False  True  True]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 3],
+       [5, 6]])
 </pre></div>
 </div>
 </div>
@@ -1019,6 +1176,15 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.81, 0.  , 0.19],
+       [0.89, 0.02, 0.09],
+       [0.99, 0.01, 0.  ],
+       [0.95, 0.02, 0.02],
+       [0.7 , 0.16, 0.14]])
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1030,6 +1196,137 @@ else:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class list in module builtins:
+
+class list(object)
+ |  list(iterable=(), /)
+ |  
+ |  Built-in mutable sequence.
+ |  
+ |  If no argument is given, the constructor creates a new empty list.
+ |  The argument must be an iterable if specified.
+ |  
+ |  Methods defined here:
+ |  
+ |  __add__(self, value, /)
+ |      Return self+value.
+ |  
+ |  __contains__(self, key, /)
+ |      Return key in self.
+ |  
+ |  __delitem__(self, key, /)
+ |      Delete self[key].
+ |  
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |  
+ |  __ge__(self, value, /)
+ |      Return self&gt;=value.
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __getitem__(...)
+ |      x.__getitem__(y) &lt;==&gt; x[y]
+ |  
+ |  __gt__(self, value, /)
+ |      Return self&gt;value.
+ |  
+ |  __iadd__(self, value, /)
+ |      Implement self+=value.
+ |  
+ |  __imul__(self, value, /)
+ |      Implement self*=value.
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __le__(self, value, /)
+ |      Return self&lt;=value.
+ |  
+ |  __len__(self, /)
+ |      Return len(self).
+ |  
+ |  __lt__(self, value, /)
+ |      Return self&lt;value.
+ |  
+ |  __mul__(self, value, /)
+ |      Return self*value.
+ |  
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  __reversed__(self, /)
+ |      Return a reverse iterator over the list.
+ |  
+ |  __rmul__(self, value, /)
+ |      Return value*self.
+ |  
+ |  __setitem__(self, key, value, /)
+ |      Set self[key] to value.
+ |  
+ |  __sizeof__(self, /)
+ |      Return the size of the list in memory, in bytes.
+ |  
+ |  append(self, object, /)
+ |      Append object to the end of the list.
+ |  
+ |  clear(self, /)
+ |      Remove all items from list.
+ |  
+ |  copy(self, /)
+ |      Return a shallow copy of the list.
+ |  
+ |  count(self, value, /)
+ |      Return number of occurrences of value.
+ |  
+ |  extend(self, iterable, /)
+ |      Extend list by appending elements from the iterable.
+ |  
+ |  index(self, value, start=0, stop=9223372036854775807, /)
+ |      Return first index of value.
+ |      
+ |      Raises ValueError if the value is not present.
+ |  
+ |  insert(self, index, object, /)
+ |      Insert object before index.
+ |  
+ |  pop(self, index=-1, /)
+ |      Remove and return item at index (default last).
+ |      
+ |      Raises IndexError if list is empty or index is out of range.
+ |  
+ |  remove(self, value, /)
+ |      Remove first occurrence of value.
+ |      
+ |      Raises ValueError if the value is not present.
+ |  
+ |  reverse(self, /)
+ |      Reverse *IN PLACE*.
+ |  
+ |  sort(self, /, *, key=None, reverse=False)
+ |      Stable sort *IN PLACE*.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __hash__ = None
 </pre></div>
 </div>
 </div>
@@ -1065,6 +1362,15 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 431 µs, sys: 94 µs, total: 525 µs
+Wall time: 532 µs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.533
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1083,6 +1389,14 @@ else:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X	 X_list	 Y	 Y_sums	 Y_valid	 a	 angle_degrees	 angle_radians	 area_codes	 
+b	 c	 comp	 composition_fractions	 composition_fractions_valid	 cos	 digits	 elem	 i	 
+ind_threshold	 ind_valid	 l	 my_cosine	 my_sine	 mylist	 n	 np	 number	 
+pi	 result	 sin	 sleep	 test	 time	 var	 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1097,6 +1411,52 @@ else:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will list your system environment variables.</span>
 <span class="o">%</span><span class="k">env</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;TERM_PROGRAM&#39;: &#39;Apple_Terminal&#39;,
+ &#39;SHELL&#39;: &#39;/bin/zsh&#39;,
+ &#39;TERM&#39;: &#39;xterm-color&#39;,
+ &#39;TMPDIR&#39;: &#39;/var/folders/xv/k5cp232j1cn3y8kym53_nnkc0000gn/T/&#39;,
+ &#39;TERM_PROGRAM_VERSION&#39;: &#39;433&#39;,
+ &#39;TERM_SESSION_ID&#39;: &#39;EAA881E9-EF29-47FE-8298-CBB86EEEC72B&#39;,
+ &#39;USER&#39;: &#39;zach&#39;,
+ &#39;SSH_AUTH_SOCK&#39;: &#39;/private/tmp/com.apple.launchd.YJg2g5OS9M/Listeners&#39;,
+ &#39;PATH&#39;: &#39;/Users/zach/opt/anaconda3/bin:/Users/zach/opt/anaconda3/condabin:/Users/zach/Git/pyutil/pyutil/tex:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin&#39;,
+ &#39;LaunchInstanceID&#39;: &#39;0B194A32-909B-431F-BF11-56EFCB84497E&#39;,
+ &#39;PWD&#39;: &#39;/Users/zach/Git/mi101/mi101&#39;,
+ &#39;LANG&#39;: &#39;en_US.UTF-8&#39;,
+ &#39;XPC_FLAGS&#39;: &#39;0x0&#39;,
+ &#39;XPC_SERVICE_NAME&#39;: &#39;0&#39;,
+ &#39;SHLVL&#39;: &#39;1&#39;,
+ &#39;HOME&#39;: &#39;/Users/zach&#39;,
+ &#39;LOGNAME&#39;: &#39;zach&#39;,
+ &#39;SECURITYSESSIONID&#39;: &#39;186a6&#39;,
+ &#39;OLDPWD&#39;: &#39;/Users/zach/Git/mi101&#39;,
+ &#39;PYTHONPATH&#39;: &#39;/Users/zach/Git/smlb:/Users/zach/Git/pyutil:/Users/zach/Git/py_grama:&#39;,
+ &#39;CITRINATION_API_KEY&#39;: &#39;&lt;hidden&gt;&#39;,
+ &#39;SL_RESULTS&#39;: &#39;/Users/zach/Documents/sl-results/&#39;,
+ &#39;ZSH&#39;: &#39;/Users/zach/.oh-my-zsh&#39;,
+ &#39;PAGER&#39;: &#39;cat&#39;,
+ &#39;LESS&#39;: &#39;-R&#39;,
+ &#39;LSCOLORS&#39;: &#39;Gxfxcxdxbxegedabagacad&#39;,
+ &#39;CONDA_EXE&#39;: &#39;/Users/zach/opt/anaconda3/bin/conda&#39;,
+ &#39;_CE_M&#39;: &#39;&#39;,
+ &#39;_CE_CONDA&#39;: &#39;&#39;,
+ &#39;CONDA_PYTHON_EXE&#39;: &#39;/Users/zach/opt/anaconda3/bin/python&#39;,
+ &#39;CONDA_SHLVL&#39;: &#39;1&#39;,
+ &#39;CONDA_PREFIX&#39;: &#39;/Users/zach/opt/anaconda3&#39;,
+ &#39;CONDA_DEFAULT_ENV&#39;: &#39;base&#39;,
+ &#39;CONDA_PROMPT_MODIFIER&#39;: &#39;(base) &#39;,
+ &#39;RSTUDIO_PASS&#39;: &#39;temporarylocalkeyphrase&#39;,
+ &#39;_&#39;: &#39;/Users/zach/opt/anaconda3/bin/jupyter&#39;,
+ &#39;KERNEL_LAUNCH_TIMEOUT&#39;: &#39;40&#39;,
+ &#39;GIT_PYTHON_REFRESH&#39;: &#39;quiet&#39;,
+ &#39;JPY_PARENT_PID&#39;: &#39;17450&#39;,
+ &#39;CLICOLOR&#39;: &#39;1&#39;,
+ &#39;GIT_PAGER&#39;: &#39;cat&#39;,
+ &#39;MPLBACKEND&#39;: &#39;module://matplotlib_inline.backend_inline&#39;}
 </pre></div>
 </div>
 </div>
