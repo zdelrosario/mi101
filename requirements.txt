@@ -16,3 +16,4 @@ umap-learn
 py-grama>=0.2.2
 plotnine
 plotly
+ipympl
