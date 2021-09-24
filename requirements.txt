@@ -1,9 +1,12 @@
-jupyter-book
 matplotlib
 numpy
-ghp-import
-nbstripout
+scikit-learn
 py-grama
 plotnine
 plotly
+lolopy
+pymatgen==2021.2.8.1
+matminer
+statsmodels
+pyDOE
 umap-learn
