@@ -9,3 +9,4 @@ sections:
   - file: notebooks/02_tidy_assignment
   - file: notebooks/03_data_assignment
   - file: notebooks/04_vis_assignment
+  - file: notebooks/05_ml_assignment
