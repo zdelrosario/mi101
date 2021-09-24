@@ -17,7 +17,9 @@ We will work through a number of programming exercises in this workshop. We have
 consolidated the exercise notebooks and installation files in a single zip;
 download the following and unzip.
 
-- **TODO** Create zipped notebooks
+- [Download this zip file](https://github.com/zdelrosario/mi101/raw/main/exercises.zip)
+
+Save this to a stable location on your computer; for instance, your Documents folder.
 
 ## Tutorial: Using a Terminal
 <!-- -------------------------------------------------- -->
@@ -138,7 +140,7 @@ run the following jupyter notebook.
 
 ```{admonition} Test your installation
 Download and run
-[check_install.ipynb](https://github.com/CitrineInformatics/ga-tech-workshop/raw/master/files/exercises/check_install.ipynb).
+[check_install.ipynb](https://raw.githubusercontent.com/zdelrosario/mi101/main/mi101/notebooks/check_install.ipynb).
 This is also included in the `exercises.zip` file above.
 
 Navigate to the folder where you downloaded `check_install.ipynb`,
