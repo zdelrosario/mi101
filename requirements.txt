@@ -1,7 +1,7 @@
 matplotlib
 numpy
 scikit-learn
-py-grama
+py-grama>=0.2.2
 plotnine
 plotly
 lolopy
