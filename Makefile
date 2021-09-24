@@ -10,6 +10,7 @@ zip:
 	mkdir -p exercises/notebooks/data
 	mkdir -p exercises/images
 	cp -fr mi101/notebooks/*assignment.ipynb exercises/notebooks/.
+	cp -fr mi101/notebooks/check_install.ipynb exercises/.
 	cp -fr mi101/images exercises/.
 	cp -fr requirements.txt exercises/.
 	zip -r exercises.zip exercises
