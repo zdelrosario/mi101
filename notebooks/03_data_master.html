@@ -4089,12 +4089,11 @@ dtype: object
 </div>
 </div>
 </div>
-<p>```{admonition} Use of <code class="docutils literal notranslate"><span class="pre">set</span></code>
-The <code class="docutils literal notranslate"><span class="pre">set</span></code> datatype only allows one of each unique value; calling <code class="docutils literal notranslate"><span class="pre">set()</span></code> on a column is a simple way to find all the unique values in a column.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-It seems that the original data are mixed; some values are a numeric ppm value, while others are the qualitative statement `&quot;undetectable&quot;` (and yet others are simply missing). We can use the Grama helper `gr.as_numeric()` to help convert the data to a numeric type.
-</pre></div>
+<div class="admonition-use-of-set admonition">
+<p class="admonition-title">Use of set</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">set</span></code> datatype only allows one of each unique value; calling <code class="docutils literal notranslate"><span class="pre">set()</span></code> on a column is a simple way to find all the unique values in a column.</p>
 </div>
+<p>It seems that the original data are mixed; some values are a numeric ppm value, while others are the qualitative statement <code class="docutils literal notranslate"><span class="pre">&quot;undetectable&quot;</span></code> (and yet others are simply missing). We can use the Grama helper <code class="docutils literal notranslate"><span class="pre">gr.as_numeric()</span></code> to help convert the data to a numeric type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
