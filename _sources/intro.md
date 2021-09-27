@@ -8,7 +8,7 @@ The materials on this site are part of a hands-on workshop aimed at training mat
 
 All workshop sessions will run from noon to 2pm Eastern time, on Zoom. If you registered for the workshop, you will receive a Zoom link via the email you registered with. Each day of the workshop will include some amount of hands-on work during the live session, and Days 1 -- 3 will include a take-home Python notebook to solidify skills. Office hours will also be offered outside the workshop hours to provide support on the take-home notebooks.
 
-|   | Date             | Topics                                         | Worksheets     |
+|   | Date             | Topics                                         | Notebooks     |
 |---|------------------|------------------------------------------------|----------------|
 | 1 | Friday, Oct. 8   | [Introduction, data extraction](00-extraction) | 00 (Day)       |
 |   |                  | [Python introduction](01-python)               | 01 (Take-home) |
