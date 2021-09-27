@@ -19,3 +19,7 @@ All workshop sessions will run from noon to 2pm Eastern time, on Zoom. If you re
 | 4 | Monday, Oct. 11  | [ML Fundamentals](05-ml)                       | 05 (Day)       |
 
 **Office Hours To be filled-in when scheduled**
+
+## About the Author
+
+Zach del Rosario is on the faculty at Olin College. He helps scientists and engineers [reason about uncertainty](https://www.zdelrosario.com/).
