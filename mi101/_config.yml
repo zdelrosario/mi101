@@ -39,6 +39,9 @@ html:
   use_issues_button: true
   use_repository_button: true
 
+# Ignore files not in TOC
+only_build_toc_files: true
+
 # Enable extensions
 parse:
   myst_enable_extensions:
