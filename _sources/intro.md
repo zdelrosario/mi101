@@ -6,7 +6,12 @@ The materials on this site are part of a hands-on workshop aimed at training mat
 
 ## GATech IMAT 2021 Workshop Schedule
 
-All workshop sessions will run from noon to 2pm Eastern time, on Zoom. If you registered for the workshop, you will receive a Zoom link via the email you registered with. Each day of the workshop will include some amount of hands-on work during the live session, and Days 1 -- 3 will include a take-home Python notebook to solidify skills. Office hours will also be offered outside the workshop hours to provide support on the take-home notebooks.
+**All workshop sessions will run from noon to 2pm Eastern time, on Zoom.** If
+you registered for the workshop, you will receive a Zoom link via your
+registered email. Each day of the workshop will include some amount of hands-on
+work during the live session, and Days 1 -- 3 will include a take-home Python
+notebook to solidify skills. Office hours will also be offered outside the
+workshop hours to provide support on the take-home notebooks.
 
 |   | Date             | Topics                                         | Notebooks      |
 |---|------------------|------------------------------------------------|----------------|
@@ -19,7 +24,13 @@ All workshop sessions will run from noon to 2pm Eastern time, on Zoom. If you re
 | 4 | Monday, Oct. 11  | [ML Fundamentals](05-ml)                       | 05 (Day)       |
 |   |                  | (End of workshop: No take-home notebook!)      | (None)         |
 
-**Office Hours To be filled-in when scheduled**
+### Office Hours
+
+Office hours will be held from 4 -- 5pm on Friday, Oct. 8 through Sunday, Oct.
+10 (NB. *Not* on Monday the 11th!). Please use the *same Zoom link* that you
+received for the main workshop to access the office hours call. You are welcome
+to come to office hours with any questions about the workshop materials; in
+particular, to get help on completing the take-home notebooks.
 
 ## About the Author
 
