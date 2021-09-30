@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visualization in Python &#8212; Materials Informatics 101</title>
+    <title>Day 3 (Take-Home) Visualization in Python &#8212; Materials Informatics 101</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exercises in Machine Learning" href="05_ml_assignment.html" />
-    <link rel="prev" title="Programmatic Data Operations" href="03_data_assignment.html" />
+    <link rel="next" title="Day 4 (Live) Exercises in Machine Learning" href="05_ml_assignment.html" />
+    <link rel="prev" title="Day 2 (Take-Home) Programmatic Data Operations" href="03_data_assignment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -106,32 +106,32 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="00_tabula-webplotdigitizer_assignment.html">
-     Data Extraction and Management
+     Day 1 (Live) Data Extraction and Management
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01_python_assignment.html">
-     Intro to Python and Jupyter Notebooks
+     Day 1 (Take-Home) Intro to Python and Jupyter Notebooks
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02_tidy_assignment.html">
-     Intro to Data Wrangling and Tidy Data
+     Day 2 (Live) Intro to Data Wrangling and Tidy Data
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03_data_assignment.html">
-     Programmatic Data Operations
+     Day 2 (Take-Home) Programmatic Data Operations
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Visualization in Python
+     Day 3 (Take-Home) Visualization in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05_ml_assignment.html">
-     Exercises in Machine Learning
+     Day 4 (Live) Exercises in Machine Learning
     </a>
    </li>
   </ul>
@@ -240,29 +240,22 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Visualization in Python
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-outcomes">
+   Learning outcomes
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learning-outcomes">
-     Learning outcomes
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-bit-of-wrangling">
    A Bit of Wrangling
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualizing-with-plotnine">
    Visualizing with Plotnine
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q1-study-the-magnesium-content">
      <strong>
       Q1
@@ -270,7 +263,7 @@
      : Study the Magnesium content
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q2-what-does-this-histogram-tell-you">
      <strong>
       Q2
@@ -278,17 +271,17 @@
      : What does this histogram tell you?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#elements-of-plotnine">
      Elements of Plotnine
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rule-1-of-histograms-play-with-the-bin-size">
      Rule #1 of Histograms: Play with the bin size
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q3-change-the-number-of-bins-in-the-histogram">
      <strong>
       Q3
@@ -296,7 +289,7 @@
      : Change the number of bins in the histogram
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q4-what-does-this-histogram-tell-us-about-magnesium-content">
      <strong>
       Q4
@@ -304,12 +297,12 @@
      : What does this histogram tell us about Magnesium content?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#changing-the-geometry">
      Changing the geometry
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q5-use-a-frequency-polygon-rather-than-a-histogram">
      <strong>
       Q5
@@ -317,12 +310,12 @@
      : Use a frequency polygon, rather than a histogram
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-aesthetics">
      Adding aesthetics
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q6-add-an-aesthetic-for-the-alloy-series">
      <strong>
       Q6
@@ -332,12 +325,12 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reproducing-plots">
    Reproducing plots
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q7-reproduce-this-set-of-boxplots">
      <strong>
       Q7
@@ -345,7 +338,7 @@
      : Reproduce this set of boxplots
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q8-what-does-this-boxplot-plot-tell-you">
      <strong>
       Q8
@@ -353,7 +346,7 @@
      : What does this boxplot plot tell you?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q9-reproduce-this-scatterplot">
      <strong>
       Q9
@@ -361,7 +354,7 @@
      : Reproduce this scatterplot
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q10-what-does-this-scatterplot-tell-you">
      <strong>
       Q10
@@ -371,12 +364,12 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dimension-reduction">
    Dimension Reduction
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q11-recreate-this-scatterplot-using-the-umap-data">
      <strong>
       Q11
@@ -384,7 +377,7 @@
      : Recreate this scatterplot using the UMAP data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#q12-what-does-this-umap-plot-tell-you">
      <strong>
       Q12
@@ -394,7 +387,7 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bonus-plotly-vs-plotnine">
    BONUS: Plotly vs Plotnine
   </a>
@@ -410,8 +403,8 @@
         
               <div>
                 
-  <div class="section" id="visualization-in-python">
-<h1>Visualization in Python<a class="headerlink" href="#visualization-in-python" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="day-3-take-home-visualization-in-python">
+<span id="vis"></span><h1>Day 3 (Take-Home) Visualization in Python<a class="headerlink" href="#day-3-take-home-visualization-in-python" title="Permalink to this headline">¶</a></h1>
 <p><em>Author</em>: Zach del Rosario</p>
 <div class="section" id="learning-outcomes">
 <h2>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
@@ -445,9 +438,8 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="a-bit-of-wrangling">
-<h1>A Bit of Wrangling<a class="headerlink" href="#a-bit-of-wrangling" title="Permalink to this headline">¶</a></h1>
+<h2>A Bit of Wrangling<a class="headerlink" href="#a-bit-of-wrangling" title="Permalink to this headline">¶</a></h2>
 <p>Let’s download a dataset to use for this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,11 +547,11 @@
 <p>We’ll start learning plotnine by making changes to this visual.</p>
 </div>
 <div class="section" id="visualizing-with-plotnine">
-<h1>Visualizing with Plotnine<a class="headerlink" href="#visualizing-with-plotnine" title="Permalink to this headline">¶</a></h1>
+<h2>Visualizing with Plotnine<a class="headerlink" href="#visualizing-with-plotnine" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p><em>Note</em>: You’ll notice that plotnine graphs start with this weird <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> call; that’s because plotnine is an <em>implementation of the <strong>g</strong>rammar of <strong>g</strong>raphics</em>. <a class="reference external" href="https://ggplot2.tidyverse.org/">Ggplot2</a> is the original implementation of this concept, but that package is for the R programming language. Plotnine is essentially a port of ggplot2 into Python.</p>
 <div class="section" id="q1-study-the-magnesium-content">
-<h2><strong>Q1</strong>: Study the Magnesium content<a class="headerlink" href="#q1-study-the-magnesium-content" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q1</strong>: Study the Magnesium content<a class="headerlink" href="#q1-study-the-magnesium-content" title="Permalink to this headline">¶</a></h3>
 <p>Modify the plot below to create a histogram of Magnesium content, rather than aluminum content.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,14 +571,14 @@
 </div>
 </div>
 <div class="section" id="q2-what-does-this-histogram-tell-you">
-<h2><strong>Q2</strong>: What does this histogram tell you?<a class="headerlink" href="#q2-what-does-this-histogram-tell-you" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q2</strong>: What does this histogram tell you?<a class="headerlink" href="#q2-what-does-this-histogram-tell-you" title="Permalink to this headline">¶</a></h3>
 <p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the histogram above.</p>
 <ul class="simple">
 <li><p>(Write your observations here!)</p></li>
 </ul>
 </div>
 <div class="section" id="elements-of-plotnine">
-<h2>Elements of Plotnine<a class="headerlink" href="#elements-of-plotnine" title="Permalink to this headline">¶</a></h2>
+<h3>Elements of Plotnine<a class="headerlink" href="#elements-of-plotnine" title="Permalink to this headline">¶</a></h3>
 <p>You’ve already edited some plotnine code, but let’s break it down to better understand how plotnine works:</p>
 <p><em>Anatomy of a ggplot</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -608,7 +600,7 @@
 <p>With these basic ingredients—a dataset, a ggplot object, and a geometry—we have everything necessary to produce a simple plot. The <em>power</em> of the ggplot concept (implemented in plotnine) is that we can <em>very easily tweak graphs</em> starting from this minimal working code.</p>
 </div>
 <div class="section" id="rule-1-of-histograms-play-with-the-bin-size">
-<h2>Rule #1 of Histograms: Play with the bin size<a class="headerlink" href="#rule-1-of-histograms-play-with-the-bin-size" title="Permalink to this headline">¶</a></h2>
+<h3>Rule #1 of Histograms: Play with the bin size<a class="headerlink" href="#rule-1-of-histograms-play-with-the-bin-size" title="Permalink to this headline">¶</a></h3>
 <p>Let’s practice using plotnine by enacting Rule #1 of histograms:</p>
 <div class="admonition-rule-1-of-histograms-play-with-the-bin-size admonition">
 <p class="admonition-title">Rule #1 of Histograms: Play with the bin size</p>
@@ -616,7 +608,7 @@
 </div>
 </div>
 <div class="section" id="q3-change-the-number-of-bins-in-the-histogram">
-<h2><strong>Q3</strong>: Change the number of bins in the histogram<a class="headerlink" href="#q3-change-the-number-of-bins-in-the-histogram" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q3</strong>: Change the number of bins in the histogram<a class="headerlink" href="#q3-change-the-number-of-bins-in-the-histogram" title="Permalink to this headline">¶</a></h3>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> gives us a <em>warning</em> that we ought to pick a more informed bin count. Change the bin count to a larger value below.</p>
 <div class="admonition-accessing-documentation admonition">
 <p class="admonition-title">Accessing documentation</p>
@@ -640,18 +632,18 @@
 </div>
 </div>
 <div class="section" id="q4-what-does-this-histogram-tell-us-about-magnesium-content">
-<h2><strong>Q4</strong>: What does this histogram tell us about Magnesium content?<a class="headerlink" href="#q4-what-does-this-histogram-tell-us-about-magnesium-content" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q4</strong>: What does this histogram tell us about Magnesium content?<a class="headerlink" href="#q4-what-does-this-histogram-tell-us-about-magnesium-content" title="Permalink to this headline">¶</a></h3>
 <p>Focus on what you can see in your <em>new</em> graph, as opposed to your previous graph.</p>
 <ul class="simple">
 <li><p>(Write your observations here!)</p></li>
 </ul>
 </div>
 <div class="section" id="changing-the-geometry">
-<h2>Changing the geometry<a class="headerlink" href="#changing-the-geometry" title="Permalink to this headline">¶</a></h2>
+<h3>Changing the geometry<a class="headerlink" href="#changing-the-geometry" title="Permalink to this headline">¶</a></h3>
 <p>The specific <code class="docutils literal notranslate"><span class="pre">geom_*</span></code> call we use will determine which <em>geometry</em> is used to map the values to visual elements. Using plotnine, we can easily edit our visual by changing the <code class="docutils literal notranslate"><span class="pre">geom_*</span></code>.</p>
 </div>
 <div class="section" id="q5-use-a-frequency-polygon-rather-than-a-histogram">
-<h2><strong>Q5</strong>: Use a frequency polygon, rather than a histogram<a class="headerlink" href="#q5-use-a-frequency-polygon-rather-than-a-histogram" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q5</strong>: Use a frequency polygon, rather than a histogram<a class="headerlink" href="#q5-use-a-frequency-polygon-rather-than-a-histogram" title="Permalink to this headline">¶</a></h3>
 <p>The plotnine function for a frequency polygon is <code class="docutils literal notranslate"><span class="pre">pt.geom_freqpoly()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,7 +664,7 @@
 <p>This is a simple tweak, but it will be important for the next change we’ll make.</p>
 </div>
 <div class="section" id="adding-aesthetics">
-<h2>Adding aesthetics<a class="headerlink" href="#adding-aesthetics" title="Permalink to this headline">¶</a></h2>
+<h3>Adding aesthetics<a class="headerlink" href="#adding-aesthetics" title="Permalink to this headline">¶</a></h3>
 <p>Part of the magic of ggplot is that it can <em>automatically</em> handle additional aesthetics, simply by changing the mapping. The <code class="docutils literal notranslate"><span class="pre">pt.aes(..)</span></code> can take additional keyword arguments, allowing us to visualize additional variables on the same plot.</p>
 <p>For a histogram or frequency polygon, we must provide an x-coordinate. However, we can provide additional aesthetic mappings, such as <code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">linetype</span></code>.</p>
 <div class="admonition-ggplot-and-defauls admonition">
@@ -681,7 +673,7 @@
 </div>
 </div>
 <div class="section" id="q6-add-an-aesthetic-for-the-alloy-series">
-<h2><strong>Q6</strong>: Add an aesthetic for the alloy series<a class="headerlink" href="#q6-add-an-aesthetic-for-the-alloy-series" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q6</strong>: Add an aesthetic for the alloy series<a class="headerlink" href="#q6-add-an-aesthetic-for-the-alloy-series" title="Permalink to this headline">¶</a></h3>
 <p>Add an aesthetic mapping in <code class="docutils literal notranslate"><span class="pre">pt.aes(...)</span></code> to visualize the <code class="docutils literal notranslate"><span class="pre">&quot;series&quot;</span></code> column. Answer the questions below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,11 +707,11 @@
 </div>
 </div>
 <div class="section" id="reproducing-plots">
-<h1>Reproducing plots<a class="headerlink" href="#reproducing-plots" title="Permalink to this headline">¶</a></h1>
+<h2>Reproducing plots<a class="headerlink" href="#reproducing-plots" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Now that we’ve learned some basics of plotnine / ggplot, let’s take this learning further by reproducing some plots.</p>
 <div class="section" id="q7-reproduce-this-set-of-boxplots">
-<h2><strong>Q7</strong>: Reproduce this set of boxplots<a class="headerlink" href="#q7-reproduce-this-set-of-boxplots" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q7</strong>: Reproduce this set of boxplots<a class="headerlink" href="#q7-reproduce-this-set-of-boxplots" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint 1</em>: The plotnine function for a boxplot is <code class="docutils literal notranslate"><span class="pre">pt.geom_boxplot</span></code>.</p>
 <p><em>Hint 2</em>: The grama function <code class="docutils literal notranslate"><span class="pre">gr.fct_reorder()</span></code> will help you re-order one variable in terms of a second variable. You can use this within a <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> call to modify the ordering in the plot.</p>
 <div class="cell docutils container">
@@ -736,14 +728,14 @@
 <p><img alt="Boxplot image to recreate" src="../_images/vis-boxplot.png" /></p>
 <!-- task-end --></div>
 <div class="section" id="q8-what-does-this-boxplot-plot-tell-you">
-<h2><strong>Q8</strong>: What does this boxplot plot tell you?<a class="headerlink" href="#q8-what-does-this-boxplot-plot-tell-you" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q8</strong>: What does this boxplot plot tell you?<a class="headerlink" href="#q8-what-does-this-boxplot-plot-tell-you" title="Permalink to this headline">¶</a></h3>
 <p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the boxplots above.</p>
 <ul class="simple">
 <li><p>(Write your observations here!)</p></li>
 </ul>
 </div>
 <div class="section" id="q9-reproduce-this-scatterplot">
-<h2><strong>Q9</strong>: Reproduce this scatterplot<a class="headerlink" href="#q9-reproduce-this-scatterplot" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q9</strong>: Reproduce this scatterplot<a class="headerlink" href="#q9-reproduce-this-scatterplot" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint 1</em>: The plotnine function for a scatterplot is <code class="docutils literal notranslate"><span class="pre">pt.geom_point</span></code>.</p>
 <p><em>Hint 2</em>: The plotnine function <code class="docutils literal notranslate"><span class="pre">pt.theme_minimal()</span></code> will strip away the grey, giving you a cleaner visual.</p>
 <div class="cell docutils container">
@@ -767,7 +759,7 @@
 <p><img alt="Scatterplot image to recreate" src="../_images/vis-scatter.png" /></p>
 <!-- task-end --></div>
 <div class="section" id="q10-what-does-this-scatterplot-tell-you">
-<h2><strong>Q10</strong>: What does this scatterplot tell you?<a class="headerlink" href="#q10-what-does-this-scatterplot-tell-you" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q10</strong>: What does this scatterplot tell you?<a class="headerlink" href="#q10-what-does-this-scatterplot-tell-you" title="Permalink to this headline">¶</a></h3>
 <p>List <em>at least 3</em> observations about the data you can draw, based on the scatterplot above.</p>
 <ul class="simple">
 <li><p>(Write your observations here!)</p></li>
@@ -775,7 +767,7 @@
 </div>
 </div>
 <div class="section" id="dimension-reduction">
-<h1>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline">¶</a></h1>
+<h2>Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Studying <em>all</em> the variables at once is difficult, as we cannot directly visualize 25-dimensional space! Instead, we will use <em>dimension reduction</em> techniques to visualize the data while preserving low-dimensional structure. We will illustrate one advanced technique: UMAP.</p>
 <p><a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a> stands for <em>uniform manifold approximation</em>; this is a nonlinear dimension reduction technique. UMAP coordinates don’t have any physical interpretation, but the technique can frequently capture low-dimensional structure that PCA cannot. <a class="reference external" href="https://pair-code.github.io/understanding-umap/">This article</a> is a fantastic resource for understanding UMAP.</p>
@@ -807,7 +799,7 @@
 </div>
 <p>The original numerical features have been reduced to just two; we use these two coordinates for plotting.</p>
 <div class="section" id="q11-recreate-this-scatterplot-using-the-umap-data">
-<h2><strong>Q11</strong>: Recreate this scatterplot using the UMAP data<a class="headerlink" href="#q11-recreate-this-scatterplot-using-the-umap-data" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q11</strong>: Recreate this scatterplot using the UMAP data<a class="headerlink" href="#q11-recreate-this-scatterplot-using-the-umap-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -822,7 +814,7 @@
 <p><img alt="UMAP scatterplot image to recreate" src="../_images/vis-umap.png" /></p>
 <!-- task-end --></div>
 <div class="section" id="q12-what-does-this-umap-plot-tell-you">
-<h2><strong>Q12</strong>: What does this UMAP plot tell you?<a class="headerlink" href="#q12-what-does-this-umap-plot-tell-you" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Q12</strong>: What does this UMAP plot tell you?<a class="headerlink" href="#q12-what-does-this-umap-plot-tell-you" title="Permalink to this headline">¶</a></h3>
 <p>List <em>at least 3</em> observations conclusions about the data you can draw, based on the scatterplot above.</p>
 <ul class="simple">
 <li><p>(Write your observations here!)</p></li>
@@ -834,7 +826,7 @@
 </div>
 </div>
 <div class="section" id="bonus-plotly-vs-plotnine">
-<h1>BONUS: Plotly vs Plotnine<a class="headerlink" href="#bonus-plotly-vs-plotnine" title="Permalink to this headline">¶</a></h1>
+<h2>BONUS: Plotly vs Plotnine<a class="headerlink" href="#bonus-plotly-vs-plotnine" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p><a class="reference external" href="https://plotly.com/python/basic-charts/">This page</a> gives details on how to make a wide variety of charts with plotly. Below we re-create the UMAP plot using <code class="docutils literal notranslate"><span class="pre">px.scatter()</span></code>, which is documented <a class="reference external" href="https://plotly.com/python/line-and-scatter/">here</a>.</p>
 <div class="cell docutils container">
@@ -868,6 +860,7 @@
 </div>
 </div>
 <p>The advantage of Plotly is that the plot is <em>interactive</em>; try hovering your mouse over a data point to see which <em>specific</em> alloy is which, and try clicking-and-dragging to zoom in on a rectangular region. (You can also double-click to zoom back out.)</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -904,7 +897,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Programmatic Data Operations</p>
+                <p class="prevnext-title">Day 2 (Take-Home) Programmatic Data Operations</p>
             </div>
         </a>
     </div>
@@ -912,7 +905,7 @@
         <a class="right-next" href="05_ml_assignment.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Exercises in Machine Learning</p>
+                <p class="prevnext-title">Day 4 (Live) Exercises in Machine Learning</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
