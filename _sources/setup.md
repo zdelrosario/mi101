@@ -32,9 +32,15 @@ provide *almost* everything you need. Make sure to install python version `>=
 ### Windows Installation
 <!-- ------------------------- -->
 
-If you are on Windows, you may need to install [Visual C++
-Studio](https://go.microsoft.com/fwlink/?LinkId=691126). Click the
-aforementioned link and install the tools.
+If you are on Windows, you may need to install [Visual C++ Build
+Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019).
+You will need to download the file under `Tools for Visual Studio 2019 > Build
+Tools for Visual Studio 2019`: This [Stack Overflow
+post](https://stackoverflow.com/questions/40504552/how-to-install-visual-c-build-tools)
+gives more details; note that Microsoft continually "updates" these links. If
+the build tools link above does not work for you, try Googling `"microsoft
+visual c++ build tools"`: This is (honestly!) the best way to find a working
+link.
 
 ## Tutorial: Using a Terminal
 <!-- -------------------------------------------------- -->
