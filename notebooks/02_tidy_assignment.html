@@ -242,91 +242,103 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-outcomes">
-   Learning outcomes
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Day 2 (Live) Intro to Data Wrangling and Tidy Data
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q1-complete-the-code-below-to-rename-the-columns">
-     <strong>
-      Q1
-     </strong>
-     : Complete the code below to rename the columns
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-outcomes">
+     Learning outcomes
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names">
-     <strong>
-      Q2
-     </strong>
-     : Complete the
-     <em>
-      data dictionary
-     </em>
-     below to document the units associated with the short column names.
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q1-complete-the-code-below-to-rename-the-columns">
+       <strong>
+        Q1
+       </strong>
+       : Complete the code below to rename the columns
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q2-complete-the-data-dictionary-below-to-document-the-units-associated-with-the-short-column-names">
+       <strong>
+        Q2
+       </strong>
+       : Complete the
+       <em>
+        data dictionary
+       </em>
+       below to document the units associated with the short column names.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivoting">
+     Pivoting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tidy-data">
+     Tidy Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q3-inspect-the-original-form-of-the-data-why-are-these-data-not-tidy-how-would-you-make-the-data-tidy">
+       <strong>
+        Q3
+       </strong>
+       : Inspect the original form of the data. Why are these data not tidy? How would you make the data tidy?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-wrangling">
+     Data Wrangling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unit-conversion">
+       Unit conversion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#q4-convert-the-units-to-mpa">
+       <strong>
+        Q4
+       </strong>
+       : Convert the units to MPa.
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#filtering-invalid-values">
+       Filtering invalid values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#converting-types">
+       Converting types
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonus-the-payoff-of-tidying-and-wrangling">
+     Bonus: The Payoff of Tidying and Wrangling
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pivoting">
-   Pivoting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tidy-data">
-   Tidy Data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q3-inspect-the-original-form-of-the-data-why-are-these-data-not-tidy-how-would-you-make-the-data-tidy">
-     <strong>
-      Q3
-     </strong>
-     : Inspect the original form of the data. Why are these data not tidy? How would you make the data tidy?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-wrangling">
-   Data Wrangling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unit-conversion">
-     Unit conversion
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#q4-convert-the-units-to-mpa">
-     <strong>
-      Q4
-     </strong>
-     : Convert the units to MPa.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtering-invalid-values">
-     Filtering invalid values
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#converting-types">
-     Converting types
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus-the-payoff-of-tidying-and-wrangling">
-   Bonus: The Payoff of Tidying and Wrangling
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#survey">
+   Survey
   </a>
  </li>
 </ul>
@@ -706,6 +718,14 @@
 </div>
 <p>We’ll learn more about plotnine and visualization in tomorrow’s workshop exercises.</p>
 </div>
+</div>
+<div class="section" id="survey">
+<h1>Survey<a class="headerlink" href="#survey" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Once you complete this activity, please fill out the following 30-second survey:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://forms.gle/yWZkqDXWSyVDWm41A">Survey link</a></p>
+</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
