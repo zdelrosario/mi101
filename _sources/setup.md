@@ -21,6 +21,21 @@ download the following and unzip.
 
 Save this to a stable location on your computer; for instance, your Documents folder.
 
+## Python and Jupyter Installation
+<!-- ------------------------- -->
+
+We recommend [Anaconda
+python](https://www.anaconda.com/distribution/#download-section), which will
+provide *almost* everything you need. Make sure to install python version `>=
+3.0`.
+
+### Windows Installation
+<!-- ------------------------- -->
+
+If you are on Windows, you may need to install [Visual C++
+Studio](https://go.microsoft.com/fwlink/?LinkId=691126). Click the
+aforementioned link and install the tools.
+
 ## Tutorial: Using a Terminal
 <!-- -------------------------------------------------- -->
 
@@ -67,22 +82,7 @@ I can then `cd` into the unzipped folder and install the required Python
 packages with `pip install -r requirements.txt`. However, I can only do this
 after I've installed Anaconda!
 
-## Python and Jupyter
-<!-- ------------------------- -->
-
-We recommend [Anaconda
-python](https://www.anaconda.com/distribution/#download-section), which will
-provide *almost* everything you need. Make sure to install python version `>=
-3.0`.
-
-### Windows Installation
-<!-- ------------------------- -->
-
-If you are on Windows, you may need to install [Visual C++
-Studio](https://go.microsoft.com/fwlink/?LinkId=691126). Click the
-aforementioned link and install the tools.
-
-### Python Modules
+## Python Module Installation
 <!-- ------------------------- -->
 
 Once you have installed python, you will need to install a handful of python
