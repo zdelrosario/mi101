@@ -520,7 +520,7 @@
 <hr class="docutils" />
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a data structure provided by Pandas. In contrast with <code class="docutils literal notranslate"><span class="pre">lists</span></code> (which we saw in a previous exercise), DataFrames are explicitly designed to facilitate data analysis. Accordingly, they provide a number of helpful features that aid in data analysis and operations.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a <em>rectangular</em> representation of data – it consists of rows and columns. If the data are <em>tidy</em>, then each <em>row</em> represents an <em>observation</em>, each <em>column</em> represents a <em>variable</em>, and each <em>cell</em> represents a single measurement.</p>
-<p>For instance, the following code chunk downloads a alloy dataset into the DataFrame <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code>—here each row is an alloy, and each column is some physical property of that alloy.</p>
+<p>For instance, the following code chunk downloads a alloy dataset into the DataFrame <code class="docutils literal notranslate"><span class="pre">df_mpea</span></code>—here each row is an alloy, and each column is some physical property of that alloy. These data come from the report <a class="reference external" href="https://www.nature.com/articles/s41597-020-00768-9">Borg et al.  2020</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename for local data</span>
@@ -1262,7 +1262,11 @@
 <h2>Endnotes<a class="headerlink" href="#endnotes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The data portions of Grama make heavy use of ideas from the <a class="reference external" href="https://www.tidyverse.org/">Tidyverse</a>; specifically the <a class="reference external" href="https://dplyr.tidyverse.org/">dplyr</a> package. However, those packages are for the R programming language.</p></li>
+<li><p>The HEA dataset is from:</p></li>
 </ul>
+<blockquote>
+<div><p>Borg, C.K.H., Frey, C., Moh, J. et al. Expanded dataset of mechanical properties and observed phases of multi-principal element alloys. Sci Data 7, 430 (2020). <a class="reference external" href="https://doi.org/10.1038/s41597-020-00768-9">https://doi.org/10.1038/s41597-020-00768-9</a></p>
+</div></blockquote>
 </div>
 </div>
 
