@@ -84,6 +84,9 @@ exercises.zip -d exercises`, which results in the following:
 
 ![terminal unzip](./images/terminal_unzip.png)
 
+*Note*: On Windows, instead of `unzip`, you will need to run `tar -xf
+exercises.zip`.
+
 I can then `cd` into the unzipped folder and install the required Python
 packages with `pip install -r requirements.txt`. However, I can only do this
 after I've installed Anaconda!
