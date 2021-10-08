@@ -19,7 +19,7 @@ workshop hours to provide support on the take-home notebooks.
 |   |                  | [Python introduction](01-python)               | 01 (Take-home) |
 | 2 | Saturday, Oct. 9 | [Data wrangling and tidy data](02-tidy)        | 02 (Day)       |
 |   |                  | [Programmatic data management](03-data)        | 03 (Take-home) |
-| 3 | Sunday, Oct. 10  | Principles of visualization                    | (Activity)     |
+| 3 | Sunday, Oct. 10  | [Principles of visualization](day3-vis)                    | (Activity)     |
 |   |                  | [Visualizing with plotnine](04-vis)            | 04 (Take-home) |
 | 4 | Monday, Oct. 11  | [ML Fundamentals](05-ml)                       | 05 (Day)       |
 |   |                  | (End of workshop: No take-home notebook!)      | (None)         |
