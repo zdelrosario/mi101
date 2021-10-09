@@ -32,6 +32,13 @@ received for the main workshop to access the office hours call. You are welcome
 to come to office hours with any questions about the workshop materials; in
 particular, to get help on completing the take-home notebooks.
 
+### Colab Option for Broken Software
+
+If you haven't managed to get your software installation working, I've prepared
+this set of [Google Colab](https://github.com/zdelrosario/mi101-colab)
+compatible notebooks. Just click that link and follow the instructions to get
+the notebooks running in a cloud-based environment.
+
 ## About the Author
 
 Zach del Rosario is on the faculty at Olin College. He helps scientists and engineers [reason about uncertainty](https://www.zdelrosario.com/).
