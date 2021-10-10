@@ -12,3 +12,4 @@ sections:
   - file: notebooks/04_vis_assignment
   - file: notebooks/05_ml_assignment
 - file: slides
+- file: recordings
