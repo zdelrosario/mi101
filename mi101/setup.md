@@ -42,6 +42,18 @@ the build tools link above does not work for you, try Googling `"microsoft
 visual c++ build tools"`: This is (honestly!) the best way to find a working
 link.
 
+```{admonition} Make sure to select the build tools
+When installing Visual C++, you may see the following interface. If yes, do not click launch; instead, first click `Modify`.
+
+![Click Modify](./images/vcpp-modify.jpg)
+
+Within this menu, make sure the C++ build tools are selected, as pictured below.
+
+![Select C++](./images/vcpp-build-tools.jpg)
+
+Once you've selected these tools, you can click `Install`.
+```
+
 ## Tutorial: Using a Terminal
 <!-- -------------------------------------------------- -->
 
