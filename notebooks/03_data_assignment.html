@@ -774,8 +774,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
@@ -1270,7 +1269,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="p">(</span>
     <span class="n">df_mpea</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_rename</span><span class="p">(</span><span class="n">N_wppm</span><span class="o">=</span><span class="s2">&quot;PROPERTY: N content (wppm)&quot;</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">N_converted</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">as_numeric</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">N_wppm</span><span class="p">))</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_mutate</span><span class="p">(</span><span class="n">N_converted</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">as_numeric</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">N_wppm</span><span class="p">))</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;N_wppm&quot;</span><span class="p">,</span> <span class="s2">&quot;N_converted&quot;</span><span class="p">)</span>
 <span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>

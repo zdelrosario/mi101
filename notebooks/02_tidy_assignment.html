@@ -818,23 +818,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="bonus-the-payoff-of-tidying-and-wrangling">
 <h2>Bonus: The Payoff of Tidying and Wrangling<a class="headerlink" href="#bonus-the-payoff-of-tidying-and-wrangling" title="Permalink to this headline">¶</a></h2>
-<p>As a preview for why we want to learn how to tidy and wrangle data, let’s see what some of these tidy data tools will allow us to do. The <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/">plotnine</a> package is a plotting package designed for tidy data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
-<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">pt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Using plotnine, we can very quickly construct simple graphs:</p>
+<p>As a preview for why we want to learn how to tidy and wrangle data, let’s see what some of these tidy data tools will allow us to do. Using ggplot, we can very quickly construct simple graphs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="p">(</span>
     <span class="n">df_converted</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma_MPa&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma_MPa&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -846,15 +837,15 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="p">(</span>
     <span class="n">df_converted</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma_MPa&quot;</span><span class="p">))</span>
-<span class="c1">#     + pt.geom_point() # Original</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;block&quot;</span><span class="p">))</span> <span class="c1"># Modified for color</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma_MPa&quot;</span><span class="p">))</span>
+<span class="c1">#     + gr.geom_point() # Original</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;block&quot;</span><span class="p">))</span> <span class="c1"># Modified for color</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We’ll learn more about plotnine and visualization in tomorrow’s workshop exercises.</p>
+<p>We’ll learn more about ggplot and visualization in tomorrow’s workshop exercises.</p>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="survey">
