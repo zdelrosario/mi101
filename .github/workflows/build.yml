@@ -16,7 +16,7 @@ jobs:
 
       - name: Build
         run: |
-	  pip install -r nbstripout # Dependency for exercise processing
+          pip install -r nbstripout # Dependency for exercise processing
           make package # Sequence the exercises
 
       - name: Push
