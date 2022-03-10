@@ -8,6 +8,7 @@ package:
 	mkdir -p exercises
 	mkdir -p exercises/notebooks
 	mkdir -p exercises/notebooks/data
+	touch exercises/notebooks/data/.gitignore
 	mkdir -p exercises/images
 	cp -fr mi101/notebooks/*assignment.ipynb exercises/notebooks/.
 	cp -fr mi101/notebooks/check_install.ipynb exercises/.
@@ -34,3 +35,4 @@ dkrun:
 
 clean:
 	jb clean .
+	cd mi101/notebooks; make clean
