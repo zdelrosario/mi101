@@ -169,3 +169,10 @@ execute the command `jupyter notebook`, open `check_install.ipynb`,
 and click on `Cells > Run All`. If you can successfully run the
 notebook (without errors), then you are ready for the workshop!
 ```
+
+## Binder Option
+<!-- ------------------------- -->
+
+If after trying the setup steps above you still cannot get Jupyter working on your computer, you can click the following link to launch the workshop materials in a cloud computing environment. **Be warned that you cannot save your work in this cloud notebook!**
+
+Click this button to launch MI 101 in Binder: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zdelrosario/mi101/build)
