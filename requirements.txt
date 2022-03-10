@@ -1,4 +1,4 @@
-py-grama[umap,matminer,sklearn]>=0.3.2
+py-grama[umap,matminer,sklearn]>=0.3.3
 plotly
 jupyterlab
 ipympl
