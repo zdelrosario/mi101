@@ -12,5 +12,5 @@ test:
 	nbstripout $@
 
 clean:
-	rm *-solution.ipynb
-	rm *-assignment.ipynb
+	rm -f *_solution.ipynb
+	rm -f *_assignment.ipynb
