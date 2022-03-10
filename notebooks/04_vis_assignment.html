@@ -632,12 +632,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">pt</span>
-
-<span class="kn">from</span> <span class="nn">grama.tran</span> <span class="kn">import</span> <span class="n">tf_umap</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 
@@ -751,19 +748,22 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## NOTE: No need to edit</span>
 <span class="p">(</span>
     <span class="n">df_alloys</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;al_percent&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;al_percent&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>We’ll start learning plotnine by making changes to this visual.</p>
+<blockquote>
+<div><p><em>Aside</em>: The <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> functionality in this notebook is provided by the <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/">plotnine</a> package. However, plotnine is imported by grama, so you can access all of plotnine’s functions through <code class="docutils literal notranslate"><span class="pre">gr.</span></code> syntax.</p>
+</div></blockquote>
 </div>
 <div class="section" id="visualizing-with-plotnine">
 <h2>Visualizing with Plotnine<a class="headerlink" href="#visualizing-with-plotnine" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p><em>Note</em>: You’ll notice that plotnine graphs start with this weird <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> call; that’s because plotnine is an <em>implementation of the <strong>g</strong>rammar of <strong>g</strong>raphics</em>. <a class="reference external" href="https://ggplot2.tidyverse.org/">Ggplot2</a> is the original implementation of this concept, but that package is for the R programming language. Plotnine is essentially a port of ggplot2 into Python.</p>
+<p><em>Note</em>: You’ll notice that plotnine graphs start with this weird <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> call; that’s because plotnine is an <em>implementation of the <strong>g</strong>rammar of <strong>g</strong>raphics</em>. <a class="reference external" href="https://ggplot2.tidyverse.org/">Ggplot2</a> is another implementation of this concept, but that package is for the R programming language. Plotnine is essentially a port of ggplot2 into Python.</p>
 <div class="section" id="q1-study-the-magnesium-content">
 <h3><strong>Q1</strong>: Study the Magnesium content<a class="headerlink" href="#q1-study-the-magnesium-content" title="Permalink to this headline">¶</a></h3>
 <p>Modify the plot below to create a histogram of Magnesium content, rather than aluminum content.</p>
@@ -776,8 +776,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 <span class="p">(</span>
     <span class="n">df_alloys</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;al_percent&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;al_percent&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -795,17 +795,17 @@ const thebe_selector_output = ".output, .cell_output"
 <h3>Elements of Plotnine<a class="headerlink" href="#elements-of-plotnine" title="Permalink to this headline">¶</a></h3>
 <p>You’ve already edited some plotnine code, but let’s break it down to better understand how plotnine works:</p>
 <p><em>Anatomy of a ggplot</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">df_alloys</span>                   <span class="c1"># Data to visualize</span>
     
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span>               <span class="c1"># Initial call; starts a ggplot object</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span>               <span class="c1"># Initial call; starts a ggplot object</span>
     
-        <span class="n">mapping</span><span class="o">=</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Mg&quot;</span><span class="p">)</span>  <span class="c1"># Aesthetic mapping; we define how</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Mg&quot;</span><span class="p">)</span>  <span class="c1"># Aesthetic mapping; we define how</span>
                                 <span class="c1">#   columns in the dataset map to </span>
                                 <span class="c1">#   aesthetics in the plot.</span>
     <span class="p">)</span>  
     
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>       <span class="c1"># Geometry; takes the aesthetic mapping</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>       <span class="c1"># Geometry; takes the aesthetic mapping</span>
                                 <span class="c1">#   along with the data and produces</span>
                                 <span class="c1">#   graphical elements.</span>
 <span class="p">)</span>
@@ -826,7 +826,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Note that <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> gives us a <em>warning</em> that we ought to pick a more informed bin count. Change the bin count to a larger value below.</p>
 <div class="admonition-accessing-documentation admonition">
 <p class="admonition-title">Accessing documentation</p>
-<p>Remember in the Python basics notebook we learned about accessing <em>documentation</em>. You can call <code class="docutils literal notranslate"><span class="pre">help(pt.geom_histogram)</span></code> or use the <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code> method to read documentation on this geometry. This will tell you which argument to change in order to complete this exercise.</p>
+<p>Remember in the Python basics notebook we learned about accessing <em>documentation</em>. You can call <code class="docutils literal notranslate"><span class="pre">help(gr.geom_histogram)</span></code> or use the <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code> method to read documentation on this geometry. This will tell you which argument to change in order to complete this exercise.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,8 +837,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 <span class="p">(</span>
     <span class="n">df_alloys</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -868,8 +868,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 <span class="p">(</span>
     <span class="n">df_alloys</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -879,16 +879,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="adding-aesthetics">
 <h3>Adding aesthetics<a class="headerlink" href="#adding-aesthetics" title="Permalink to this headline">¶</a></h3>
-<p>Part of the magic of ggplot is that it can <em>automatically</em> handle additional aesthetics, simply by changing the mapping. The <code class="docutils literal notranslate"><span class="pre">pt.aes(..)</span></code> can take additional keyword arguments, allowing us to visualize additional variables on the same plot.</p>
+<p>Part of the magic of ggplot is that it can <em>automatically</em> handle additional aesthetics, simply by changing the mapping. The <code class="docutils literal notranslate"><span class="pre">gr.aes(..)</span></code> can take additional keyword arguments, allowing us to visualize additional variables on the same plot.</p>
 <p>For a histogram or frequency polygon, we must provide an x-coordinate. However, we can provide additional aesthetic mappings, such as <code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">linetype</span></code>.</p>
 <div class="admonition-ggplot-and-defauls admonition">
 <p class="admonition-title">Ggplot and defauls</p>
-<p>To make ggplot easy-to-use, it has a large variety of <em>default settings</em>, with the option to <em>override</em> those defaults. By default the <code class="docutils literal notranslate"><span class="pre">pt.aes()</span></code> function will assume your first two arguments are x and y; put differently this <code class="docutils literal notranslate"><span class="pre">pt.aes(x=&quot;var1&quot;,</span> <span class="pre">y=&quot;var2&quot;)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">pt.aes(&quot;var1&quot;,</span> <span class="pre">&quot;var2&quot;)</span></code>.</p>
+<p>To make ggplot easy-to-use, it has a large variety of <em>default settings</em>, with the option to <em>override</em> those defaults. By default the <code class="docutils literal notranslate"><span class="pre">gr.aes()</span></code> function will assume your first two arguments are x and y; put differently this <code class="docutils literal notranslate"><span class="pre">gr.aes(x=&quot;var1&quot;,</span> <span class="pre">y=&quot;var2&quot;)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">gr.aes(&quot;var1&quot;,</span> <span class="pre">&quot;var2&quot;)</span></code>.</p>
 </div>
 </div>
 <div class="section" id="q6-add-an-aesthetic-for-the-alloy-series">
 <h3><strong>Q6</strong>: Add an aesthetic for the alloy series<a class="headerlink" href="#q6-add-an-aesthetic-for-the-alloy-series" title="Permalink to this headline">¶</a></h3>
-<p>Add an aesthetic mapping in <code class="docutils literal notranslate"><span class="pre">pt.aes(...)</span></code> to visualize the <code class="docutils literal notranslate"><span class="pre">&quot;series&quot;</span></code> column. Answer the questions below.</p>
+<p>Add an aesthetic mapping in <code class="docutils literal notranslate"><span class="pre">gr.aes(...)</span></code> to visualize the <code class="docutils literal notranslate"><span class="pre">&quot;series&quot;</span></code> column. Answer the questions below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -898,8 +898,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># -- WRITE YOUR CODE BELOW -----</span>
 <span class="p">(</span>
     <span class="n">df_alloys</span>
-    <span class="o">&gt;&gt;</span> <span class="n">pt</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
-    <span class="o">+</span> <span class="n">pt</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gr</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">))</span>
+    <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">geom_freqpoly</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -926,7 +926,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now that we’ve learned some basics of plotnine / ggplot, let’s take this learning further by reproducing some plots.</p>
 <div class="section" id="q7-reproduce-this-set-of-boxplots">
 <h3><strong>Q7</strong>: Reproduce this set of boxplots<a class="headerlink" href="#q7-reproduce-this-set-of-boxplots" title="Permalink to this headline">¶</a></h3>
-<p><em>Hint 1</em>: The plotnine function for a boxplot is <code class="docutils literal notranslate"><span class="pre">pt.geom_boxplot</span></code>.</p>
+<p><em>Hint 1</em>: The plotnine function for a boxplot is <code class="docutils literal notranslate"><span class="pre">gr.geom_boxplot</span></code>.</p>
 <p><em>Hint 2</em>: The grama function <code class="docutils literal notranslate"><span class="pre">gr.fct_reorder()</span></code> will help you re-order one variable in terms of a second variable. You can use this within a <code class="docutils literal notranslate"><span class="pre">gr.tf_mutate()</span></code> call to modify the ordering in the plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -952,6 +952,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h3><strong>Q9</strong>: Reproduce this scatterplot<a class="headerlink" href="#q9-reproduce-this-scatterplot" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint 1</em>: The plotnine function for a scatterplot is <code class="docutils literal notranslate"><span class="pre">pt.geom_point</span></code>.</p>
 <p><em>Hint 2</em>: The plotnine function <code class="docutils literal notranslate"><span class="pre">pt.theme_minimal()</span></code> will strip away the grey, giving you a cleaner visual.</p>
+<p><em>Hint 3</em>: The plotnine function <code class="docutils literal notranslate"><span class="pre">pt.labs()</span></code> will allow you to override the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> axis labels with your own labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###</span>
@@ -992,7 +993,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">df_umap_data</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_alloys</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_drop</span><span class="p">(</span><span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="s2">&quot;series&quot;</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">tf_umap</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_umap</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_bind_cols</span><span class="p">(</span><span class="n">df_alloys</span><span class="p">[[</span><span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="s2">&quot;series&quot;</span><span class="p">]])</span>
     <span class="o">&gt;&gt;</span> <span class="n">gr</span><span class="o">.</span><span class="n">tf_select</span><span class="p">(</span><span class="s2">&quot;series&quot;</span><span class="p">,</span> <span class="s2">&quot;alloy&quot;</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">everything</span><span class="p">())</span>
 <span class="p">)</span>
@@ -1011,7 +1012,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>The original numerical features have been reduced to just two; we use these two coordinates for plotting.</p>
+<p>The original numerical features have been reduced to just two: <code class="docutils literal notranslate"><span class="pre">xi0</span></code> and <code class="docutils literal notranslate"><span class="pre">xi1</span></code>. We will use these two coordinates for plotting.</p>
 <div class="section" id="q11-recreate-this-scatterplot-using-the-umap-data">
 <h3><strong>Q11</strong>: Recreate this scatterplot using the UMAP data<a class="headerlink" href="#q11-recreate-this-scatterplot-using-the-umap-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">

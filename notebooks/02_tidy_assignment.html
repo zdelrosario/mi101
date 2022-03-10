@@ -510,6 +510,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">grama</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">DF</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Intention</span><span class="p">()</span>
 
@@ -715,12 +716,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Even once our data are <em>tidy</em>, they still might not be as usable as we might like. Another, less well-defined aspect of making data usable is <em>wrangling</em> the data into a more useful form. We’ll talk about a few aspects we might need to wrangle our data to fix: unit conversion, filtering, and data types.</p>
 <div class="section" id="unit-conversion">
 <h3>Unit conversion<a class="headerlink" href="#unit-conversion" title="Permalink to this headline">¶</a></h3>
-<p>Weibull reports the <span class="math notranslate nohighlight">\(\sigma_d\)</span> values in <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">/</span> <span class="pre">mm^2</span></code>; if we interpret <code class="docutils literal notranslate"><span class="pre">kg</span></code> as a kilogram (mass) then these can’t be stress values! However, suppose for a moment that he were using <code class="docutils literal notranslate"><span class="pre">kg</span></code> to denote a kilogram-force, where <span class="math notranslate nohighlight">\(1 \text{kgf} = 1 \text{kg} \times 9.8 m/s^2\)</span>.</p>
+<p>Weibull reports the <span class="math notranslate nohighlight">\(\sigma_d\)</span> values in <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">/</span> <span class="pre">mm^2</span></code>; if we interpret <code class="docutils literal notranslate"><span class="pre">kg</span></code> as a kilogram (mass) then these can’t be stress values! (Stress has units of force per area.) However, suppose for a moment that he were using <code class="docutils literal notranslate"><span class="pre">kg</span></code> to denote a kilogram-force, where <span class="math notranslate nohighlight">\(1 \text{kgf} = 1 \text{kg} \times 9.8 m/s^2\)</span>.</p>
 <p>Weibull gives a summary value for the same stress in the more interpretable units <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">/</span> <span class="pre">(cm</span> <span class="pre">s^2)</span></code>. Let’s check this hypothesis by comparing the proposed unit converstion with our data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (540 x 10^5 g/(cm s^2)) / (980 cm/s^2) * (kg / 1000 g) * (cm^2 / 100 mm^2)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculated: </span><span class="si">{0:4.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">540e5</span> <span class="o">/</span> <span class="mi">980</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculated sigma: </span><span class="si">{0:4.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">540e5</span> <span class="o">/</span> <span class="mi">980</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>
 <span class="n">df_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -728,7 +729,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>This is very near the <code class="docutils literal notranslate"><span class="pre">sigma</span></code> values we have in our dataset, which lends a great deal of credibility to our interpretation of <code class="docutils literal notranslate"><span class="pre">kg</span></code> as <code class="docutils literal notranslate"><span class="pre">kgf</span></code>. With this determined, we can make a unit conversation to more standard units.</p>
 <div class="math notranslate nohighlight">
-\[\text{kgf} / \text{mm}^2 = 9.8 \text{MPa}\]</div>
+\[\text{kgf}/\text{mm}^2 = 9.8 \text{MPa}\]</div>
 </div>
 <div class="section" id="q4-convert-the-units-to-mpa">
 <h3><strong>Q4</strong>: Convert the units to MPa.<a class="headerlink" href="#q4-convert-the-units-to-mpa" title="Permalink to this headline">¶</a></h3>
