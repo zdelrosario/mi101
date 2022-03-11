@@ -3,12 +3,25 @@
 
 In short, you'll need:
 
-- Exercise files (Download)
-- Python and Jupyter (Recommended: Anaconda)
 - Tabula and WebPlotDigitizer (Free software)
+- Exercise files (Free download)
+- Python and Jupyter (Recommended: Anaconda, Free software)
 
-**If you have any issues with these steps**: Please ask a TA! We will gladly
+**If you have any issues with these steps**: Please ask for help! We will gladly
 help you set up your environment.
+
+## Tabula
+<!-- ------------------------- -->
+
+[Tabula](https://tabula.technology) is a free program for *liberating* data from
+PDF's. Please follow the previous link and install Tabula before the workshop.
+
+## WebPlotDigitizer
+<!-- ------------------------- -->
+
+[WebPlotDigitizer](https://automeris.io/WebPlotDigitizer/) is a free program for
+*extracting* data from images. Please follow the previous link and install
+WebPlotDigitizer before the workshop.
 
 ## Exercises Files
 <!-- ------------------------- -->
@@ -140,20 +153,7 @@ then click on the notebooks in that directory to open them. Go ahead and open
 `check_install.ipynb`, which you will run at the end of installation to check if
 everything is set up correctly.
 
-## Tabula
-<!-- ------------------------- -->
-
-[Tabula](https://tabula.technology) is a free program for *liberating* data from
-PDF's. Please follow the previous link and install Tabula before the workshop.
-
-## WebPlotDigitizer
-<!-- ------------------------- -->
-
-[WebPlotDigitizer](https://automeris.io/WebPlotDigitizer/) is a free program for
-*extracting* data from images. Please follow the previous link and install
-WebPlotDigitizer before the workshop.
-
-## Final Check
+### Final Check of Python Install
 <!-- -------------------------------------------------- -->
 
 To check that you've successfully set up your computer for the workshop, please
@@ -170,7 +170,7 @@ and click on `Cells > Run All`. If you can successfully run the
 notebook (without errors), then you are ready for the workshop!
 ```
 
-## Binder Option
+### (Optional) Binder Option
 <!-- ------------------------- -->
 
 If after trying the setup steps above you still cannot get Jupyter working on your computer, you can click the following link to launch the workshop materials in a cloud computing environment. **Be warned that you cannot save your work in this cloud notebook!**

@@ -145,15 +145,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="slides.html">
-   Slides
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="past.html">
+   Past Offerings of MI 101
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="recordings.html">
-   Recordings
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="past/gatech2021.html">
+     GATech IMAT 2021 Workshop
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -243,21 +250,19 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gatech-imat-2021-workshop-schedule">
-   GATech IMAT 2021 Workshop Schedule
+  <a class="reference internal nav-link" href="#wellesley-2022-workshop">
+   Wellesley 2022 Workshop
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#office-hours">
-     Office Hours
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colab-option-for-broken-software">
-     Colab Option for Broken Software
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#past-offerings">
+   Past Offerings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binder-option-for-broken-python-installation">
+   Binder Option for Broken Python Installation
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#about-the-author">
@@ -285,21 +290,19 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gatech-imat-2021-workshop-schedule">
-   GATech IMAT 2021 Workshop Schedule
+  <a class="reference internal nav-link" href="#wellesley-2022-workshop">
+   Wellesley 2022 Workshop
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#office-hours">
-     Office Hours
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colab-option-for-broken-software">
-     Colab Option for Broken Software
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#past-offerings">
+   Past Offerings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binder-option-for-broken-python-installation">
+   Binder Option for Broken Python Installation
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#about-the-author">
@@ -319,14 +322,9 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Materials Informatics 101<a class="headerlink" href="#materials-informatics-101" title="Permalink to this headline">¶</a></h1>
 <p>Informatics is the use of computational tools (e.g. AI, machine learning) to access and make sense of data. Materials Informatics has the potential to accelerate scientific inquiry and support novel insights. However, informatics tools are typically marketed to the biological sciences, financial sector, and “Big Tech”—it is not immediately clear how to use “cat-detector technology” to support serious materials science!</p>
 <p>The materials on this site are part of a hands-on workshop aimed at training material scientists to use programming-based informatics tools. In this workshop, you will create reproducible data workflows, automate tedious data extraction, visualize data for exploration, and apply AI/ML models for their predictive capabilities.</p>
-<div class="section" id="gatech-imat-2021-workshop-schedule">
-<h2>GATech IMAT 2021 Workshop Schedule<a class="headerlink" href="#gatech-imat-2021-workshop-schedule" title="Permalink to this headline">¶</a></h2>
-<p><strong>All workshop sessions will run from noon to 2pm Eastern time, on Zoom.</strong> If
-you registered for the workshop, you will receive a Zoom link via your
-registered email. Each day of the workshop will include some amount of hands-on
-work during the live session, and Days 1 – 3 will include a take-home Python
-notebook to solidify skills. Office hours will also be offered outside the
-workshop hours to provide support on the take-home notebooks.</p>
+<div class="section" id="wellesley-2022-workshop">
+<h2>Wellesley 2022 Workshop<a class="headerlink" href="#wellesley-2022-workshop" title="Permalink to this headline">¶</a></h2>
+<p>This is the schedule for MI 101 at Wellesley in March of 2022.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
@@ -337,62 +335,51 @@ workshop hours to provide support on the take-home notebooks.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p>Friday, Oct. 8</p></td>
+<td><p>Thursday, March 17</p></td>
 <td><p><a class="reference internal" href="notebooks/00_tabula-webplotdigitizer_assignment.html#extraction"><span class="std std-ref">Introduction, data extraction</span></a></p></td>
 <td><p>00 (Day)</p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
 <td><p><a class="reference internal" href="notebooks/01_python_assignment.html#python"><span class="std std-ref">Python introduction</span></a></p></td>
-<td><p>01 (Take-home)</p></td>
+<td><p>01 (Day)</p></td>
 </tr>
-<tr class="row-even"><td><p>2</p></td>
-<td><p>Saturday, Oct. 9</p></td>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
 <td><p><a class="reference internal" href="notebooks/02_tidy_assignment.html#tidy"><span class="std std-ref">Data wrangling and tidy data</span></a></p></td>
 <td><p>02 (Day)</p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
+<td><p>(Take-home)</p></td>
 <td><p><a class="reference internal" href="notebooks/03_data_assignment.html#data"><span class="std std-ref">Programmatic data management</span></a></p></td>
 <td><p>03 (Take-home)</p></td>
 </tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>Sunday, Oct. 10</p></td>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Friday, March 18</p></td>
 <td><p><a class="reference internal" href="vis.html#day3-vis"><span class="std std-ref">Principles of visualization</span></a></p></td>
 <td><p>(Activity)</p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
 <td><p><a class="reference internal" href="notebooks/04_vis_assignment.html#vis"><span class="std std-ref">Visualizing with plotnine</span></a></p></td>
-<td><p>04 (Take-home)</p></td>
+<td><p>04 (Day)</p></td>
 </tr>
-<tr class="row-even"><td><p>4</p></td>
-<td><p>Monday, Oct. 11</p></td>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
 <td><p><a class="reference internal" href="notebooks/05_ml_assignment.html#ml"><span class="std std-ref">ML Fundamentals</span></a></p></td>
 <td><p>05 (Day)</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p>(End of workshop: No take-home notebook!)</p></td>
-<td><p>(None)</p></td>
-</tr>
 </tbody>
 </table>
-<div class="section" id="office-hours">
-<h3>Office Hours<a class="headerlink" href="#office-hours" title="Permalink to this headline">¶</a></h3>
-<p>Office hours will be held from 4 – 5pm on Friday, Oct. 8 through Sunday, Oct.
-10 (NB. <em>Not</em> on Monday the 11th!). Please use the <em>same Zoom link</em> that you
-received for the main workshop to access the office hours call. You are welcome
-to come to office hours with any questions about the workshop materials; in
-particular, to get help on completing the take-home notebooks.</p>
 </div>
-<div class="section" id="colab-option-for-broken-software">
-<h3>Colab Option for Broken Software<a class="headerlink" href="#colab-option-for-broken-software" title="Permalink to this headline">¶</a></h3>
-<p>If you haven’t managed to get your software installation working, I’ve prepared
-this set of <a class="reference external" href="https://github.com/zdelrosario/mi101-colab">Google Colab</a>
-compatible notebooks. Just click that link and follow the instructions to get
-the notebooks running in a cloud-based environment.</p>
+<div class="section" id="past-offerings">
+<h2>Past Offerings<a class="headerlink" href="#past-offerings" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="past.html#past"><span class="std std-ref">Past Offerings</span></a> page for information on prior runs of this workshop, including recordings and slides.</p>
 </div>
+<div class="section" id="binder-option-for-broken-python-installation">
+<h2>Binder Option for Broken Python Installation<a class="headerlink" href="#binder-option-for-broken-python-installation" title="Permalink to this headline">¶</a></h2>
+<p>If you haven’t managed to get your python installation working, use the following link to launch the materials in a cloud-based environment: <a class="reference external" href="https://mybinder.org/v2/gh/zdelrosario/mi101/build"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p><strong>Be warned that you cannot save your work in Binder!</strong></p>
 </div>
 <div class="section" id="about-the-author">
 <h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this headline">¶</a></h2>

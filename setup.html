@@ -146,15 +146,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="slides.html">
-   Slides
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="past.html">
+   Past Offerings of MI 101
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="recordings.html">
-   Recordings
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="past/gatech2021.html">
+     GATech IMAT 2021 Workshop
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -244,6 +251,16 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabula">
+   Tabula
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#webplotdigitizer">
+   WebPlotDigitizer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises-files">
    Exercises Files
   </a>
@@ -287,27 +304,17 @@ const thebe_selector_output = ".output, .cell_output"
      Opening Jupyter Notebooks
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#final-check-of-python-install">
+     Final Check of Python Install
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-binder-option">
+     (Optional) Binder Option
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tabula">
-   Tabula
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#webplotdigitizer">
-   WebPlotDigitizer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#final-check">
-   Final Check
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#binder-option">
-   Binder Option
-  </a>
  </li>
 </ul>
 
@@ -330,6 +337,16 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabula">
+   Tabula
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#webplotdigitizer">
+   WebPlotDigitizer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises-files">
    Exercises Files
   </a>
@@ -373,27 +390,17 @@ const thebe_selector_output = ".output, .cell_output"
      Opening Jupyter Notebooks
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#final-check-of-python-install">
+     Final Check of Python Install
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-binder-option">
+     (Optional) Binder Option
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tabula">
-   Tabula
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#webplotdigitizer">
-   WebPlotDigitizer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#final-check">
-   Final Check
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#binder-option">
-   Binder Option
-  </a>
  </li>
 </ul>
 
@@ -408,12 +415,25 @@ const thebe_selector_output = ".output, .cell_output"
 <span id="setup"></span><h1>Software Setup<a class="headerlink" href="#software-setup" title="Permalink to this headline">¶</a></h1>
 <p>In short, you’ll need:</p>
 <ul class="simple">
-<li><p>Exercise files (Download)</p></li>
-<li><p>Python and Jupyter (Recommended: Anaconda)</p></li>
 <li><p>Tabula and WebPlotDigitizer (Free software)</p></li>
+<li><p>Exercise files (Free download)</p></li>
+<li><p>Python and Jupyter (Recommended: Anaconda, Free software)</p></li>
 </ul>
-<p><strong>If you have any issues with these steps</strong>: Please ask a TA! We will gladly
+<p><strong>If you have any issues with these steps</strong>: Please ask for help! We will gladly
 help you set up your environment.</p>
+<div class="section" id="tabula">
+<h2>Tabula<a class="headerlink" href="#tabula" title="Permalink to this headline">¶</a></h2>
+<!-- ------------------------- -->
+<p><a class="reference external" href="https://tabula.technology">Tabula</a> is a free program for <em>liberating</em> data from
+PDF’s. Please follow the previous link and install Tabula before the workshop.</p>
+</div>
+<div class="section" id="webplotdigitizer">
+<h2>WebPlotDigitizer<a class="headerlink" href="#webplotdigitizer" title="Permalink to this headline">¶</a></h2>
+<!-- ------------------------- -->
+<p><a class="reference external" href="https://automeris.io/WebPlotDigitizer/">WebPlotDigitizer</a> is a free program for
+<em>extracting</em> data from images. Please follow the previous link and install
+WebPlotDigitizer before the workshop.</p>
+</div>
 <div class="section" id="exercises-files">
 <h2>Exercises Files<a class="headerlink" href="#exercises-files" title="Permalink to this headline">¶</a></h2>
 <!-- ------------------------- -->
@@ -521,22 +541,8 @@ then click on the notebooks in that directory to open them. Go ahead and open
 <code class="docutils literal notranslate"><span class="pre">check_install.ipynb</span></code>, which you will run at the end of installation to check if
 everything is set up correctly.</p>
 </div>
-</div>
-<div class="section" id="tabula">
-<h2>Tabula<a class="headerlink" href="#tabula" title="Permalink to this headline">¶</a></h2>
-<!-- ------------------------- -->
-<p><a class="reference external" href="https://tabula.technology">Tabula</a> is a free program for <em>liberating</em> data from
-PDF’s. Please follow the previous link and install Tabula before the workshop.</p>
-</div>
-<div class="section" id="webplotdigitizer">
-<h2>WebPlotDigitizer<a class="headerlink" href="#webplotdigitizer" title="Permalink to this headline">¶</a></h2>
-<!-- ------------------------- -->
-<p><a class="reference external" href="https://automeris.io/WebPlotDigitizer/">WebPlotDigitizer</a> is a free program for
-<em>extracting</em> data from images. Please follow the previous link and install
-WebPlotDigitizer before the workshop.</p>
-</div>
-<div class="section" id="final-check">
-<h2>Final Check<a class="headerlink" href="#final-check" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="final-check-of-python-install">
+<h3>Final Check of Python Install<a class="headerlink" href="#final-check-of-python-install" title="Permalink to this headline">¶</a></h3>
 <!-- -------------------------------------------------- -->
 <p>To check that you’ve successfully set up your computer for the workshop, please
 run the following jupyter notebook.</p>
@@ -551,11 +557,12 @@ and click on <code class="docutils literal notranslate"><span class="pre">Cells<
 notebook (without errors), then you are ready for the workshop!</p>
 </div>
 </div>
-<div class="section" id="binder-option">
-<h2>Binder Option<a class="headerlink" href="#binder-option" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="optional-binder-option">
+<h3>(Optional) Binder Option<a class="headerlink" href="#optional-binder-option" title="Permalink to this headline">¶</a></h3>
 <!-- ------------------------- -->
 <p>If after trying the setup steps above you still cannot get Jupyter working on your computer, you can click the following link to launch the workshop materials in a cloud computing environment. <strong>Be warned that you cannot save your work in this cloud notebook!</strong></p>
 <p>Click this button to launch MI 101 in Binder: <a class="reference external" href="https://mybinder.org/v2/gh/zdelrosario/mi101/build"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
 </div>
 </div>
 
